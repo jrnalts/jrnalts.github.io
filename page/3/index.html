@@ -5,17 +5,18 @@
   
 
   
-  <title>Hexo</title>
+  <title>彼岸</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="彼岸">
 <meta property="og:url" content="http://example.com/page/3/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="og:site_name" content="彼岸">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:author" content="Andrew Wang">
+<meta property="article:tag" content="Ruby, Rails, JavaScript, 程式學習">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="彼岸" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -36,7 +37,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">彼岸</a>
       </h1>
       
     </div>
@@ -63,120 +64,6 @@
 </header>
       <div class="outer">
         <section id="main">
-  
-    <article id="post-day08" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/30/day08/" class="article-date">
-  <time datetime="2020-10-30T05:08:51.681Z" itemprop="datePublished">2020-10-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/30/day08/">方法 &lt;&gt; 我斑願稱你為最強！站上頂點的方法只有一個</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://i.imgur.com/ulT04sl.jpg"></p>
-<blockquote>
-<p>[Day08] 想要變強就要不斷修煉，這是唯一的方法！</p>
-</blockquote>
-<p>啊啦啦標題不小心用了火影梗，常常聽別人說，做事情要用對方法，這件事在 Ruby 的世界裡也是一樣的！</p>
-<p>所以說，方法係啥？為什麼要使用方法？程式語言裡的方法是什麼？</p>
-<h2 id="什麼是方法？"><a href="#什麼是方法？" class="headerlink" title="什麼是方法？"></a>什麼是方法？</h2><p>正常來說，我們不會想把所有的程式碼寫在同一個檔案裡。而且如果是在開發專案，隨著複雜度提升，不同的程式通常會依照功能和類別(也可能只是按英文字母的順序)排列，分佈在專案裡的不同位置。</p>
-<p>不過，由於不同的位置也會需要用到共同的程式碼，為了避免重複 coding，這時候就會透過 <strong>方法(method)</strong> 來解決這個問題，如果是學過 Javascript 函式(function)的朋友們，應該可以很快知道我在說什麼，它與 Ruby 的方法實際上是非常接近的東西。</p>
-<h3 id="為什麼要使用方法"><a href="#為什麼要使用方法" class="headerlink" title="為什麼要使用方法"></a>為什麼要使用方法</h3><ol>
-<li>可一直重複使用</li>
-<li>讓程式碼更容易理解</li>
-</ol>
-<p>先來看看在 Ruby 如何定義一個方法：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">method_name</span></span></span><br><span class="line">  <span class="comment"># 這個方法要做的事情</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-
-<p>每個方法都會被賦予一個名稱，會使用 <code>def</code> 和 <code>end</code> 兩個單詞來定義方法，而夾在中間的部分則是要請這個方法做的事情。</p>
-<p>一旦定義了一個方法以後，就可以開始使喚它做事…(誤)</p>
-<h3 id="無論何時何地，取名字都要小心謹慎！"><a href="#無論何時何地，取名字都要小心謹慎！" class="headerlink" title="無論何時何地，取名字都要小心謹慎！"></a>無論何時何地，取名字都要小心謹慎！</h3><p>當 <code>變數</code> 和 <code>方法</code> 的名稱如果相同時，同名的 <code>變數</code> 會蓋掉同名的 <code>方法</code>，需要特別留意！所以在命名方法時，請花點時間好好思考，取個獨一無二又能看出在做什麼的名字吧！</p>
-<hr>
-<h2 id="參數與引數"><a href="#參數與引數" class="headerlink" title="參數與引數"></a>參數與引數</h2><p>剛剛已經介紹了如何定義方法，不過在定義方法時，還可以設定這個方法需要哪些**參數(parameter)**：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">walk</span><span class="params">(place)</span></span></span><br><span class="line">  puts <span class="string">&quot;我想去<span class="subst">#&#123;place&#125;</span>散步!&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-
-<p>由於我們設定 <code>walk</code> 需要一個參數 <code>place</code>，所以在呼叫 <code>walk</code> 時，也必須要剛好給一個**引數(argument)**，多了或少了都不行，在 Ruby 的世界裡，只要引數和參數的數量不同，方法就無法順利執行。</p>
-<p>重新整理一下：</p>
-<ul>
-<li>參數：定義方法使用要帶入的東西，類似規格的概念。</li>
-<li>引數：呼叫方法時帶入的東西，引數的數量必須與定義方法時相同。</li>
-</ul>
-<p>接下來，我們來呼叫看看這個 <code>walk</code> 方法!</p>
-<hr>
-<h2 id="方法！我呼叫你！"><a href="#方法！我呼叫你！" class="headerlink" title="方法！我呼叫你！"></a>方法！我呼叫你！</h2><p>呼叫(invoke)方法的意思其實就是使用這個方法，算是技術圈的術語之一吧，總覺得有一種召喚某某方法來幫自己完成一件事的感覺。另外，也有看過其他大大稱為「調用」，只是我更習慣把它稱為「呼叫」。</p>
-<p>要執行已經定義的方法的方式很簡單，只要直接呼叫方法的名字即可：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">walk(<span class="string">&quot;公園&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出：</span></span><br><span class="line">我想去公園散步!</span><br></pre></td></tr></table></figure>
-
-<p>甚至省略了 <code>(</code> <code>)</code> 也可以，這是 Ruby 獨有的祕技!</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">walk<span class="string">&quot;公園&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出：</span></span><br><span class="line">我想去公園散步!</span><br></pre></td></tr></table></figure>
-
-<p>事實上，方法還可以被物件(object)所呼叫，不過那部分就等介紹到類別與物件的時候再一起說明吧！</p>
-<h3 id="請放心呼叫方法吧！"><a href="#請放心呼叫方法吧！" class="headerlink" title="請放心呼叫方法吧！"></a>請放心呼叫方法吧！</h3><p>比起 Javascript 在呼叫函式時一定要有 <code>()</code> ，Ruby 是不是厲害許多呢！（不小心就引戰了）不過，前提是要記得自己定義過哪些方法…<br><img src="https://i.imgur.com/KrMZ5vp.jpg"></p>
-<blockquote>
-<p>你的名字是？<em>あなたのお名前は？</em></p>
-</blockquote>
-<hr>
-<h2 id="方法的參數也可以有預設值"><a href="#方法的參數也可以有預設值" class="headerlink" title="方法的參數也可以有預設值"></a>方法的參數也可以有預設值</h2><p>在定義方法的時候，我們可以先給參數一個預設值，這麼一來，如果在呼叫方法時沒有給引數，方法會以預設值去執行，假裝自己有拿到引數</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">valentine</span><span class="params">(gift = <span class="string">&quot;chocolate&quot;</span>)</span></span></span><br><span class="line">  puts <span class="string">&quot;謝謝妳送我<span class="subst">#&#123;gift&#125;</span>! 我很開心!&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 呼叫</span></span><br><span class="line">valentine</span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出</span></span><br><span class="line">謝謝妳送我chocolate! 我很開心!</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>突然想到有一年情人節買巧克力給自己…(哭)</p>
-</blockquote>
-<h2 id="設定一個以上的參數也是-OK-的！"><a href="#設定一個以上的參數也是-OK-的！" class="headerlink" title="設定一個以上的參數也是 OK 的！"></a>設定一個以上的參數也是 OK 的！</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">play_baseball</span><span class="params">(pitcher, catcher, batter)</span></span></span><br><span class="line">    puts <span class="string">&quot;需要 <span class="subst">#&#123;pitcher&#125;</span>, <span class="subst">#&#123;catcher&#125;</span>, <span class="subst">#&#123;batter&#125;</span> 才能打棒球&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">play_baseball(<span class="string">&quot;熱狗&quot;</span>, <span class="string">&quot;爆米花&quot;</span>, <span class="string">&quot;可樂&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出：</span></span><br><span class="line">需要 熱狗, 爆米花, 可樂 才能打棒球</span><br></pre></td></tr></table></figure>
-
-<p>聽說在 Ruby 3.0 版本後，方法帶入的參數還會增加型別限制！期待！</p>
-<hr>
-<h2 id="Ruby-方法的命名習慣"><a href="#Ruby-方法的命名習慣" class="headerlink" title="Ruby 方法的命名習慣"></a>Ruby 方法的命名習慣</h2><p>除了可以用常見的英文、底線及數字的組合替方法命名之外，有時候還會看到帶有問號 <code>?</code> 、驚嘆號 <code>!</code> 或 <code>=</code> 的方法，它們通常代表了某種特殊含義，但這些符號只能放在方法名字的最後面。</p>
-<h3 id="問號-？-表示這個方法會回傳-true-或-false"><a href="#問號-？-表示這個方法會回傳-true-或-false" class="headerlink" title="問號 ？ 表示這個方法會回傳 true 或 false"></a>問號 <code>？</code> 表示這個方法會回傳 <code>true</code> 或 <code>false</code></h3><p>譬如：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>].<span class="keyword">include</span>?(<span class="number">2</span>)</span><br><span class="line">=&gt; true</span><br></pre></td></tr></table></figure>
-
-<h3 id="驚嘆號-表示使用這個方法可能會產生「副作用」！"><a href="#驚嘆號-表示使用這個方法可能會產生「副作用」！" class="headerlink" title="驚嘆號 ! 表示使用這個方法可能會產生「副作用」！"></a>驚嘆號 <code>!</code> 表示使用這個方法可能會產生「副作用」！</h3><p>我直接舉個簡單的例子，先假設有一個陣列 <code>array</code>：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array = [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-
-<p>使用 <code>uniq</code> 這個方法把重複的元素去掉：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array.uniq</span><br><span class="line">=&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-
-<p>這時候原本的 <code>array</code> 沒有產生改變：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array</span><br><span class="line"> =&gt; [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-
-<p>但是如果我用的是 <code>uniq!</code> 這個方法把重複的元素去掉：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array.uniq!</span><br><span class="line"> =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-
-<p>這時候原本的 <code>array</code> 就變成了：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array</span><br><span class="line"> =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-
-<p>至於在方法名稱後面加上等號 <code>=</code> 的意義，目前我也還說不出個所以然，只好先把我的<a target="_blank" rel="noopener" href="https://docs.ruby-lang.org/en/master/URI/Generic.html#method-i-user-3D">參考資料</a>放在這，等日後再回來補齊了：</p>
-<p>在 Ruby 或 Rails ，我們經常會使用這樣的命名慣例，以節省大家的工作時間，我覺得這是非常棒的一個共識。</p>
-<hr>
-<p>如果想更深入研究 Ruby 的方法，非常推薦大家先拜讀龍哥的這篇文章：<a target="_blank" rel="noopener" href="https://kaochenlong.com/2016/04/26/use-the-source/">如果想要找某個方法的定義，該怎麼找?</a> 今天就先到介紹這邊啦！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/30/day08/" data-id="ckgw1jq4r0008vxv551gc2rez" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
   
     <article id="post-day07" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -829,7 +716,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li></ul>
     </div>
   </div>
 
@@ -840,10 +727,6 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2020/10/30/hello-world/">Hello World</a>
-          </li>
         
           <li>
             <a href="/2020/10/30/day30/">Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴</a>
@@ -861,6 +744,10 @@
             <a href="/2020/10/30/day27/">Self &lt;&gt; 真正的男子漢，連道別都不需要語言！</a>
           </li>
         
+          <li>
+            <a href="/2020/10/30/day26/">鴨子型別 &lt;&gt; 終於抵達阿拉巴斯坦王國！迎接我們的是 · · · 卡魯鴨？</a>
+          </li>
+        
       </ul>
     </div>
   </div>
@@ -873,7 +760,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 John Doe<br>
+      &copy; 2020 Andrew Wang<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
