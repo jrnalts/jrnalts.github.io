@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>鴨子型別 &lt;&gt; 終於抵達阿拉巴斯坦王國！迎接我們的是 · · · 卡魯鴨？ - 滿滿的紅寶石不拿嗎？ | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[Day26] 卡魯鴨：我跑遍了沙漠，好渴啊！  自從學了 Ruby ，就常聽到別人在說 **鴨子型別(Duck Type)**，可是卻一直沒有弄得很懂，今天決定來了解什麼是鴨子型別！ 開始囉！  型別型別，是一種為了讓資源(位元組)更有效率地被利用而規劃的概念。簡單來說，每筆資料都有自己所屬的型別，譬如：整數、字串、陣列等等．．． 在鐵人賽第３天裡，我列出了一些 Ruby 常見的資料型別，各">
+<meta property="og:type" content="article">
+<meta property="og:title" content="鴨子型別 &lt;&gt; 終於抵達阿拉巴斯坦王國！迎接我們的是 · · · 卡魯鴨？ - 滿滿的紅寶石不拿嗎？">
+<meta property="og:url" content="http://example.com/2020/10/30/day26/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[Day26] 卡魯鴨：我跑遍了沙漠，好渴啊！  自從學了 Ruby ，就常聽到別人在說 **鴨子型別(Duck Type)**，可是卻一直沒有弄得很懂，今天決定來了解什麼是鴨子型別！ 開始囉！  型別型別，是一種為了讓資源(位元組)更有效率地被利用而規劃的概念。簡單來說，每筆資料都有自己所屬的型別，譬如：整數、字串、陣列等等．．． 在鐵人賽第３天裡，我列出了一些 Ruby 常見的資料型別，各">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/yiXN2o9.jpg">
+<meta property="article:published_time" content="2020-10-30T05:10:55.451Z">
+<meta property="article:modified_time" content="2020-10-30T06:35:40.466Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Ruby, 12th鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/yiXN2o9.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-day26" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day26/" class="article-date">
+  <time datetime="2020-10-30T05:10:55.451Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      鴨子型別 &lt;&gt; 終於抵達阿拉巴斯坦王國！迎接我們的是 · · · 卡魯鴨？ - 滿滿的紅寶石不拿嗎？
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/yiXN2o9.jpg"></p>
+<blockquote>
+<p>[Day26] 卡魯鴨：我跑遍了沙漠，好渴啊！</p>
+</blockquote>
+<p>自從學了 Ruby ，就常聽到別人在說 **鴨子型別(Duck Type)**，可是卻一直沒有弄得很懂，今天決定來了解什麼是鴨子型別！</p>
+<p>開始囉！</p>
+<hr>
+<h2 id="型別"><a href="#型別" class="headerlink" title="型別"></a>型別</h2><p>型別，是一種為了讓資源(位元組)更有效率地被利用而規劃的概念。簡單來說，每筆資料都有自己所屬的型別，譬如：整數、字串、陣列等等．．．</p>
+<p>在<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10235533">鐵人賽第３天</a>裡，我列出了一些 Ruby 常見的資料型別，各自做了簡單的介紹。但型別遠沒有這麼簡單啊！</p>
+<p>Ruby 常被稱作是一種強型別的語言，然而，有強就有弱，判定標準在於語言能否自動轉換型態：像是 JavaScript，經常會偷偷地把變數轉換成可以被執行的資料型態（讓我覺得十分困擾）不過到了 Ruby 這裡，就會被仔細地檢查型別，型別不符的話則會發生錯誤。</p>
+<p>還記得用怎麼類別產生實體物件嗎？產生實體物件也是一種將某個型別實體化的過程。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String.new(<span class="string">&quot;卡魯鴨&quot;</span>)</span><br><span class="line">=&gt; <span class="string">&quot;卡魯鴨&quot;</span></span><br><span class="line"></span><br><span class="line">String.new(<span class="number">123</span>)</span><br><span class="line">TypeError (no implicit conversion of Integer into String)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="動態型別？"><a href="#動態型別？" class="headerlink" title="動態型別？"></a>動態型別？</h2><p>接著，我們可能還要了解「動態型別」是什麼。</p>
+<p>Ruby 被認為一種 <strong>動態型別(Dynamically Typed)</strong> 的語言，「動態、不固定」的意思是 <strong>在命名變數時，不用先宣告是哪種型別</strong></p>
+<p>有了動態型別，我們就能寫出較為簡潔的程式碼。同時，也因為不用先提供型態資訊，因此變數型態是可以改變的。</p>
+<p>舉個例子，比方說先把字串<code>&quot;卡魯鴨&quot;</code> 指定給區域變數 <code>a</code>：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = String.new(<span class="string">&quot;卡魯鴨&quot;</span>)</span><br><span class="line">=&gt; <span class="string">&quot;卡魯鴨&quot;</span></span><br><span class="line"></span><br><span class="line">a = <span class="number">123</span></span><br><span class="line"></span><br><span class="line">a</span><br><span class="line">=&gt; <span class="number">123</span></span><br></pre></td></tr></table></figure>
+
+<p>變數 <code>a</code> 的型別被換成整數(Integer)了！</p>
+<hr>
+<h2 id="鴨子？型別？"><a href="#鴨子？型別？" class="headerlink" title="鴨子？型別？"></a>鴨子？型別？</h2><p>終於要切入今天重點了！</p>
+<p><strong>鴨子型別</strong>是一種程式設計的風格。這種風格認為，一個物件的型別不是由這個物件所屬的類別決定，而是由「它能做什麼」來決定。</p>
+<blockquote>
+<p>如果你看到一隻鳥走起來像鴨子，游泳起來像鴨子；叫起來也像鴨子；那麼這隻鳥就可以被稱為鴨子。</p>
+</blockquote>
+<p>換句話說，想知道一個物件是什麼型別，看它能使用什麼方法就好。</p>
+<p>接下來用程式碼來解釋，現在有 <code>Cat</code> 和 <code>Dog</code> 兩個類別，彼此沒有相互繼承關係。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">hungry</span>  <span class="comment"># 同樣名稱的方法</span></span></span><br><span class="line">    puts <span class="string">&quot;喵～肚子餓了！&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">hungry</span> <span class="comment"># 同樣名稱的方法</span></span></span><br><span class="line">    puts <span class="string">&quot;汪！肚子餓了！&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>再建立一個 <code>Pet</code> 類別，同時定義一個 <code>who_is_hungry</code> 方法可以傳入 <code>name</code>，並讓 <code>name</code> 呼叫 <code>hungry</code> 執行：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pet</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span></span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">who_is_hungry</span><span class="params">(name)</span></span></span><br><span class="line">    name.hungry</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>接著做出幾個實體：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">miru = Cat.new</span><br><span class="line">wolf = Dog.new</span><br><span class="line">pet = Pet.new</span><br></pre></td></tr></table></figure>
+
+<p>現在讓 <code>miru</code> 和 <code>wolf</code> 當作帶入的參數試試：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pet.who_is_hungry(miru)</span><br><span class="line">pet.who_is_hungry(wolf)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出</span></span><br><span class="line">喵～肚子餓了！</span><br><span class="line">汪！肚子餓了！</span><br></pre></td></tr></table></figure>
+
+<p>用其他參數或另外的實體試試：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pet.who_is_hungry(<span class="number">123</span>)</span><br><span class="line">=&gt;NoMethodError (undefined method <span class="string">`hungry&#x27; for 123:Integer)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">fish = Pet.new</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">pet.who_is_hungry(fish)</span></span><br><span class="line"><span class="string">=&gt; NoMethodError (undefined method `</span>hungry<span class="string">&#x27; for #&lt;Pet:0x00007fd74407d0a0&gt;)</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到 <code>pet.who_is_hungry</code> 在傳入 <code>miru</code> 或 <code>wolf</code> 的當下，並沒有要求要檢查它們的型別，但是會確認它們都能執行 <code>hungry</code> 方法才能正常通過！</p>
+<p>真是盡責的小鴨呢！</p>
+<hr>
+<p>關於鴨子型別的的介紹就先到這邊啦！謝謝大家的觀看～</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day26/" data-id="ckgw1jq5p0013vxv5gp28e1pe" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/30/day27/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Self &lt;&gt; 真正的男子漢，連道別都不需要語言！ - 滿滿的紅寶石不拿嗎？
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/30/day25/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">例外處理 &lt;&gt; 白鬍子登場！就連海軍大將都無法擊倒的那個男人！- 滿滿的紅寶石不拿嗎？</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 10px;">Ruby, 12th鐵人賽</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day30/">Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day29/">Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day28/">Singleton Method &lt;&gt; 是「百獸海賊團」！碰上四皇凱多有勝算嗎？- 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day27/">Self &lt;&gt; 真正的男子漢，連道別都不需要語言！ - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

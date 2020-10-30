@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>流程控制 &lt;&gt; 只要有風和海，我就有辦法航行！- 滿滿的紅寶石不拿嗎？ | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[Day06] 風雷雨晴，海上的天氣由我決定！  來到了第 6 天，今天要跟大家介紹的是娜美的天氣棒 (咳咳咳) 我說的是 流程控制（Flow Controller） 只要進入程式語言的世界，就一定會經常碰到流程控制，在 Ruby 裡我們使用 if 判斷式來讓電腦知道，在哪些條件滿足時，要採取什麼樣的行為。  一開始，先分享一則有趣的小故事給大家：  事情是這樣的，某天有一位先生下班正要回家，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="流程控制 &lt;&gt; 只要有風和海，我就有辦法航行！- 滿滿的紅寶石不拿嗎？">
+<meta property="og:url" content="http://example.com/2020/10/30/day06/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[Day06] 風雷雨晴，海上的天氣由我決定！  來到了第 6 天，今天要跟大家介紹的是娜美的天氣棒 (咳咳咳) 我說的是 流程控制（Flow Controller） 只要進入程式語言的世界，就一定會經常碰到流程控制，在 Ruby 裡我們使用 if 判斷式來讓電腦知道，在哪些條件滿足時，要採取什麼樣的行為。  一開始，先分享一則有趣的小故事給大家：  事情是這樣的，某天有一位先生下班正要回家，">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/8NlHH9I.jpg">
+<meta property="article:published_time" content="2020-10-30T05:07:26.072Z">
+<meta property="article:modified_time" content="2020-10-30T05:08:08.152Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Ruby, 12th鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/8NlHH9I.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-day06" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day06/" class="article-date">
+  <time datetime="2020-10-30T05:07:26.072Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      流程控制 &lt;&gt; 只要有風和海，我就有辦法航行！- 滿滿的紅寶石不拿嗎？
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/8NlHH9I.jpg"></p>
+<blockquote>
+<p>[Day06] 風雷雨晴，海上的天氣由我決定！</p>
+</blockquote>
+<p>來到了第 6 天，今天要跟大家介紹的是<del>娜美的天氣棒</del> (咳咳咳) 我說的是 <strong>流程控制（Flow Controller）</strong></p>
+<p>只要進入程式語言的世界，就一定會經常碰到流程控制，在 Ruby 裡我們使用 <code>if</code> 判斷式來讓電腦知道，在哪些條件滿足時，要採取什麼樣的行為。</p>
+<hr>
+<p>一開始，先分享一則有趣的小故事給大家：</p>
+<blockquote>
+<p>事情是這樣的，某天有一位先生下班正要回家，太太打電話給他說：「回家的路上幫忙買 1 斤包子回來，如果有看到西瓜的話，就買 1 個。」說完就掛掉了電話，結果先生回到家後，太太發現他居然只買了 1 個包子，大為光火，一番詢問後…</p>
+<p>先生委屈地表示，因為他在路上有看到西瓜…（繼續挨揍中）</p>
+</blockquote>
+<p>上面這個小故事，可以看出這位先生正是<del>巧妙地</del>運用了流程控制的思考方式：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">西瓜 = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> 西瓜 = <span class="number">1</span></span><br><span class="line">  buy <span class="number">1</span> 個 包子</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  buy <span class="number">1</span> 斤 包子</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>不過如果照著上面這樣寫，實際上是會出錯的，因為在 <code>if</code> 後面應該要是一個進行比較的條件：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">西瓜 = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> 西瓜 == <span class="number">1</span> <span class="comment"># 新手常常會寫錯的地方</span></span><br><span class="line">  buy <span class="number">1</span> 個 包子</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  buy <span class="number">1</span> 斤 包子</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>儘管程式寫對了，回家後這位先生可能還是會被太太念怎麼只買一顆包子吧…（請多保重）</p>
+<hr>
+<h2 id="只有這樣不然就那樣"><a href="#只有這樣不然就那樣" class="headerlink" title="只有這樣不然就那樣"></a>只有這樣不然就那樣</h2><p>對於愛恨分明的 <code>if.. else..</code> 判斷式來說，就是非黑即白的二分法：</p>
+<p>以經典的《霹靂火》舉例：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">心情 = 金每送</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> 心情 == 不爽</span><br><span class="line">  puts <span class="string">&quot;給你一支番仔火，跟一桶汽油&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  puts <span class="string">&quot;代誌過去安捏丟厚&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>事情解決的方式就只有兩種結局…要怎麼選，就要看對方的心情了</p>
+<hr>
+<h2 id="如果這樣就這樣，但那樣的話就那樣，還有…到底是怎樣"><a href="#如果這樣就這樣，但那樣的話就那樣，還有…到底是怎樣" class="headerlink" title="如果這樣就這樣，但那樣的話就那樣，還有…到底是怎樣?!"></a>如果這樣就這樣，但那樣的話就那樣，還有…到底是怎樣?!</h2><p>當 <code>if</code> 的判斷式不只有兩種時，結果就會變得很派(?)，這時候就無法用簡單的二分法處理了，而是要使用 <code>elsif</code> 來增加判斷的條件，譬如：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">age = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> age &gt; <span class="number">0</span> &amp;&amp; age &lt;= <span class="number">3</span></span><br><span class="line">  puts <span class="string">&quot;Baby&quot;</span></span><br><span class="line"><span class="keyword">elsif</span> age &gt; <span class="number">3</span> &amp;&amp; age &lt;= <span class="number">10</span></span><br><span class="line">  puts <span class="string">&quot;Kids&quot;</span></span><br><span class="line"><span class="keyword">elsif</span> age &gt; <span class="number">10</span> &amp;&amp; age &lt;= <span class="number">17</span></span><br><span class="line">  puts <span class="string">&quot;Teenager&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  puts <span class="string">&quot;Adult&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p><em>小提醒：在設定一個以上的條件時，不是用 <code>else if</code> 或 <code>elseif</code> ，而是 <code>elsif</code> ，中間有省略一個 <code>e</code> 喔！撰寫時請多加留意！</em></p>
+<hr>
+<h2 id="把-if-放到後面"><a href="#把-if-放到後面" class="headerlink" title="把 if 放到後面"></a>把 if 放到後面</h2><p>如果 <code>if</code> 判斷式的條件很少，只夠寫一行程式碼：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> age &gt;= <span class="number">18</span></span><br><span class="line">  puts <span class="string">&quot;adult&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>這時候我們就可以把 <code>if</code> 判斷式接到後面去，變得很像英文的倒裝句：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">puts <span class="string">&quot;adult&quot;</span> <span class="keyword">if</span> age &gt;= <span class="number">18</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="也可以用-Case-When-來寫看看"><a href="#也可以用-Case-When-來寫看看" class="headerlink" title="也可以用 Case/When 來寫看看"></a>也可以用 Case/When 來寫看看</h2><p>如果真的有太多的條件要判斷時，除了使用 <code>if.. elsif..</code> 以外，還可以用 <code>case.. when..</code> 這種 Ruby 語法糖衣，它的使用情境與 <code>if</code> 判斷式並沒有不同。</p>
+<p>只是當存在太多條件時，就可以考慮把 <code>if .. elsif..</code> 改寫成 <code>case.. when..</code> 的形式，讓程式碼更好閱讀。</p>
+<p>譬如：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">懸賞 = <span class="number">3</span> 億貝里</span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> 懸賞</span><br><span class="line"><span class="keyword">when</span> <span class="number">0</span>..<span class="number">1</span> 億貝里</span><br><span class="line">  puts <span class="string">&quot;海賊新人&quot;</span></span><br><span class="line"><span class="keyword">when</span> <span class="number">2</span>..<span class="number">3</span> 億貝里</span><br><span class="line">  puts <span class="string">&quot;超新星&quot;</span></span><br><span class="line"><span class="keyword">when</span> &gt;= <span class="number">4</span> 億貝里</span><br><span class="line">  puts <span class="string">&quot;七武海&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  puts <span class="string">&quot;雜魚一枚&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p><em>這裡的 <code>..</code> 是 Ruby 裡特有的範圍（Range）用法，只要在 <code>..</code> 兩側放上首尾的字元，就可以用來表示一段區間的數字或字串了。</em></p>
+<hr>
+<h2 id="三元運算子"><a href="#三元運算子" class="headerlink" title="三元運算子"></a>三元運算子</h2><p>三元運算子(ternary operator)是一種由 <code>?</code> 跟 <code>:</code> 區隔兩種條件的表達方式，雖然名字叫運算子，但它實際上更接近流程控制的條件判斷，譬如：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">3</span></span><br><span class="line"><span class="keyword">if</span> x &gt; <span class="number">3</span></span><br><span class="line">  y = <span class="string">&quot;foo&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  y = <span class="string">&quot;bar&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>如果以三元運算子來改寫會更精簡：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">3</span></span><br><span class="line">y = ( x &gt; <span class="number">3</span> ) ? <span class="string">&quot;foo&quot;</span> : <span class="string">&quot;bar&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>不過，撰寫程式時建議要優先考量可讀性，不要覺得三元運算子很酷，或是能少掉很多行程式碼就立馬使用三元運算子，結果過幾天完全看不懂自己在寫什麼，慎之！慎之！</p>
+<hr>
+<p>今天就先到這邊啦！相信大家都已經學會使用流程控制了，以後上街買東西就可以輕鬆派上用場啦！(逃)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day06/" data-id="ckgw1jq490003vxv5gh8hd58q" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/30/day07/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          迴圈 &lt;&gt; 惡魔風腳開踢！比香吉士的眉毛還會轉 - 滿滿的紅寶石不拿嗎？
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/30/day05/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">運算子 &lt;&gt; 彈無虛發！一起和 GOD烏索普覺醒見聞色霸氣吧！- 滿滿的紅寶石不拿嗎？</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 10px;">Ruby, 12th鐵人賽</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day30/">Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day29/">Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day28/">Singleton Method &lt;&gt; 是「百獸海賊團」！碰上四皇凱多有勝算嗎？- 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day27/">Self &lt;&gt; 真正的男子漢，連道別都不需要語言！ - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

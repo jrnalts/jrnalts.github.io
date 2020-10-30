@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>回傳 &lt;&gt; 受傷了就趕快回船上治療！ - 滿滿的紅寶石不拿嗎？ | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[Day09] 別小看喬巴特製研發的藍波球！  今天要介紹的是**回傳(return)**！在 Ruby 的世界裡，所有的方法執行完後都有回傳值(return value)，沒有的話則會回傳一個 nil。 回傳的特性是： 回傳 &#x3D; 交回控制權  控制權就像令牌一樣，手上有令牌，才能執行程式碼。 執行完之後，會把控制權再交還給當初呼叫他的人。  單看文字可能有點不好理解，我們來看看實際的例子：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="回傳 &lt;&gt; 受傷了就趕快回船上治療！ - 滿滿的紅寶石不拿嗎？">
+<meta property="og:url" content="http://example.com/2020/10/30/day09/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[Day09] 別小看喬巴特製研發的藍波球！  今天要介紹的是**回傳(return)**！在 Ruby 的世界裡，所有的方法執行完後都有回傳值(return value)，沒有的話則會回傳一個 nil。 回傳的特性是： 回傳 &#x3D; 交回控制權  控制權就像令牌一樣，手上有令牌，才能執行程式碼。 執行完之後，會把控制權再交還給當初呼叫他的人。  單看文字可能有點不好理解，我們來看看實際的例子：">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20200917/20128363itoyr3s3Sd.png">
+<meta property="article:published_time" content="2020-10-30T05:08:58.472Z">
+<meta property="article:modified_time" content="2020-10-30T05:13:03.262Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Ruby, 12th鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20200917/20128363itoyr3s3Sd.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-day09" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day09/" class="article-date">
+  <time datetime="2020-10-30T05:08:58.472Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      回傳 &lt;&gt; 受傷了就趕快回船上治療！ - 滿滿的紅寶石不拿嗎？
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ithelp.ithome.com.tw/upload/images/20200917/20128363itoyr3s3Sd.png" alt="https://ithelp.ithome.com.tw/upload/images/20200917/20128363itoyr3s3Sd.png"></p>
+<blockquote>
+<p>[Day09] 別小看喬巴特製研發的藍波球！</p>
+</blockquote>
+<p>今天要介紹的是**回傳(return)**！<br>在 Ruby 的世界裡，所有的方法執行完後都有回傳值(return value)，沒有的話則會回傳一個 <code>nil</code>。</p>
+<p>回傳的特性是：</p>
+<p><code>回傳</code> = <code>交回控制權</code></p>
+<ol>
+<li>控制權就像令牌一樣，手上有令牌，才能執行程式碼。</li>
+<li>執行完之後，會把控制權再交還給當初呼叫他的人。</li>
+</ol>
+<p>單看文字可能有點不好理解，我們來看看實際的例子：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc_perimeter</span><span class="params">(radius)</span></span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">2</span> * Math::PI * radius</span><br><span class="line">  <span class="comment"># 執行後把控制權交回給呼叫的程式</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">puts calc_perimeter(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出：</span></span><br><span class="line">=&gt; <span class="number">31.41592653589793</span></span><br></pre></td></tr></table></figure>
+
+<p>在這短短幾行中，程式執行了這幾件事：</p>
+<ol>
+<li>呼叫 <code>calc_perimeter</code> 方法，並傳回 <code>5</code> 作為引數。</li>
+<li>執行 <code>calc_perimeter</code> 方法。</li>
+<li><code>return</code> 交還控制權，並同時回傳計算結果 =&gt; <code>31.41592653589793</code>。</li>
+<li>把計算結果交給 <code>puts</code>方法，並印出內容。</li>
+</ol>
+<p><em>在 Ruby 裡，我們也可以省略 <code>return</code> 不寫，方法會自動回傳最後一行的執行結果！</em></p>
+<h2 id="把結果印出來讓我們更了解回傳值"><a href="#把結果印出來讓我們更了解回傳值" class="headerlink" title="把結果印出來讓我們更了解回傳值!"></a>把結果印出來讓我們更了解回傳值!</h2><p>在學習程式語言的過程中，把結果印出來是相當常見的行為，而要在 Ruby 裡做到這件事，我們會使用：</p>
+<ul>
+<li><code>print</code></li>
+<li><code>puts</code></li>
+<li><code>p</code></li>
+</ul>
+<p>以上三者都可以替我們達成印出結果的目標，但是為什麼有三種寫法？有沒有什麼不同呢？先來看看程式實際是如何運作的吧：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">print <span class="string">&quot;Ruby&quot;</span></span><br><span class="line">Ruby =&gt; <span class="literal">nil</span></span><br><span class="line"></span><br><span class="line">puts <span class="string">&quot;Ruby&quot;</span></span><br><span class="line">Ruby</span><br><span class="line">=&gt; nil</span><br><span class="line"></span><br><span class="line">p <span class="string">&quot;Ruby&quot;</span></span><br><span class="line"><span class="string">&quot;Ruby&quot;</span></span><br><span class="line">=&gt; <span class="string">&quot;Ruby&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>我們可以發現如果用的是 <code>print</code> 只能印出結果，也不會換行。同時， <code>print</code> 和 <code>puts</code> 回傳的都是 <code>nil</code>，<code>nil</code> 代表的意思是沒有回傳值，不過如果是用 <code>p</code> 來印出結果，它還會順便帶一個回傳值回來。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">puts <span class="string">&quot;aaa&quot;</span></span><br><span class="line">aaa</span><br><span class="line"> =&gt; nil  <span class="comment"># 意思是沒有結果</span></span><br><span class="line"></span><br><span class="line">&gt; p <span class="string">&quot;aaa&quot;</span></span><br><span class="line"><span class="string">&quot;aaa&quot;</span></span><br><span class="line"> =&gt; <span class="string">&quot;aaa&quot;</span>  <span class="comment">#回傳它自己的東西</span></span><br></pre></td></tr></table></figure>
+
+<p>用簡單的表格來比較三者的差異：<br>|print |puts |p |<br>|——–|——–|——–|<br>|不換行 |換行 |換行 |<br>|回傳 <code>nil</code>|回傳 <code>nil</code>|回傳帶有型態的值|<br>|印出內容|印出內容|印出完整型態的內容|</p>
+<hr>
+<p>為了更加了解 <code>puts</code> 和 <code>p</code> 的差異，這裡有一組例子：有兩個方法分別為 <code>a</code>, <code>b</code> ，皆使用 <code>p</code> 印出結果：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">a</span></span></span><br><span class="line">  p <span class="string">&quot;aaa&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">b</span></span></span><br><span class="line">  p <span class="string">&quot;bbb&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">a &amp;&amp; b</span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出:</span></span><br><span class="line"><span class="string">&quot;aaa&quot;</span></span><br><span class="line"><span class="string">&quot;bbb&quot;</span></span><br><span class="line"> =&gt; <span class="string">&quot;bbb&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>不過如果把方法 <code>a</code>, <code>b</code> 改成用 <code>put</code> 印出結果：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">a</span></span></span><br><span class="line">  puts <span class="string">&quot;aaa&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">b</span></span></span><br><span class="line">  puts <span class="string">&quot;bbb&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">a &amp;&amp; b</span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出:</span></span><br><span class="line">aaa</span><br><span class="line">=&gt; nil</span><br></pre></td></tr></table></figure>
+
+<p>就只會印出 <code>aaa</code> 了。</p>
+<p>這是因為 <code>&amp;&amp;</code> 的特性是左右兩側皆為 <code>true</code> 才會成立。</p>
+<p>所以當我們用 <code>p</code> 印出結果時，由於 <code>a</code> , <code>b</code> 兩個方法都有回傳值，因此 <code>a &amp;&amp; b</code> 除了會執行方法 <code>a</code> , <code>b</code> 各自要做的事情 =&gt; 印出 <code>&quot;aa&quot;</code> 和 <code>&quot;bb&quot;</code> 。還會有一個的回傳值為 <code>&quot;bb&quot;</code>（因為 Ruby 會自動回傳最後一個方法的結果）</p>
+<p>不過，如果改成用 <code>puts</code> 來印出結果，則會因為方法 <code>a</code> 的回傳值為 <code>nil</code> 而無法執行方法 <code>b</code> ，想當然爾， <code>a &amp;&amp; b</code> 最後也沒有回傳值了！</p>
+<hr>
+<p>今天就先到這邊啦！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day09/" data-id="ckgw1jq4s000avxv590pday8e" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/30/day10/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          物件 &lt;&gt; 最初與最盡責的夥伴，黃金梅利號：我想再航行一次！ - 滿滿的紅寶石不拿嗎？
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/30/day08/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">方法 &lt;&gt; 我斑願稱你為最強！站上頂點的方法只有一個 - 滿滿的紅寶石不拿嗎？</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 10px;">Ruby, 12th鐵人賽</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day30/">Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day29/">Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day28/">Singleton Method &lt;&gt; 是「百獸海賊團」！碰上四皇凱多有勝算嗎？- 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day27/">Self &lt;&gt; 真正的男子漢，連道別都不需要語言！ - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>物件 &lt;&gt; 最初與最盡責的夥伴，黃金梅利號：我想再航行一次！ - 滿滿的紅寶石不拿嗎？ | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[Day10] 梅利號陪伴著草帽海賊團走過了許多的風風雨雨。。。  鐵人終於來到了第十天了，還記得當初出航的勇氣嗎？今天想和大家討論一個非常重要的主題，在程式領域的範疇裡，我們無法避開它，那就是物件(object)。 物件是什麼?按照慣例，先說一下程式語言裡的物件是什麼？ 在剛接觸 Ruby 時，常常會聽到或看到一句話：「在 Ruby 裡，幾乎所有東西都是物件。」讓我相當好奇，究竟程式語言裡的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="物件 &lt;&gt; 最初與最盡責的夥伴，黃金梅利號：我想再航行一次！ - 滿滿的紅寶石不拿嗎？">
+<meta property="og:url" content="http://example.com/2020/10/30/day10/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[Day10] 梅利號陪伴著草帽海賊團走過了許多的風風雨雨。。。  鐵人終於來到了第十天了，還記得當初出航的勇氣嗎？今天想和大家討論一個非常重要的主題，在程式領域的範疇裡，我們無法避開它，那就是物件(object)。 物件是什麼?按照慣例，先說一下程式語言裡的物件是什麼？ 在剛接觸 Ruby 時，常常會聽到或看到一句話：「在 Ruby 裡，幾乎所有東西都是物件。」讓我相當好奇，究竟程式語言裡的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20200918/20128363GyjtLaK21y.png">
+<meta property="og:image" content="https://img.youtube.com/vi/iEeBnhMadkk/0.jpg">
+<meta property="article:published_time" content="2020-10-30T05:09:05.804Z">
+<meta property="article:modified_time" content="2020-10-30T05:13:29.988Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Ruby, 12th鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20200918/20128363GyjtLaK21y.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-day10" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day10/" class="article-date">
+  <time datetime="2020-10-30T05:09:05.804Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      物件 &lt;&gt; 最初與最盡責的夥伴，黃金梅利號：我想再航行一次！ - 滿滿的紅寶石不拿嗎？
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ithelp.ithome.com.tw/upload/images/20200918/20128363GyjtLaK21y.png" alt="https://ithelp.ithome.com.tw/upload/images/20200918/20128363GyjtLaK21y.png"></p>
+<blockquote>
+<p>[Day10] 梅利號陪伴著草帽海賊團走過了許多的風風雨雨。。。</p>
+</blockquote>
+<p>鐵人終於來到了第十天了，還記得當初出航的勇氣嗎？<br>今天想和大家討論一個非常重要的主題，在程式領域的範疇裡，我們無法避開它，那就是物件(object)。</p>
+<h2 id="物件是什麼"><a href="#物件是什麼" class="headerlink" title="物件是什麼?"></a>物件是什麼?</h2><p>按照慣例，先說一下程式語言裡的物件是什麼？</p>
+<p>在剛接觸 Ruby 時，常常會聽到或看到一句話：「在 Ruby 裡，幾乎所有東西都是物件。」讓我相當好奇，究竟程式語言裡的物件是什麼？</p>
+<p>在開始之前，我們先定義一個 <code>Cat</code> 類別：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="keyword">attr_reader</span> <span class="symbol">:age</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(age)</span></span></span><br><span class="line">    @age = age</span><br><span class="line">    puts <span class="string">&quot;meows~&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">walk</span></span></span><br><span class="line">    puts <span class="string">&quot;走了一小段...爆衝!&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">eat</span></span></span><br><span class="line">    puts <span class="string">&quot;只有肉泥我才要!&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p><em>（不知道什麼是類別也別緊張！明天就會介紹 <strong>類別</strong> 了～）</em></p>
+<p>接著，我們來創造一隻屬於 <code>Cat</code> 類別的物件 <code>didi</code>：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">didi = Cat.new</span><br><span class="line">meows~</span><br></pre></td></tr></table></figure>
+
+<p><em><code>didi</code> 一出生就很有精神地喵喵叫了呢！</em></p>
+<p>試想一下，你我都是 Ruby 程式世界的造物主，就在剛剛，我們已經創造了一個 <code>didi</code> 的物件。 <code>didi</code> 目前在 Ruby 的世界裡已經適應地很好，也領到了自己的身分證：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">didi</span><br><span class="line">=&gt; #&lt;Cat:0x00007fa5dd155920 @age=0&gt;</span><br><span class="line"></span><br><span class="line">didi.object_id</span><br><span class="line">=&gt; <span class="number">180</span>    <span class="comment"># ID_card get!</span></span><br></pre></td></tr></table></figure>
+
+<p>可以先把物件想作是一段活生生的程式碼，或者說是將記憶體的位置 <code>擬物化</code> 的過程。</p>
+<hr>
+<h2 id="物件的狀態和行為"><a href="#物件的狀態和行為" class="headerlink" title="物件的狀態和行為"></a>物件的狀態和行為</h2><p>物件可以像人、或是像任何一種生物一樣，<br>它會被賦予一個特定的意義，擁有自己的 <strong>狀態</strong> 和 <strong>行為</strong>，不過又和方法(method)的定義不太一樣。</p>
+<p>其實這件事一開始並不是很好理解，我是從自身出發去思考這個脈絡的。</p>
+<p>譬如說，每個人都會有屬於自己的髮色、年齡等等，這些就是<strong>狀態</strong>的一種，至於吃飯、睡覺、走路等等，則是人們常見的<strong>行為</strong>。所以如果把現實世界參照到程式的世界，我們「每一個人」其實就是活在其中的物件，而「人類」就是我們所屬的類別了。（關於類別和實體的關係，明天會有更詳細的介紹。）</p>
+<p>現在，再回過頭來看我們剛剛創造的 <code>didi</code>：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># didi 現在幾歲</span></span><br><span class="line">didi.age</span><br><span class="line">=&gt; <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># didi 走路</span></span><br><span class="line">didi.walk</span><br><span class="line">走了一小段...爆衝!</span><br><span class="line"></span><br><span class="line"><span class="comment"># didi 吃東西</span></span><br><span class="line">didi.eat</span><br><span class="line">只有肉泥我才要!</span><br></pre></td></tr></table></figure>
+
+<p><code>didi</code> 也有了屬於它自己的狀態和行為了，是不是很可愛呢！</p>
+<hr>
+<p>順帶一提，在了解程式世界與物件的關係後，<br>我不禁想起 Matrix 和虛擬理論，這邊帶個老高的影片給大家複習複習：</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=iEeBnhMadkk"><img src="https://img.youtube.com/vi/iEeBnhMadkk/0.jpg" alt="Yes"></a></p>
+<p>神也要花上六天才寫完程式啊．．．</p>
+<hr>
+<h2 id="為什麼要使用物件？"><a href="#為什麼要使用物件？" class="headerlink" title="為什麼要使用物件？"></a>為什麼要使用物件？</h2><p>在程式的世界裡，我們會對著物件呼叫方法，來完成我們打算讓它執行的事情。</p>
+<p>這裡就不得不提**物件導向(Object Oriented)**了（老實說我本來沒預料到要寫這個）<br>要用文字講解這麼抽象的概念，我自己也有點亂，接下來我們還是一邊看程式碼一邊說明吧！</p>
+<p>在剛剛的例子裡：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">didi.eat</span><br></pre></td></tr></table></figure>
+
+<p>可以看到， 我們對 <code>didi</code> 這個物件使用一個方法叫做 <code>eat</code> ，在一開始理解時，我會說是在這個物件 <code>didi</code> 呼叫了 <code>times</code> 這個方法。</p>
+<p>但是在知道更多物件導向的概念後，我開始轉換思考的方式，把這整件事看成是 <code>didi</code> 這個接收者，接受了我傳遞給它的 <code>eat</code> 訊息，在 Ruby 裡，某些特定物件可以理解某些特定訊息，並對應到可執行的方法。</p>
+<p>所以，我們並不只是在 <code>didi</code> 這個物件上呼叫了 <code>eat</code> 這個方法這麼單純而已，物件導向其實還偷偷做了很多的事情，不過由於篇幅有限，時間也相當緊迫，在此篇無法完整概述。</p>
+<p>相信在不久後的將來，我勢必會再重新說明一次 Object Oriented 的概念，就像學 JavaScript 的人都要寫一篇網誌來說明什麼是 <code>closure</code> 沒有兩樣。</p>
+<hr>
+<p>覺得還要更多的篇幅才能講完物件的概念，不過剛剛寫到後來我看了一下時間，發現如果只剩 30 分鐘再不發文就要斷更啦！趕快緊急停筆，不好意思只能先寫到這邊～</p>
+<p>另外，其實在寫今天這篇物件之前，我一直在考慮到底要先介紹 <code>類別</code> 還是 <code>物件</code> 較好，苦惱了很久，畢竟 Ruby 語言裡有太多東西都環環相扣啦！最後決定還是先把自己對 <code>物件</code> 的理解寫出來，也梳理一番自己學習上的思緒。</p>
+<p>緊接著明天就會介紹 Ruby 裡的類別啦！謝謝大家的觀看！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day10/" data-id="ckgw1jq5a000hvxv577ypfez0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/30/day11/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          類別 &lt;&gt; 前往海底一萬米！想要一睹 Ruby 世界裡的 All Blue 就進來吧！- 滿滿的紅寶石不拿嗎？
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/30/day09/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">回傳 &lt;&gt; 受傷了就趕快回船上治療！ - 滿滿的紅寶石不拿嗎？</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 10px;">Ruby, 12th鐵人賽</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day30/">Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day29/">Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day28/">Singleton Method &lt;&gt; 是「百獸海賊團」！碰上四皇凱多有勝算嗎？- 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day27/">Self &lt;&gt; 真正的男子漢，連道別都不需要語言！ - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

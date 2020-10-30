@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>變數 &lt;&gt; 波瀾詭譎的程式之海總是充滿變數 - 滿滿的紅寶石不拿嗎？ | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[Day04] 鬼之島戰役最大的變數！  在 Ruby 如何宣告和使用變數今天會繼續探討 Ruby 裡的變數，昨天有講到變數跟國中數學課學到的 x 和 y 一樣，都是為了把值先存起來，會使用&#x3D; 來為變數指定值。 12345678a &#x3D; 1接下來，我們拿變數 a 來進行運算:a &#x3D; a + 2puts a3  在這裡的意思是把原有的變數 a 加上 2，計算後會得到 3 ，然後">
+<meta property="og:type" content="article">
+<meta property="og:title" content="變數 &lt;&gt; 波瀾詭譎的程式之海總是充滿變數 - 滿滿的紅寶石不拿嗎？">
+<meta property="og:url" content="http://example.com/2020/10/30/day04/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[Day04] 鬼之島戰役最大的變數！  在 Ruby 如何宣告和使用變數今天會繼續探討 Ruby 裡的變數，昨天有講到變數跟國中數學課學到的 x 和 y 一樣，都是為了把值先存起來，會使用&#x3D; 來為變數指定值。 12345678a &#x3D; 1接下來，我們拿變數 a 來進行運算:a &#x3D; a + 2puts a3  在這裡的意思是把原有的變數 a 加上 2，計算後會得到 3 ，然後">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/wdYarlV.png">
+<meta property="og:image" content="https://i.imgur.com/A9ybIyX.jpg">
+<meta property="og:image" content="https://i.imgur.com/4bLiLbi.jpg">
+<meta property="article:published_time" content="2020-10-30T04:26:45.385Z">
+<meta property="article:modified_time" content="2020-10-30T05:06:28.002Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Ruby, 12th鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/wdYarlV.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-day04" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day04/" class="article-date">
+  <time datetime="2020-10-30T04:26:45.385Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      變數 &lt;&gt; 波瀾詭譎的程式之海總是充滿變數 - 滿滿的紅寶石不拿嗎？
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/wdYarlV.png"></p>
+<blockquote>
+<p>[Day04] 鬼之島戰役最大的變數！</p>
+</blockquote>
+<h2 id="在-Ruby-如何宣告和使用變數"><a href="#在-Ruby-如何宣告和使用變數" class="headerlink" title="在 Ruby 如何宣告和使用變數"></a>在 Ruby 如何宣告和使用變數</h2><p>今天會繼續探討 Ruby 裡的變數，昨天有講到變數跟國中數學課學到的 x 和 y 一樣，都是為了把值先存起來，會使用<code>=</code> 來為變數指定值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; 1</span><br><span class="line"></span><br><span class="line">接下來，我們拿變數 a 來進行運算:</span><br><span class="line"></span><br><span class="line">a &#x3D; a + 2</span><br><span class="line"></span><br><span class="line">puts a</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<p>在這裡的意思是把原有的變數 <code>a</code> 加上 <code>2</code>，計算後會得到 <code>3</code> ，然後再把 <code>3</code> 重新指定給 <code>a</code>，所以變數 <code>a</code> 的最後的值會是 <code>3</code></p>
+<p>另外 <code>a = a + 2</code> 這行也可以寫成:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a +&#x3D; 2</span><br></pre></td></tr></table></figure>
+
+<p>透過陣列甚至可以一次指定多個變數:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x, y, z &#x3D; [1, 2, 3]</span><br><span class="line"></span><br><span class="line">x &#x3D;&gt; 1</span><br><span class="line">y &#x3D;&gt; 2</span><br><span class="line">z &#x3D;&gt; 3</span><br></pre></td></tr></table></figure>
+
+<p>假設有兩個變數 x 與 y ，如果要讓其對調，</p>
+<p>可以利用另一個變數暫存：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x, y &#x3D; [2, 3]</span><br><span class="line">w &#x3D; x</span><br><span class="line">x &#x3D; y</span><br><span class="line">y &#x3D; w</span><br><span class="line"></span><br><span class="line">puts x</span><br><span class="line">3</span><br><span class="line">puts y</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<p>在 Ruby 的世界裡還可以這樣 #直接交換！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x, y &#x3D; [2, 3]</span><br><span class="line">x, y &#x3D; y, x</span><br><span class="line">puts x</span><br><span class="line">3</span><br><span class="line">puts y</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="常數"><a href="#常數" class="headerlink" title="常數"></a>常數</h2><p>通常在定義類別、或是模組時，會使用常數(Costant)作為名稱，但規定是要用大寫字母開頭。</p>
+<p><code>Pi = 3.1415</code></p>
+<p>在 Ruby 的世界裡，常數是可以被修改的（會發生警告，但是可以執行）</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">A = <span class="number">2</span></span><br><span class="line"><span class="symbol">warning:</span> already initialized constant A</span><br><span class="line"><span class="symbol">warning:</span> previous definition of A was here</span><br><span class="line">=&gt; <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>龍哥:「變數就像標籤，本身沒有型態。」</p>
+</blockquote>
+<hr>
+<h2 id="變數命名慣例"><a href="#變數命名慣例" class="headerlink" title="變數命名慣例"></a>變數命名慣例</h2><p>對於變數命名，Ruby 生態圈有著<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BA%A6%E5%AE%9A%E4%BC%98%E4%BA%8E%E9%85%8D%E7%BD%AE">慣例優於設定(Convention over Configuration)</a><br>的不成文傳統，大家 coding 時普遍會遵循某一套撰寫風格。</p>
+<p>以下介紹兩種常見的命名方式：</p>
+<h3 id="駝峰式-camelCase"><a href="#駝峰式-camelCase" class="headerlink" title="駝峰式 (camelCase)"></a>駝峰式 (camelCase)</h3><p><img src="https://i.imgur.com/A9ybIyX.jpg"></p>
+<p><strong>在 Java 和 JavaScript 較常看到這種寫法</strong><br>例：<code>firstName</code>, <code>parseDataString1</code></p>
+<h3 id="蛇式-snake-case"><a href="#蛇式-snake-case" class="headerlink" title="蛇式 snake_case:"></a>蛇式 snake_case:</h3><p><img src="https://i.imgur.com/4bLiLbi.jpg"><br><em>所以我說那個蛇的部分?</em></p>
+<p><strong>Ruby 和 Python 較偏好使用這種命名風格</strong><br>例：<code>first_name</code> , <code>parse_data_string</code></p>
+<hr>
+<h2 id="虛擬變數"><a href="#虛擬變數" class="headerlink" title="虛擬變數"></a>虛擬變數</h2><p>除此之外，還有一種被定義在 Ruby 內部的變數，稱做<strong>虛擬變數（Pseudo Variable）</strong>，例如 <code>nil</code>、<code>self</code>、<code>true</code>、<code>false</code> 這些都是，它們有著特別的用途以及固定的意義表示，無法被更動。</p>
+<hr>
+<p>變數可以運用的場景其實遠遠不僅於此，<br>後面還會再說明如何搭配運算子以及方法的使用，還是那句老話:</p>
+<p><del>「有人就有變數，有變數就有江湖，人，就是江湖。」</del> (誤)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day04/" data-id="ckgw1jq450001vxv5eeu759kg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/30/day05/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          運算子 &lt;&gt; 彈無虛發！一起和 GOD烏索普覺醒見聞色霸氣吧！- 滿滿的紅寶石不拿嗎？
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/30/day03/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">資料型態 &lt;&gt; Ruby 語言也有惡魔果實圖鑑 - 滿滿的紅寶石不拿嗎？</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 10px;">Ruby, 12th鐵人賽</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day30/">Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day29/">Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day28/">Singleton Method &lt;&gt; 是「百獸海賊團」！碰上四皇凱多有勝算嗎？- 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day27/">Self &lt;&gt; 真正的男子漢，連道別都不需要語言！ - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

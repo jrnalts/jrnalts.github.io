@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>實體變數 &lt;&gt; 一流強者都要會的武裝色霸氣 - 滿滿的紅寶石不拿嗎？ | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[Day21] 運用武裝色霸氣就能在皮膚表面覆蓋一層堅硬的盔甲，同時提升防禦力和攻擊力！  嗨大家好！今晚想來點「實體變數」～ 到目前為止我們所提的變數都是區域變數，而一開始介紹變數時為什麼沒有講到這部分呢？（根本就是忘了） 不過我覺得一旦理解 scope 的概念後，自然而然地就能了解區域變數為什麼叫做「區域」變數了：因為它只能在某個 scope 內生效。 如果有點失憶的朋友可以回到 鐵人賽第">
+<meta property="og:type" content="article">
+<meta property="og:title" content="實體變數 &lt;&gt; 一流強者都要會的武裝色霸氣 - 滿滿的紅寶石不拿嗎？">
+<meta property="og:url" content="http://example.com/2020/10/30/day21/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[Day21] 運用武裝色霸氣就能在皮膚表面覆蓋一層堅硬的盔甲，同時提升防禦力和攻擊力！  嗨大家好！今晚想來點「實體變數」～ 到目前為止我們所提的變數都是區域變數，而一開始介紹變數時為什麼沒有講到這部分呢？（根本就是忘了） 不過我覺得一旦理解 scope 的概念後，自然而然地就能了解區域變數為什麼叫做「區域」變數了：因為它只能在某個 scope 內生效。 如果有點失憶的朋友可以回到 鐵人賽第">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/bDpXJ7b.jpg">
+<meta property="article:published_time" content="2020-10-30T05:10:27.428Z">
+<meta property="article:modified_time" content="2020-10-30T06:33:05.330Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Ruby, 12th鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/bDpXJ7b.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-day21" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day21/" class="article-date">
+  <time datetime="2020-10-30T05:10:27.428Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      實體變數 &lt;&gt; 一流強者都要會的武裝色霸氣 - 滿滿的紅寶石不拿嗎？
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/bDpXJ7b.jpg"></p>
+<blockquote>
+<p>[Day21] 運用武裝色霸氣就能在皮膚表面覆蓋一層堅硬的盔甲，同時提升防禦力和攻擊力！</p>
+</blockquote>
+<p>嗨大家好！今晚想來點「實體變數」～</p>
+<p>到目前為止我們所提的變數都是<strong>區域變數</strong>，而一開始介紹變數時為什麼沒有講到這部分呢？（根本就是忘了）</p>
+<p>不過我覺得一旦理解 <code>scope</code> 的概念後，自然而然地就能了解區域變數為什麼叫做「<strong>區域</strong>」變數了：因為它只能在某個 <code>scope</code> 內生效。</p>
+<p>如果有點失憶的朋友可以回到 <a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10235965">鐵人賽第 4 天</a></p>
+<hr>
+<h2 id="Ruby-裡有哪些變數？"><a href="#Ruby-裡有哪些變數？" class="headerlink" title="Ruby 裡有哪些變數？"></a>Ruby 裡有哪些變數？</h2><p>共分成以下幾種：</p>
+<table>
+<thead>
+<tr>
+<th>類型</th>
+<th>範例</th>
+<th>預設值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>區域變數</td>
+<td>name</td>
+<td>無</td>
+<td>作用範圍僅限在一個區域裡，方法內外不可相互取用。</td>
+</tr>
+<tr>
+<td>實體變數</td>
+<td>@name</td>
+<td>nil</td>
+<td>在類別中可以被各個方法取用，也可以成為實體物件的屬性，但不同實體物件的屬性不一定相同，</td>
+</tr>
+<tr>
+<td>類別變數</td>
+<td>@@name</td>
+<td>無</td>
+<td>同一類別建立的實體物件都可以取用，類別不同就無法。</td>
+</tr>
+<tr>
+<td>全域變數</td>
+<td>$name</td>
+<td>nil</td>
+<td>可以在不同的類別被取用。</td>
+</tr>
+<tr>
+<td>常數</td>
+<td>Name</td>
+<td>nil</td>
+<td>主要用於類別與常數的命名。</td>
+</tr>
+</tbody></table>
+<p>雖然變數有這麼多種，不過由於在實務上很少用到類別變數和全域變數，相對我也沒這麼熟悉，因此這篇將會聚焦介紹 Ruby 的實體變數。</p>
+<hr>
+<h2 id="實體變數是什麼？"><a href="#實體變數是什麼？" class="headerlink" title="實體變數是什麼？"></a>實體變數是什麼？</h2><p>在 Ruby 裡，我們會在變數的名字前面加一個 <code>@</code> ，來代表實體變數，也可以當作實體物件的屬性(attribute)。</p>
+<p>來看一下定義：</p>
+<blockquote>
+<p>實體變數的 <code>scope</code> 是整個類別，因此它能夠在同一類別的方法之間傳遞，而每一個物件的屬性會各別賦值，不會和其他的物件共享，它會隨著不同的物件而有不同的值。</p>
+</blockquote>
+<p>上面這段文字似乎太抽象了，直接看 code 吧：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">name</span></span></span><br><span class="line">    @name</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>好像還不太夠，再加上 <code>initialize</code> 試試看：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(name, color)</span></span></span><br><span class="line">    @name = name</span><br><span class="line">    @color = color</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">color</span></span></span><br><span class="line">    <span class="string">&quot;<span class="subst">#&#123;@name&#125;</span>是隻<span class="subst">#&#123;@color&#125;</span>色的小貓&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>如此一來，我們就可以在 <code>Cat</code> 類別產生新實體的那一刻，自動把參數指定給實體變數，變成專屬於這個實體的屬性，而不會與其他實體共享。</p>
+<p>我們來養一隻小貓：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">miru = Cat.new(<span class="string">&quot;miru&quot;</span>,<span class="string">&quot;虎斑&quot;</span>)</span><br><span class="line">puts miru.color</span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出</span></span><br><span class="line">miru是隻虎斑色的小貓</span><br></pre></td></tr></table></figure>
+
+<p>一隻貓不夠吸，養貓就要養兩隻：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nini = Cat.new(<span class="string">&quot;nini&quot;</span>,<span class="string">&quot;黑&quot;</span>)</span><br><span class="line">puts nini.color</span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出</span></span><br><span class="line">nini是隻黑色的小貓</span><br></pre></td></tr></table></figure>
+
+<p>可以看到雖然 <code>miru</code> 和 <code>nini</code> 都使用了同樣的實體變數 <code>@name</code> 和 <code>@color</code> ，但這兩個實體物件各自有屬於自己的屬性，同時，在類別內的實體方法要取用 <code>@name</code> 和 <code>@color</code> 時，也不用再定義這個需要參數。</p>
+<hr>
+<h2 id="如果要在類別外取得實體變數？"><a href="#如果要在類別外取得實體變數？" class="headerlink" title="如果要在類別外取得實體變數？"></a>如果要在類別外取得實體變數？</h2><p>剛剛有提到，實體變數的 scope 是在整個類別內，不過一旦離開了類別，這個實體變數就不能用了。</p>
+<p>因此，如果要在類別外取得這個實體變數，可以這樣做：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span></span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(name, color)</span></span></span><br><span class="line">    @name = name</span><br><span class="line">    @color = color</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">color</span></span></span><br><span class="line">    <span class="string">&quot;<span class="subst">#&#123;@name&#125;</span>是隻<span class="subst">#&#123;@color&#125;</span>色的小貓&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># getter</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">color</span></span></span><br><span class="line">    @color</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># setter</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">color=</span><span class="params">(new_color)</span></span></span><br><span class="line">    @color = new_color</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>通常會定義一個同名方法來獲得實體變數的值，這個行為被稱作 <code>getter</code>，<br>而用這個同名方法加上 <code>=</code> 作為另一個方法來重新傳參數給實體變數，這個行為就叫做 <code>setter</code>。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">didi = Cat.new(<span class="string">&quot;didi&quot;</span>,<span class="string">&quot;橘&quot;</span>)</span><br><span class="line">puts didi.color</span><br><span class="line"></span><br><span class="line"><span class="comment">#印出</span></span><br><span class="line">橘</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新定義值</span></span><br><span class="line">didi.color= <span class="string">&quot;橘帶一點黃&quot;</span></span><br><span class="line">puts didi.color</span><br><span class="line"></span><br><span class="line"><span class="comment">#印出</span></span><br><span class="line">橘帶一點黃</span><br></pre></td></tr></table></figure>
+
+<p>看到了嗎？我們可以更精準地定義 <code>didi</code> 的顏色啦！</p>
+<hr>
+<p>今天就先介紹到這邊啦！關於 <code>getter</code> 和 <code>setter</code> 的使用方式，明天還會再看到它們！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day21/" data-id="ckgw1jq5i000rvxv5e1h847gt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/30/day22/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          attr_accessor &lt;&gt; 喲嚯嚯嚯～可以讓我看一下你的 code 嗎？ - 滿滿的紅寶石不拿嗎？
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/30/day20/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">開放類別 &lt;&gt; 這個星期的我很可以！不管裡面有什麼都給我來一點吧！- 滿滿的紅寶石不拿嗎？</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 10px;">Ruby, 12th鐵人賽</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day30/">Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day29/">Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day28/">Singleton Method &lt;&gt; 是「百獸海賊團」！碰上四皇凱多有勝算嗎？- 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day27/">Self &lt;&gt; 真正的男子漢，連道別都不需要語言！ - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

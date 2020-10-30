@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>類別 &lt;&gt; 前往海底一萬米！想要一睹 Ruby 世界裡的 All Blue 就進來吧！- 滿滿的紅寶石不拿嗎？ | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[Day10] 人魚、魚人和人類雖然是不同的類別，但是也可以好好地生活在一起！   什麼是類別？今天要介紹的是 Ruby 裡的類別(Class)這是一個 Ruby 語言裡相當重要的關鍵字 簡單來說，類別是拿來產生實體(Instance)的東西，實體就是昨天有介紹過的物件。 但這樣解釋其實不夠完整，想要弄懂 Ruby 裡的類別其實沒有這麼容易，類別的概念裡隱含著 Ruby 這門程式語言的設計哲學">
+<meta property="og:type" content="article">
+<meta property="og:title" content="類別 &lt;&gt; 前往海底一萬米！想要一睹 Ruby 世界裡的 All Blue 就進來吧！- 滿滿的紅寶石不拿嗎？">
+<meta property="og:url" content="http://example.com/2020/10/30/day11/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[Day10] 人魚、魚人和人類雖然是不同的類別，但是也可以好好地生活在一起！   什麼是類別？今天要介紹的是 Ruby 裡的類別(Class)這是一個 Ruby 語言裡相當重要的關鍵字 簡單來說，類別是拿來產生實體(Instance)的東西，實體就是昨天有介紹過的物件。 但這樣解釋其實不夠完整，想要弄懂 Ruby 裡的類別其實沒有這麼容易，類別的概念裡隱含著 Ruby 這門程式語言的設計哲學">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20200917/20128363omyHRrqOXP.jpg">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20200920/20128363fkT7ZgjfKa.jpg">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20200919/20128363bndnA7GRB5.jpg">
+<meta property="article:published_time" content="2020-10-30T05:09:13.733Z">
+<meta property="article:modified_time" content="2020-10-30T05:14:02.673Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Ruby, 12th鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20200917/20128363omyHRrqOXP.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-day11" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day11/" class="article-date">
+  <time datetime="2020-10-30T05:09:13.733Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      類別 &lt;&gt; 前往海底一萬米！想要一睹 Ruby 世界裡的 All Blue 就進來吧！- 滿滿的紅寶石不拿嗎？
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ithelp.ithome.com.tw/upload/images/20200917/20128363omyHRrqOXP.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20200917/20128363omyHRrqOXP.jpg"></p>
+<blockquote>
+<p>[Day10] 人魚、魚人和人類雖然是不同的類別，但是也可以好好地生活在一起！</p>
+</blockquote>
+<hr>
+<h2 id="什麼是類別？"><a href="#什麼是類別？" class="headerlink" title="什麼是類別？"></a>什麼是類別？</h2><p>今天要介紹的是 Ruby 裡的<strong>類別(Class)</strong><br>這是一個 Ruby 語言裡相當重要的關鍵字</p>
+<p>簡單來說，類別是拿來產生實體(Instance)的東西，實體就是昨天有介紹過的物件。</p>
+<p>但這樣解釋其實不夠完整，想要弄懂 Ruby 裡的類別其實沒有這麼容易，類別的概念裡隱含著 Ruby 這門程式語言的設計哲學，以及有些我尚未掌握的概念，這是無法一蹴而就的，因此，我預計把它拆成幾個部分，用不同天的篇幅介紹：</p>
+<ul>
+<li>類別基礎介紹</li>
+<li>繼承</li>
+<li>類別方法</li>
+<li>開放類別</li>
+<li>Singleton Class 與繼承鍊（可能）</li>
+</ul>
+<p>好的，就先讓我們從頭開始來認識類別吧！</p>
+<hr>
+<h3 id="經典的烤盤範例"><a href="#經典的烤盤範例" class="headerlink" title="經典的烤盤範例"></a>經典的烤盤範例</h3><p>要了解 Ruby 的類別，龍哥是用烤盤和雞蛋糕來巧妙比喻類別與實體的關係。</p>
+<p>不過，我今天想吃章魚燒：<br><img src="https://ithelp.ithome.com.tw/upload/images/20200920/20128363fkT7ZgjfKa.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20200920/20128363fkT7ZgjfKa.jpg"><br><em>看著看著好像餓了…</em></p>
+<p>在 Ruby 裡，那個負責做出章魚燒的烤盤就是<strong>類別</strong>，一個個熱騰騰的章魚燒則是<strong>實體</strong>。<br>因此只要烤盤沒壞掉，而且原料足夠的話，每次做出來的應該都會是同樣好吃的章魚燒！（原則上啦，不然會被客訴啊！）</p>
+<p>所以在定義一個類別時，可以設定產生新實體時要做什麼，或是在類別裡定義一些方法等等。<br>然後，一個個的實體就可以透過類別生出來囉！</p>
+<p>接著，來看一下類別的定義吧！</p>
+<hr>
+<h3 id="類別的名稱必須要是常數！"><a href="#類別的名稱必須要是常數！" class="headerlink" title="類別的名稱必須要是常數！"></a>類別的名稱必須要是常數！</h3><p>類別的名稱必須要是常數，也就是第一個字元一定要大寫。<br>不過，並不是看到開頭大寫的就一定是類別，像是模組，也得用大寫常數命名，過幾天會介紹它，這裡先賣個關子。</p>
+<p>實際來看 code 吧！<br>先定義一個 <code>Cat</code> 的類別：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">walk</span><span class="params">(place)</span></span></span><br><span class="line">    puts <span class="string">&quot;我想去 <span class="subst">#&#123;place&#125;</span>, 喵～&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>然後用 <code>Cat</code> 類別來產生新的實體 <code>miru</code> 和 <code>nini</code></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">miru = Cat.new</span><br><span class="line">nini = Cat.new</span><br></pre></td></tr></table></figure>
+
+<p><em>（題外話，miru 和 nini 是我朋友家的兩隻貓，超級可愛！）</em></p>
+<p>可以看到 <code>miru</code> 和 <code>nini</code> 都能呼叫 <code>walk</code> 方法：<br>這是因為他們都屬於 <code>Cat</code> 這個類別</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">miru.walk (&quot;公園&quot;)</span><br><span class="line">miru.walk(&quot;遊樂園&quot;)</span><br><span class="line"></span><br><span class="line"># 印出:</span><br><span class="line">我想去 公園 喵～</span><br><span class="line">我想去 遊樂園 喵～</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>Ruby 類別的簡單介紹就先到這邊啦！</p>
+<p>祝大家都能找到自己心目中的 All Blue!<br><img src="https://ithelp.ithome.com.tw/upload/images/20200919/20128363bndnA7GRB5.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20200919/20128363bndnA7GRB5.jpg"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day11/" data-id="ckgw1jq4u000dvxv5ckk0ax00" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/30/day12/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          繼承 &lt;&gt; D 的意志！鐵拳卡普、革命家龍、草帽魯夫，這一家真的沒開外掛嗎？ - 滿滿的紅寶石不拿嗎？
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/30/day10/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">物件 &lt;&gt; 最初與最盡責的夥伴，黃金梅利號：我想再航行一次！ - 滿滿的紅寶石不拿嗎？</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 10px;">Ruby, 12th鐵人賽</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day30/">Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day29/">Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day28/">Singleton Method &lt;&gt; 是「百獸海賊團」！碰上四皇凱多有勝算嗎？- 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day27/">Self &lt;&gt; 真正的男子漢，連道別都不需要語言！ - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

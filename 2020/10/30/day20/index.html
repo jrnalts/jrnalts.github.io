@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>開放類別 &lt;&gt; 這個星期的我很可以！不管裡面有什麼都給我來一點吧！- 滿滿的紅寶石不拿嗎？ | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[Day20] 接下來要隆重登場的是，鋼！鐵！將！軍！  嗨大家好！這篇要介紹的是開放類別(Open Class)！ 過去幾天，我已經學會了類別、繼承、模組、實體方法與類別方法的差異，以及方法存取的限制。而今天再來看一些有趣的東西吧！  類別—合體！身為一隻金魚，我常常在 coding 時忘記自己有沒有寫過這個類別，一不小心就做出了兩個相同名稱的類別，但裡面各自定義的方法不同： 1234567">
+<meta property="og:type" content="article">
+<meta property="og:title" content="開放類別 &lt;&gt; 這個星期的我很可以！不管裡面有什麼都給我來一點吧！- 滿滿的紅寶石不拿嗎？">
+<meta property="og:url" content="http://example.com/2020/10/30/day20/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[Day20] 接下來要隆重登場的是，鋼！鐵！將！軍！  嗨大家好！這篇要介紹的是開放類別(Open Class)！ 過去幾天，我已經學會了類別、繼承、模組、實體方法與類別方法的差異，以及方法存取的限制。而今天再來看一些有趣的東西吧！  類別—合體！身為一隻金魚，我常常在 coding 時忘記自己有沒有寫過這個類別，一不小心就做出了兩個相同名稱的類別，但裡面各自定義的方法不同： 1234567">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/xDloypE.jpg">
+<meta property="article:published_time" content="2020-10-30T05:10:23.173Z">
+<meta property="article:modified_time" content="2020-10-30T06:32:36.129Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Ruby, 12th鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/xDloypE.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-day20" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day20/" class="article-date">
+  <time datetime="2020-10-30T05:10:23.173Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      開放類別 &lt;&gt; 這個星期的我很可以！不管裡面有什麼都給我來一點吧！- 滿滿的紅寶石不拿嗎？
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/xDloypE.jpg"></p>
+<blockquote>
+<p>[Day20] 接下來要隆重登場的是，鋼！鐵！將！軍！</p>
+</blockquote>
+<p>嗨大家好！這篇要介紹的是開放類別(Open Class)！</p>
+<p>過去幾天，我已經學會了類別、繼承、模組、實體方法與類別方法的差異，以及方法存取的限制。而今天再來看一些有趣的東西吧！</p>
+<hr>
+<h2 id="類別—合體！"><a href="#類別—合體！" class="headerlink" title="類別—合體！"></a>類別—合體！</h2><p>身為一隻金魚，我常常在 coding 時忘記自己有沒有寫過這個類別，一不小心就做出了兩個相同名稱的類別，但裡面各自定義的方法不同：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Robot</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">eye</span></span></span><br><span class="line">    puts <span class="string">&quot;發射超強激光！&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Robot</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">arm</span></span></span><br><span class="line">    puts <span class="string">&quot;發射拳頭砲彈！&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>這時候如果又做了一個實體 <code>franky</code> 出來：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">franky = Robot.new</span><br></pre></td></tr></table></figure>
+
+<p>那這個實體 <code>franky</code> 到底是從哪個類別產生的呢？ 不是很確定，<br>那讓它呼叫實體方法看看：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">franky.eye</span><br><span class="line">franky.arm</span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出</span></span><br><span class="line">發射超強激光！</span><br><span class="line">發射拳頭砲彈！</span><br></pre></td></tr></table></figure>
+
+<p>咦！<code>franky</code> 居然兩招都可以用！<br>難道是…？</p>
+<p>事實上，Ruby 會把我們寫的東西看成這樣：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Robot</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">eye</span></span></span><br><span class="line">    puts <span class="string">&quot;發射超強激光！&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">arm</span></span></span><br><span class="line">    puts <span class="string">&quot;發射拳頭砲彈！&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>居然合體啦！！！只要是同名的類別，各自定義的方法也會融合在一起！<br>（同名方法自然另當別論）</p>
+<hr>
+<h2 id="類別裡面什麼都不用寫也有方法可以用"><a href="#類別裡面什麼都不用寫也有方法可以用" class="headerlink" title="類別裡面什麼都不用寫也有方法可以用"></a>類別裡面什麼都不用寫也有方法可以用</h2><p>之前介紹時好像沒提到 Ruby 這個有趣的特性，就拿剛剛的 <code>Robot</code> 做例子吧！</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Robot</span></span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">franky = Robot.new</span><br></pre></td></tr></table></figure>
+
+<p>現在我自己定義了一個新的類別 <code>Robot</code> ，可是裡面真的是超～空～一個方法都沒有。<br>然後 <code>franky</code> 能呼叫什麼方法嗎？應該不行吧？</p>
+<p>還是來確認一下好了：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">franky.methods</span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出</span></span><br><span class="line">[<span class="symbol">:dup</span>, <span class="symbol">:itself</span>, <span class="symbol">:yield_self</span>, <span class="symbol">:then</span>, <span class="symbol">:taint</span>, <span class="symbol">:tainted?</span>, <span class="symbol">:untaint</span>, <span class="symbol">:untrust</span>, <span class="symbol">:untrusted?</span>, <span class="symbol">:trust</span>, <span class="symbol">:frozen?</span>, <span class="symbol">:methods</span>, <span class="symbol">:singleton_methods</span>, <span class="symbol">:protected_methods</span>, <span class="symbol">:private_methods</span>, <span class="symbol">:public_methods</span>, <span class="symbol">:instance_variables</span>, <span class="symbol">:instance_variable_get</span>, <span class="symbol">:instance_variable_set</span>, <span class="symbol">:instance_variable_defined?</span>, <span class="symbol">:remove_instance_variable</span>, <span class="symbol">:instance_of?</span>, <span class="symbol">:kind_of?</span>, <span class="symbol">:is_a?</span>, <span class="symbol">:tap</span>, <span class="symbol">:clone</span>, <span class="symbol">:display</span>, <span class="symbol">:hash</span>, <span class="symbol">:class</span>, <span class="symbol">:singleton_class</span>, <span class="symbol">:method</span>, <span class="symbol">:public_send</span>, <span class="symbol">:public_method</span>, <span class="symbol">:singleton_method</span>, <span class="symbol">:define_singleton_method</span>, <span class="symbol">:extend</span>, <span class="symbol">:to_enum</span>, <span class="symbol">:enum_for</span>, <span class="symbol">:&lt;=&gt;</span>, <span class="symbol">:===</span>, <span class="symbol">:=~</span>, <span class="symbol">:</span>!~, <span class="symbol">:nil?</span>, <span class="symbol">:eql?</span>, <span class="symbol">:respond_to?</span>, <span class="symbol">:freeze</span>, <span class="symbol">:inspect</span>, <span class="symbol">:object_id</span>, <span class="symbol">:send</span>, <span class="symbol">:to_s</span>, <span class="symbol">:__send__</span>, <span class="symbol">:</span>!, <span class="symbol">:==</span>, <span class="symbol">:__id__</span>, <span class="symbol">:</span>!=, <span class="symbol">:equal?</span>, <span class="symbol">:instance_eval</span>, <span class="symbol">:instance_exec</span>]</span><br></pre></td></tr></table></figure>
+
+<p>哇啊啊一堆方法！這些是哪裡來的？是誰偷駭進了我的電腦嗎？<br>不對不對這一定是在做夢，我要來測試一下！</p>
+<p>Q1: <code>franky</code> 是什麼類別？</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">franky.<span class="keyword">class</span></span><br><span class="line"> =&gt; Robot</span><br></pre></td></tr></table></figure>
+
+<p>通過第一關…沒關係再來！</p>
+<p>Q2: <code>franky</code> 是整數嗎？</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">franky.is_a?(Integer)</span><br><span class="line">=&gt; false</span><br></pre></td></tr></table></figure>
+
+<p>好我知道很明顯不是…</p>
+<p>啊！等等！就連一開始找方法的：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">franky.methods</span><br></pre></td></tr></table></figure>
+
+<p>這個 <code>methods</code> 也不是我自己定義的啊！虧我還用得這麼順手！</p>
+<p>不管是原生類別還是自定義類別，其實 Ruby 都已經先準備好很多方法著大家去使用了！這部分的原因有興趣的朋友可以先上網查 Ruby 的 <code>Kernel</code> 模組，有時間我會再來仔細說明！</p>
+<hr>
+<h2 id="讓我們來加點料"><a href="#讓我們來加點料" class="headerlink" title="讓我們來加點料"></a>讓我們來加點料</h2><p>由於這個特性，我們就能為原生類別再添加一些自定義的方法，這個技巧也是 <strong>開放類別(Open Class)</strong> 的精髓。</p>
+<p>譬如 Ruby 原生的 <code>String</code> 類別，裡面已經定義好很多給字串使用的方法：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = String.new</span><br><span class="line"></span><br><span class="line">a.methods</span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出</span></span><br><span class="line">[<span class="symbol">:unicode_normalize</span>, <span class="symbol">:unicode_normalize!</span>, <span class="symbol">:ascii_only?</span>, <span class="symbol">:to_r</span>, <span class="symbol">:unpack</span>, <span class="symbol">:unpack1</span>, <span class="symbol">:encode!</span>, <span class="symbol">:%</span>, <span class="symbol">:include?</span>, <span class="symbol">:*</span>, <span class="symbol">:+</span>, <span class="symbol">:count</span>, <span class="symbol">:partition</span>, <span class="symbol">:+@</span>, <span class="symbol">:-@</span>, <span class="symbol">:&lt;=&gt;</span>, <span class="symbol">:&lt;&lt;</span>, <span class="symbol">:to_c</span>, <span class="symbol">:==</span>, <span class="symbol">:===</span>, <span class="symbol">:sum</span>, <span class="symbol">:=~</span>, <span class="symbol">:next</span>, <span class="symbol">:[]</span>, <span class="symbol">:casecmp</span>, <span class="symbol">:casecmp?</span>, <span class="symbol">:insert</span>, <span class="symbol">:[]=</span>, <span class="symbol">:match</span>, <span class="symbol">:match?</span>, <span class="symbol">:bytesize</span>, <span class="symbol">:empty?</span>, <span class="symbol">:eql?</span>, <span class="symbol">:succ!</span>, <span class="symbol">:next!</span>, <span class="symbol">:upto</span>, <span class="symbol">:index</span>, <span class="symbol">:rindex</span>, <span class="symbol">:replace</span>, <span class="symbol">:clear</span>, <span class="symbol">:chr</span>, <span class="symbol">:getbyte</span>, <span class="symbol">:setbyte</span>, <span class="symbol">:scrub!</span>, <span class="symbol">:scrub</span>, <span class="symbol">:undump</span>, <span class="symbol">:byteslice</span>, <span class="symbol">:freeze</span>, <span class="symbol">:inspect</span>, <span class="symbol">:capitalize</span>, <span class="symbol">:upcase</span>, <span class="symbol">:dump</span>, <span class="symbol">:downcase!</span>, <span class="symbol">:swapcase</span>, <span class="symbol">:downcase</span>, <span class="symbol">:hex</span>, <span class="symbol">:capitalize!</span>, <span class="symbol">:upcase!</span>, <span class="symbol">:lines</span>, <span class="symbol">:length</span>, <span class="symbol">:size</span>, <span class="symbol">:codepoints</span>, <span class="symbol">:succ</span>, <span class="symbol">:split</span>, <span class="symbol">:swapcase!</span>, <span class="symbol">:bytes</span>, <span class="symbol">:oct</span>, <span class="symbol">:prepend</span>, <span class="symbol">:grapheme_clusters</span>, <span class="symbol">:concat</span>, <span class="symbol">:start_with?</span>, <span class="symbol">:reverse</span>, <span class="symbol">:reverse!</span>, <span class="symbol">:to_str</span>, <span class="symbol">:to_sym</span>, <span class="symbol">:crypt</span>, <span class="symbol">:ord</span>, <span class="symbol">:strip</span>, <span class="symbol">:end_with?</span>, <span class="symbol">:to_s</span>, <span class="symbol">:to_i</span>, <span class="symbol">:to_f</span>, <span class="symbol">:center</span>, <span class="symbol">:intern</span>, <span class="symbol">:gsub</span>, <span class="symbol">:ljust</span>, <span class="symbol">:chars</span>, <span class="symbol">:delete_suffix</span>, <span class="symbol">:sub</span>, <span class="symbol">:rstrip</span>, <span class="symbol">:scan</span>, <span class="symbol">:chomp</span>, <span class="symbol">:rjust</span>, <span class="symbol">:lstrip</span>, <span class="symbol">:chop!</span>, <span class="symbol">:delete_prefix</span>, <span class="symbol">:chop</span>, <span class="symbol">:sub!</span>, <span class="symbol">:gsub!</span>, <span class="symbol">:delete_prefix!</span>, <span class="symbol">:chomp!</span>, <span class="symbol">:strip!</span>, <span class="symbol">:lstrip!</span>, <span class="symbol">:rstrip!</span>, <span class="symbol">:squeeze</span>, <span class="symbol">:delete_suffix!</span>, <span class="symbol">:tr</span>, <span class="symbol">:tr_s</span>, <span class="symbol">:delete</span>, <span class="symbol">:each_line</span>, <span class="symbol">:tr!</span>, <span class="symbol">:tr_s!</span>, <span class="symbol">:delete!</span>, <span class="symbol">:squeeze!</span>, <span class="symbol">:slice</span>, <span class="symbol">:each_byte</span>, <span class="symbol">:each_char</span>, <span class="symbol">:each_codepoint</span>, <span class="symbol">:each_grapheme_cluster</span>, <span class="symbol">:b</span>, <span class="symbol">:slice!</span>, <span class="symbol">:rpartition</span>, <span class="symbol">:encoding</span>, <span class="symbol">:force_encoding</span>, <span class="symbol">:valid_encoding?</span>, <span class="symbol">:hash</span>, <span class="symbol">:unicode_normalized?</span>, <span class="symbol">:encode</span>, <span class="symbol">:clamp</span>, <span class="symbol">:between?</span>, <span class="symbol">:&lt;=</span>, <span class="symbol">:&gt;=</span>, <span class="symbol">:&gt;</span>, <span class="symbol">:&lt;</span>, <span class="symbol">:dup</span>, <span class="symbol">:itself</span>, <span class="symbol">:yield_self</span>, <span class="symbol">:then</span>, <span class="symbol">:taint</span>, <span class="symbol">:tainted?</span>, <span class="symbol">:untaint</span>, <span class="symbol">:untrust</span>, <span class="symbol">:untrusted?</span>, <span class="symbol">:trust</span>, <span class="symbol">:frozen?</span>, <span class="symbol">:methods</span>, <span class="symbol">:singleton_methods</span>, <span class="symbol">:protected_methods</span>, <span class="symbol">:private_methods</span>, <span class="symbol">:public_methods</span>, <span class="symbol">:instance_variables</span>, <span class="symbol">:instance_variable_get</span>, <span class="symbol">:instance_variable_set</span>, <span class="symbol">:instance_variable_defined?</span>, <span class="symbol">:remove_instance_variable</span>, <span class="symbol">:instance_of?</span>, <span class="symbol">:kind_of?</span>, <span class="symbol">:is_a?</span>, <span class="symbol">:tap</span>, <span class="symbol">:clone</span>, <span class="symbol">:display</span>, <span class="symbol">:class</span>, <span class="symbol">:singleton_class</span>, <span class="symbol">:method</span>, <span class="symbol">:public_send</span>, <span class="symbol">:public_method</span>, <span class="symbol">:singleton_method</span>, <span class="symbol">:define_singleton_method</span>, <span class="symbol">:extend</span>, <span class="symbol">:to_enum</span>, <span class="symbol">:enum_for</span>, <span class="symbol">:</span>!~, <span class="symbol">:nil?</span>, <span class="symbol">:respond_to?</span>, <span class="symbol">:object_id</span>, <span class="symbol">:send</span>, <span class="symbol">:__send__</span>, <span class="symbol">:</span>!, <span class="symbol">:__id__</span>, <span class="symbol">:</span>!=, <span class="symbol">:equal?</span>, <span class="symbol">:instance_eval</span>, <span class="symbol">:instance_exec</span>]</span><br></pre></td></tr></table></figure>
+
+<p>現在我們來把幫 <code>String</code> 類別加上一個 <code>say_hello</code> 方法：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">String</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">say_hello</span></span></span><br><span class="line">    <span class="string">&quot;晚安, 接下來由<span class="subst">#&#123;<span class="keyword">self</span>&#125;</span>來帶您學習 Ruby～&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;娜美&quot;</span>.say_hello</span><br><span class="line">=&gt; <span class="string">&quot;晚安, 接下來由娜美來帶您學習 Ruby～&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;布魯克&quot;</span>.say_hello</span><br><span class="line">=&gt; <span class="string">&quot;晚安, 接下來由布魯克來帶您學習 Ruby～&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>這樣的話，剛剛 <code>a.methods</code> 列出來的方法裡，就會多一個我們剛剛定義的 <code>sayhello</code> 方法囉！</p>
+<p>另外，在這裡的 <code>self</code> 指的就是呼叫方法的 <code>receiver</code> 本身。</p>
+<hr>
+<h2 id="Monkey-Patch-既有的方法居然也能改！"><a href="#Monkey-Patch-既有的方法居然也能改！" class="headerlink" title="Monkey Patch! 既有的方法居然也能改！"></a>Monkey Patch! 既有的方法居然也能改！</h2><p>除了像剛剛那樣幫類別添加方法，我們甚至也能覆蓋掉 Ruby 原先寫好的方法，這樣的行為通常被稱作 “<strong>Monkey Patch</strong>“，這就是 Ruby 語言的一大特點：<strong>可動態修改</strong></p>
+<p><code>1 + 1 = 2</code> 是數學上顛撲不破的真理，但我們來看個例子：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> + <span class="number">1</span></span><br><span class="line">=&gt; <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>上次有提過在 Ruby 裡，其實是這樣運作：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>.+(<span class="number">1</span>)</span><br><span class="line">=&gt; <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>當我們知道其實是 <code>1</code> 這個物件呼叫了 <code>+</code> 方法，再帶入 <code>1</code> 這個參數後，就可以自己來改寫 <code>+</code> 方法：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>.<span class="keyword">class</span></span><br><span class="line">=&gt; Integer</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Integer</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">+</span><span class="params">(n)</span></span></span><br><span class="line">    <span class="keyword">return</span> n</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>我讓 <code>+</code> 這個方法變成只會回傳加上去的數字，所以這時候再使用 <code>+</code> 的話，就會變成：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">puts <span class="number">1</span> + <span class="number">1</span></span><br><span class="line">puts <span class="number">2</span> + <span class="number">1</span></span><br><span class="line">puts <span class="number">3</span> + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#印出</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>得到的通通都是 <code>1</code> 了！數學已死！！！</p>
+<hr>
+<p>今天終於來到 20 天了！開放類別就先介紹到這邊啦！後面會再提到類似的概念可能就要到淺談 Ruby 物件導向的篇章了！希望能順利完賽！</p>
+<p>最後送大家一句金句：<br><code>投資一定有風險基金投資有賺有賠使用 Monkey Patch 前應詳閱 Ruby 官方文件說明書</code></p>
+<p>話已帶到，使用時請小心、保重！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day20/" data-id="ckgw1jq5k000vvxv5917sh9gx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/30/day21/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          實體變數 &lt;&gt; 一流強者都要會的武裝色霸氣 - 滿滿的紅寶石不拿嗎？
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/30/day16/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">符號 &lt;&gt; 看！又是一塊歷史正文！讀懂這些，通往 ONEPIECE 的路就不遠了！- 滿滿的紅寶石不拿嗎？</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 10px;">Ruby, 12th鐵人賽</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day30/">Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day29/">Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day28/">Singleton Method &lt;&gt; 是「百獸海賊團」！碰上四皇凱多有勝算嗎？- 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day27/">Self &lt;&gt; 真正的男子漢，連道別都不需要語言！ - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

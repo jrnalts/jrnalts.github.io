@@ -113,7 +113,867 @@
 
 
   
+    <article id="post-day30" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day30/" class="article-date">
+  <time datetime="2020-10-30T05:11:12.024Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/30/day30/">Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴 - 滿滿的紅寶石不拿嗎？</a>
+    </h1>
+  
 
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/VXv63Pi.jpg"></p>
+<blockquote>
+<p>[Day30] 還在等什麼！快來成為 Ruby 工程師啊！（誤）</p>
+</blockquote>
+<p>終於來到鐵人賽的最後一天了！以為我要寫個完賽心得帶過嗎？雖然很想這樣做，不過，這裡並不是停下腳步的地方啊！</p>
+<p>這篇要介紹的是 <code>Enumerator</code>！</p>
+<hr>
+<h2 id="Enumerator-是什麼？"><a href="#Enumerator-是什麼？" class="headerlink" title="Enumerator 是什麼？"></a>Enumerator 是什麼？</h2><p>剛開始看到這個詞只覺得陌生 + 困惑</p>
+<p>上網查了許久，<code>Enumerator</code> 似乎沒有一個很精準的中文翻譯，但可以找到像是 <code>external</code>, <code>iterator</code>, <code>Enumerable Module</code> 這些關鍵字。</p>
+<p>但其實它一直都在我們身邊。</p>
+<p>平時 coding 可能就已經看過它，那就是當使用 <code>each</code> 方法操作陣列相關的物件時，又不小心忘了寫 Block 的話：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].each</span><br><span class="line"> =&gt; #&lt;Enumerator: [1, 2, 3]:each&gt;</span><br></pre></td></tr></table></figure>
+
+<p>就會出現這個 <code>Enumerator</code> ! 可是···這是什麼意思？還是不懂。</p>
+<p>沒關係把 <code>Enumerator</code> 放一邊，先來看看 <code>Enumerable</code> 能不能輔助我理解。</p>
+<hr>
+<h2 id="Enumerable-又是什麼？"><a href="#Enumerable-又是什麼？" class="headerlink" title="Enumerable 又是什麼？"></a>Enumerable 又是什麼？</h2><p>雖然和上一個概念相比，似乎只有單字詞性的變化，不過 <code>Enumerable</code> 的概念明確許多。</p>
+<p>首先，<code>Enumerable</code> 是一種模組(Module)，又可以稱為「列舉」，來瞧瞧 Ruby 官方文件的定義：</p>
+<p>列舉提供陣列和雜湊搜尋、排序或轉換集合內元素的功能。而陣列或雜湊必須各自提供一個方法，該方法可以產生集合的連續成員···(?)</p>
+<p>簡單來說，像是 <code>each</code>, <code>select</code>, <code>map</code>, <code>match</code>, <code>sort</code>, <code>grep</code> 這些常用的方法都屬於 <code>Enumerable</code> 的範疇。</p>
+<p>詳細內容請參考 <a target="_blank" rel="noopener" href="https://ruby-doc.org/core-2.7.2/Enumerable.html">Ruby-Doc Module: Enumerable</a></p>
+<hr>
+<h2 id="External-Iterator"><a href="#External-Iterator" class="headerlink" title="External Iterator"></a>External Iterator</h2><p>接下來介紹外部迭代器(External Iterator)</p>
+<p>大部分時候我們都在做的是 <code>Internal Iterator</code><br>像是平常在丟迴圈，或是上在介紹的陣列方法，都屬於 <code>Internal Iterator</code> ，譬如想從一個陣列中選取一些元素：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">list.select <span class="keyword">do</span> <span class="params">|n|</span></span><br><span class="line">  n &gt; <span class="number">2</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#=&gt; [3, 4]</span></span><br></pre></td></tr></table></figure>
+
+<p>不過，既然有 <code>Internal</code> ，也就有 <code>External</code>，<code>Internal Iterator</code> 是由陣列或雜湊這類的集合物件控制，而 <code>External Iterator</code> 則是由外部來控制，像是：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">icons = <span class="string">%w[up down]</span>.to_enum(<span class="symbol">:cycle</span>)</span><br><span class="line">list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">list.each <span class="keyword">do</span></span><br><span class="line">  puts icons.<span class="keyword">next</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># =&gt;</span></span><br><span class="line">up</span><br><span class="line">down</span><br><span class="line">up</span><br><span class="line">down</span><br><span class="line">up</span><br><span class="line"> =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<p>在這段程式碼裡，<code>icons</code> 被指定使用 <code>cycle</code> 方式在做迭代，所以當 <code>next</code> 到最後一個元素，下一次的 <code>next</code> 就會從頭再來過。</p>
+<hr>
+<h2 id="所以，什麼是-Enumerator？"><a href="#所以，什麼是-Enumerator？" class="headerlink" title="所以，什麼是 Enumerator？"></a>所以，什麼是 Enumerator？</h2><p>我這邊引用五倍紅寶石 DC 助教的原話：</p>
+<blockquote>
+<p><code>Enumerator</code> 最簡單的解釋是 <code>Enumerable</code> 加上 <code>External Iteration</code>，而 <code>Enumerator</code> 與 <code>Enumerable</code> 的合作方式是前者負責產生、儲存資料，『需要時』再以後者的方法運用。</p>
+</blockquote>
+<p>譬如：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].each</span><br><span class="line"><span class="comment">#=&gt; #&lt;Enumerator: [1, 2, 3]:each&gt;</span></span><br><span class="line"></span><br><span class="line">list.select &#123; <span class="params">|x|</span> x.odd? &#125;</span><br><span class="line"><span class="comment">#=&gt; [1, 3]</span></span><br></pre></td></tr></table></figure>
+
+<p>除了這種彈性的用法之外，<code>Enumerator</code> 的另一個特性是能把物件不斷串起來，以最近超紅的電影《天能》為例：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;TENET&#x27;</span>.split(<span class="string">&#x27;&#x27;</span>).reverse_each.with_index(<span class="number">1</span>) <span class="keyword">do</span> <span class="params">|word, index|</span></span><br><span class="line">  puts <span class="string">&quot;<span class="subst">#&#123;word&#125;</span>&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">T</span><br><span class="line">E</span><br><span class="line">N</span><br><span class="line">E</span><br><span class="line">T</span><br><span class="line"> =&gt; [<span class="string">&quot;T&quot;</span>, <span class="string">&quot;E&quot;</span>, <span class="string">&quot;N&quot;</span>, <span class="string">&quot;E&quot;</span>, <span class="string">&quot;T&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>果然是天能！時光回溯！</p>
+<hr>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p><code>Enumerator</code> 的概念不是很好理解，在尋找文獻和研究的過程中不斷撞牆，似乎勉勉強強地看懂了一些，但仍拼湊不出全貌，不過身為工程師，主動接觸一些不熟悉的概念是應該的。</p>
+<p>之後的文章應該會放在 Medium 或是自己架的部落格，期許往後的路上還要學得更多，並時常接觸自己不熟悉的領域以及運用所學，天啊！這種既掙扎又興奮的感覺真是太棒了！</p>
+<p>那，鐵人賽就先到這邊啦！<br>在出發的那一刻，我們就已經得到 ONEPIECE 了！</p>
+<hr>
+<p>參考來源<br><a target="_blank" rel="noopener" href="https://5xruby.tw/posts/ruby-enumerator/">與你每天擦身而過的 Enumerator</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day30/" data-id="ckgw1jq5x001bvxv503ul3uxr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-day29" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day29/" class="article-date">
+  <time datetime="2020-10-30T05:11:08.201Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/30/day29/">Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/4obaSRL.jpg"></p>
+<blockquote>
+<p>[Day29] 記錄指針是海賊王世界裡一種外觀像手錶，中央為球形的特殊羅盤。可以偵測並記下偉大航路內各個島嶼放出的磁場，為海上航行的船隻提供正確的路線。</p>
+</blockquote>
+<p>延續昨天的主題，我們已經知道單體方法是怎麼被定義的，但它既不屬於類別方法，也不是實體方法，那它到底被定義在哪裡呢？</p>
+<p>先說結論：單體方法被寫在 <code>Singleton Class</code> 裡。</p>
+<blockquote>
+<p><em>走過的路 是一陣魔術···<br>···都化作這目光 吟唱成一首歌</em></p>
+</blockquote>
+<p>抱歉突然想唱個歌，讓我們進入正題～</p>
+<hr>
+<h3 id="Singleton-Class-是什麼？"><a href="#Singleton-Class-是什麼？" class="headerlink" title="Singleton Class 是什麼？"></a><code>Singleton Class</code> 是什麼？</h3><p>如果是初學 Ruby 這門程式語言的朋友，一開始幾乎不太會接觸到 <code>Singleton Class</code> 的概念。在一般的繼承鍊裡，我們只學過 <code>Class</code> &lt; <code>Object</code> &lt; <code>BaseObject</code> 這種一直往上找，層層相疊的繼承關係。</p>
+<p>不過實際上在 Ruby 的物件導向設計裡，還有一個非常神祕的類別，<br>那就是 <code>Singleton Class</code>：</p>
+<ul>
+<li>它是設計給單一物件使用的類別</li>
+<li>又被稱為 <code>metaclass</code> 或 <code>eigenclass</code></li>
+<li>在 <code>Singleton Class</code> 上定義的方法就是單體方法</li>
+</ul>
+<p>回顧昨天的例子：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="comment"># ...</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">meme = Cat.new</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">meme</span>.<span class="title">feet</span></span></span><br><span class="line">  puts <span class="string">&quot;有穿白襪&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">meme.feet          <span class="comment"># =&gt; 有穿白襪</span></span><br></pre></td></tr></table></figure>
+
+<p>雖然單體方法 <code>feet</code> 是寫在類別的外面，但 Ruby 其實有偷偷為 <code>meme</code> 準備了一個 <code>Singleton Class</code> ，而 <code>feet</code> 方法就被定義在裡面：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="comment"># ...</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">meme = Cat.new</span><br><span class="line"></span><br><span class="line"><span class="comment"># singleton class of meme</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">meme</span>.<span class="title">feet</span></span></span><br><span class="line">  puts <span class="string">&quot;有穿白襪&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment"># end</span></span><br><span class="line"></span><br><span class="line">meme.feet          <span class="comment"># =&gt; 有穿白襪</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>有看到 <code>Singleton Class</code> 嗎？</p>
+<p>沒看到？</p>
+<p>嗯··· 代表你非常正常！</p>
+<p>通常在開了天眼後才看得到</p>
+<p>所以泰安老師叫它「跟鬼一樣的類別」！</p>
+</blockquote>
+<hr>
+<h2 id="我要在哪裡找到-Singleton-Class？"><a href="#我要在哪裡找到-Singleton-Class？" class="headerlink" title="我要在哪裡找到 Singleton Class？"></a>我要在哪裡找到 <code>Singleton Class</code>？</h2><p>其實我還不知道如何在 irb 裡顯示物件的 <code>Singleton Class</code>，不過，通過類別物件的繼承或許可以看出一點端倪。</p>
+<p>繼承最核心的概念就是子層類別的物件可以拿父層類別的方法來用，類別方法也同樣遵循著這套繼承的規則</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">all</span></span></span><br><span class="line">    puts <span class="string">&quot;全部的動物&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> &lt; Animal</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">all</span></span></span><br><span class="line">    puts <span class="string">&quot;貓咪王國！&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">Cat.all            <span class="comment"># =&gt; 貓咪王國！</span></span><br></pre></td></tr></table></figure>
+
+<p>如果有同名的類別方法，則會優先呼叫定義在 <code>Singleton Class</code> 的那個。</p>
+<p>昨天有提到，類別方法其實也是單體方法的一種，所以每個類別的類別方法就會定義在自己的 <code>Singleton Class</code> 上，像是這樣：</p>
+<p><img src="https://i.imgur.com/ZdDx8kk.jpg"></p>
+<p>現在我們知道了，當一個 Ruby 物件在呼叫方法時，會先往 <code>Singlton Class</code> 找看看，沒有的話，會再往上從繼承的類別裡尋找。</p>
+<hr>
+<h2 id="Ruby-裡的物件導向："><a href="#Ruby-裡的物件導向：" class="headerlink" title="Ruby 裡的物件導向："></a>Ruby 裡的物件導向：</h2><p>既然都已經講了 <code>Singleton Class</code>，那就不得不來介紹 Ruby 裡的物件導向了！</p>
+<p>「物件導向」這四個字看起來又是個高大上，一開始總覺得如果能說清楚這個概念，好像自己會變很聰明，但事實上，它就只是個語言的設計概念。（另一個事實則是我笨）</p>
+<p>接下來會用到這兩個方法：<br>|方法|說明<br>|—|—|<br>|<code>superclass</code>| 尋找自己繼承的父層類別<br>|<code>class</code>| 尋找自己所屬的類別</p>
+<p><code>superclass</code> 和 <code>class</code> 能有助於更加釐清 <code>Singleton Class</code> 以及 Ruby 裡物件導向的概念。</p>
+<p>繼續沿用剛才的例子，並用這兩個方法來看看吧！</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="comment"># ...</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">meme = Cat.new</span><br><span class="line"></span><br><span class="line">meme.<span class="keyword">class</span>              <span class="comment"># =&gt; Cat</span></span><br><span class="line">meme.superclass         <span class="comment"># =&gt; NoMethodError (undefined method `superclass&#x27; for #&lt;Cat:0x00007fd482123eb0&gt;)</span></span><br></pre></td></tr></table></figure>
+
+<p>咦？ <code>superclass</code> 噴錯了！不過沒關係，因為實體物件本來就沒有繼承的父層類別，繼續來看：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cat.<span class="keyword">class</span>               <span class="comment"># =&gt; Class</span></span><br><span class="line">Cat.superclass          <span class="comment"># =&gt; Object</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Cat</code> 這個類別是屬於一個叫做 <code>Class</code> 的類別，或者說，在 Ruby 裡，所有的類別都屬於 <code>Class</code> 這個類別。</p>
+<p>而 <code>Cat</code> 這個類別是繼承自一個叫做 <code>Object</code> 的類別，”Object”，也就是物件的意思，以一個物件導向的語言來說，出現這個名字很合理，繼續看下去：</p>
+<p>我們來對 <code>Class</code> 試試看吧：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class.<span class="keyword">class</span>             <span class="comment"># =&gt; Class</span></span><br><span class="line">Class.superclass        <span class="comment"># =&gt; Module</span></span><br></pre></td></tr></table></figure>
+
+<p>這次出現了有趣的事情，果然全天下的類別都是屬於 <code>Class</code> 這個類別，因此 <code>Class</code> 所屬的類別也是 <code>Class</code> 自己。</p>
+<p>而 <code>Class</code> 繼承的類別居然是 <code>Module</code> ! 這不是模組嗎？不過仔細一瞧才發現大寫的 <code>Module</code> 是類別，小寫的 <code>module</code> 則是模組，只是，Ruby 設計者沒想過會讓大家困惑嗎 XDDD</p>
+<p>做一個模組出來試試看：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Flyable</span></span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">Flyable.<span class="keyword">class</span>           <span class="comment"># =&gt; Module</span></span><br><span class="line">Flyable.superclass      <span class="comment"># =&gt; NoMethodError (undefined method `superclass&#x27; for Flyable:Module)</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Flyable</code> 這個模組屬於 <code>Module</code> 這個類別，而 <code>Flyable</code> 沒有向上的繼承類別（這是因為 Ruby 裡的模組本來就無法繼承）</p>
+<p>但令人驚訝的是 <code>Class</code> 竟然是繼承自 <code>Module</code> ！當初在學習時，就有發現模組和類別兩個概念很像，但我原本一直以為模組可能是類別的副產品之類的，</p>
+<p>沒想到···竟然是反過來<br>真是世事難料啊!!!</p>
+<p>接著我們來看看這個 <code>Object</code></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object.<span class="keyword">class</span>            <span class="comment"># =&gt; Class</span></span><br><span class="line">Object.superclass       <span class="comment"># =&gt; BasicObject</span></span><br></pre></td></tr></table></figure>
+
+<p>不出所料，<code>Object</code> 的類別是 <code>Class</code>，而繼承自 <code>BasicObject</code> 類別這個又是什麼？名字怎麼都取這麼像啊！</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BasicObject.<span class="keyword">class</span>       <span class="comment"># =&gt; Class</span></span><br><span class="line">BasicObject.superclass  <span class="comment"># =&gt; nil</span></span><br></pre></td></tr></table></figure>
+
+<p><code>BasicObject</code> 的類別也是 <code>Class</code>，而再往上就沒有了！</p>
+<p>目前可以得到像這樣的圖：<br><img src="https://i.imgur.com/VC66dMB.jpg"></p>
+<p>最後來看 <code>Module</code>：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Module.<span class="keyword">class</span>            <span class="comment"># =&gt; Class</span></span><br><span class="line">Module.superclass       <span class="comment"># =&gt; Object</span></span><br></pre></td></tr></table></figure>
+
+<p>嗯···類別是 <code>Class</code>，然後繼承自···咦！<code>Object</code>！那不就</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object.<span class="keyword">class</span>            <span class="comment"># =&gt; Class</span></span><br><span class="line">Class.superclass        <span class="comment"># =&gt; Module</span></span><br><span class="line">Module.superclass       <span class="comment"># =&gt; Object</span></span><br></pre></td></tr></table></figure>
+
+<p>你們這樣繞來繞去，弄得我頭很痛啊！還好網路上已經有大大梳理好它們彼此之間的關係</p>
+<p><img src="https://i.imgur.com/546vO19.jpg"></p>
+<p>看圖是不是清楚多了呢？<br>說實話，韓劇每個角色的關係圖都比這都複雜多了！</p>
+<hr>
+<p>今天的文章就先到這裡了，</p>
+<p>以上就是我對 Ruby 物件導向的理解，自己覺得這篇的脈絡有點亂，就和思緒一樣，可能也有一些理解錯誤的地方，大大們如果看到的話還請不吝指出，日後還會繼續進行釐清和整理的。</p>
+<p>覺得好像感冒了…頭好昏啊！</p>
+<hr>
+<p>參考來源<br><a target="_blank" rel="noopener" href="https://qpzm.github.io/2019/09/09/metaprogramming-ruby.html">Metaprogramming in Ruby 2 - The Object Model</a><br><a target="_blank" rel="noopener" href="https://www.spreered.com/ruby-object-model-1/">speedred - Ruby 的繼承鍊 (1) - 如何實踐物件導向</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day29/" data-id="ckgw1jq5w0019vxv591i30v2k" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-day28" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day28/" class="article-date">
+  <time datetime="2020-10-30T05:11:03.045Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/30/day28/">Singleton Method &lt;&gt; 是「百獸海賊團」！碰上四皇凱多有勝算嗎？- 滿滿的紅寶石不拿嗎？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ithelp.ithome.com.tw/upload/images/20201006/20128363CAkf2qfYdC.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20201006/20128363CAkf2qfYdC.jpg"></p>
+<blockquote>
+<p>[Day28] 今天登場的是媲美侏羅紀公園的百獸海賊團！幹部三災個個雄壯威武，船長凱多更被譽為海賊王世界最強生物！</p>
+</blockquote>
+<p>今日圖已端上，那麼話不多說<br>這篇要介紹的是：單體方法(Singleton Method)</p>
+<hr>
+<h2 id="什麼是單體方法"><a href="#什麼是單體方法" class="headerlink" title="什麼是單體方法"></a>什麼是單體方法</h2><p>第一次聽到 <code>singleton</code> 這個詞是在泰安老師的課上，記得那個時候一邊聽一邊心裡卻在吶喊著：「奇怪明明就是說中文啊···為什麼我有聽沒有懂···」（狀態表示為三觀盡毀）</p>
+<p>直到現在才比較明白了，簡單來說，單體方法是一種專屬於某個物件的方法，</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="comment"># ...</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">meme = Cat.new</span><br><span class="line">didi = Cat.new</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">meme</span>.<span class="title">feet</span>      <span class="comment"># singleton method</span></span></span><br><span class="line">  puts <span class="string">&quot;有穿白襪&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">meme.feet          <span class="comment"># =&gt; 有穿白襪</span></span><br><span class="line">didi.feet          <span class="comment"># =&gt; NoMethodError (undefined method `feet&#x27; for #&lt;Cat:0x00007fd2359aa790&gt;)</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到這邊定義的 <code>feet</code> 方法只能給 <code>meme</code> 這個實體物件使用，而其他的實體物件，就算是同一類別產生的實體，都無法使用 <code>feet</code> 方法，</p>
+<p>由此可知，我們可以在任意物件上定義單體方法，不過前提是要先有那個物件存在，不然就會看到噴錯：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="comment"># ...</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">meme</span>.<span class="title">feet</span>      <span class="comment"># singleton method</span></span></span><br><span class="line">  puts <span class="string">&quot;有穿白襪&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">meme = Cat.new</span><br><span class="line"></span><br><span class="line">meme.feet          <span class="comment"># =&gt; NameError (undefined local variable or method `meme&#x27; for main:Object)</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="看起來好像跟類別方法有點像？"><a href="#看起來好像跟類別方法有點像？" class="headerlink" title="看起來好像跟類別方法有點像？"></a>看起來好像跟類別方法有點像？</h2><p>沒錯！類別方法其實也是一種單體方法，之前介紹到類別方法時，會這樣寫：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Crew</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">all</span></span></span><br><span class="line">    puts <span class="string">&quot;全員到齊&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">Crew.all        <span class="comment"># =&gt; &quot;全員到齊&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>在這裡，我們可以把 <code>self</code> 換成這個類別 <code>Crew</code> (昨天有提到 <code>self</code> 指向目前正在執行的物件），所以這樣寫也是可以的：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Crew</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">Crew</span>.<span class="title">all</span></span></span><br><span class="line">    puts <span class="string">&quot;全員到齊&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">Crew.all        <span class="comment"># =&gt; &quot;全員到齊&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>又或者這樣，在類別裡執行類別方法也是可以的：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Crew</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">Crew</span>.<span class="title">all</span></span></span><br><span class="line">    puts <span class="string">&quot;全員到齊&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  all</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出</span></span><br><span class="line">全員到齊</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="單體方法被定義在哪裡？"><a href="#單體方法被定義在哪裡？" class="headerlink" title="單體方法被定義在哪裡？"></a>單體方法被定義在哪裡？</h2><p>在一開始的例子裡，我看到 <code>meme</code> 可以呼叫我自己定義的 <code>feet</code> 方法，但仍然有些不解，為什麼這個方法被定義在類別的外面，卻又只能給特定的實體取用呢？</p>
+<p>我們先看一般的方法定義：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">eat</span></span></span><br><span class="line">  <span class="string">&quot;肚子餓了就要吃東西&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">meme = Cat.new</span><br><span class="line"></span><br><span class="line">meme.eat        <span class="comment"># =&gt; &quot;肚子餓了就要吃東西&quot;</span></span><br><span class="line">didi.eat        <span class="comment"># =&gt; &quot;肚子餓了就要吃東西&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>嗯···明顯不一樣，揪竟單體方法是被定義在哪裡呢？<br><code>meme.feet</code> 又做了什麼呢？</p>
+<hr>
+<p>今天到這邊先告個段落，要理解艱澀的概念，我們必須得休息一會喝個水<del>然後睡個覺</del>，明天會來繼續討論 <code>singleton class</code> 這個主題！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day28/" data-id="ckgw1jq5v0017vxv53ybg28kz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-day27" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day27/" class="article-date">
+  <time datetime="2020-10-30T05:10:59.636Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/30/day27/">Self &lt;&gt; 真正的男子漢，連道別都不需要語言！ - 滿滿的紅寶石不拿嗎？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/05U7ozz.jpg"></p>
+<blockquote>
+<p>[Day27] 就算身處絕境也要堅守自己的原則！</p>
+</blockquote>
+<p>入秋有點涼意了，伴隨著晚風，我們不如來點小酒，聊聊有關自己的事～<br><del>今夜不醉不歸</del></p>
+<p>不鬧了不鬧了這篇真的是要聊自己，不過是聊的是 Ruby 語言裡，就算天塌了也會永遠做自己的 <code>self</code>！</p>
+<hr>
+<h2 id="self-是什麼？"><a href="#self-是什麼？" class="headerlink" title="self 是什麼？"></a><code>self</code> 是什麼？</h2><p>之前提到類別方法時，我們就已經看過 <code>self</code> 了（還記得貝洛貝蒂嗎？）</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Army</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">fight</span> <span class="comment"># 實體方法</span></span></span><br><span class="line">    puts <span class="string">&quot;我要打倒天龍人！&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">inspire</span> <span class="comment"># 類別方法</span></span></span><br><span class="line">    puts <span class="string">&quot;全部的人都起身戰鬥!&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p><code>self</code> 是一種 Ruby 的虛擬變數(pseudo-variable)，先來看看它屬於哪一類</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.<span class="keyword">class</span></span><br><span class="line"> =&gt; Object</span><br></pre></td></tr></table></figure>
+
+<p>好！確定身分了！<code>self</code> 是個物件！</p>
+<p>不過這個物件有點特別，<code>self</code> 會永遠指向當前正在執行的物件。(喔？似乎和 JavaScript 的 <code>this</code> 有點類似？)</p>
+<p>在類別裡，<code>self</code> 代表目前的類別：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Treasure</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">self</span> <span class="comment"># 類別方法</span></span></span><br><span class="line">    <span class="keyword">self</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">Treasure.<span class="keyword">self</span></span><br><span class="line">=&gt; Treasure</span><br></pre></td></tr></table></figure>
+
+<p>在實體裡，<code>self</code> 則代表目前的實體：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">self</span></span></span><br><span class="line">  <span class="keyword">self</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">captain = <span class="string">&quot;魯夫&quot;</span></span><br><span class="line"></span><br><span class="line">captain.<span class="keyword">self</span></span><br><span class="line">=&gt; <span class="string">&quot;魯夫&quot;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="什麼都沒有直接用-self-會是什麼？"><a href="#什麼都沒有直接用-self-會是什麼？" class="headerlink" title="什麼都沒有直接用 self 會是什麼？"></a>什麼都沒有直接用 <code>self</code> 會是什麼？</h2><p>想知道的話我們用 <code>who_am_i</code> 這個方法來看：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">who_am_i</span></span></span><br><span class="line">  <span class="keyword">self</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">who_am_i</span><br><span class="line">=&gt; main</span><br></pre></td></tr></table></figure>
+
+<p>印出了 <code>main</code> ！這個 <code>main</code> 是什麼呢？別小看它，它是 Ruby 裡層級頗高的一個物件，它也是直接隸屬於 Object 這個類別下的實體。<br>（原來跟 <code>self</code> 是同事啊！）</p>
+<p><code>main</code> 的存在非常有趣，之前提過在物件導向的概念裡，呼叫方法會需要 receiver，而 Ruby 之所以能直接呼叫方法，是因為在這個環境裡，其實已經先偷偷做好了一顆物件，因此如果沒有指定任何物件，這顆物件就會指向 <code>main</code>。</p>
+<hr>
+<h2 id="self-可以用來區分方法和變數"><a href="#self-可以用來區分方法和變數" class="headerlink" title="self 可以用來區分方法和變數"></a><code>self</code> 可以用來區分方法和變數</h2><p>在 Ruby 裡</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pirate</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">supernew</span></span></span><br><span class="line">    <span class="string">&quot;最惡世代&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">difference</span></span></span><br><span class="line">    supernew = <span class="string">&quot;超新星&quot;</span></span><br><span class="line">    puts supernew      <span class="comment"># 印出變數</span></span><br><span class="line">    puts <span class="keyword">self</span>.supernew <span class="comment"># 印出實體方法</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">Pirate.new.difference</span><br></pre></td></tr></table></figure>
+
+<p>在 Ruby 裡，同時存在同名的變數和方法時，會以<strong>變數優先</strong>，但若真的需要呼叫方法，而需要忽略變數的話，可以使用 <code>self</code> 來達成。</p>
+<hr>
+<h2 id="也可以把-self-當作回傳值使用"><a href="#也可以把-self-當作回傳值使用" class="headerlink" title="也可以把 self 當作回傳值使用"></a>也可以把 <code>self</code> 當作回傳值使用</h2><p>肚子有點餓了，想吃個點心：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Snack</span></span></span><br><span class="line">  <span class="keyword">attr_accessor</span> <span class="symbol">:bowl</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span></span></span><br><span class="line">    @bowl = []</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 把穀片倒入碗裡</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">add_cereal</span></span></span><br><span class="line">    @bowl &lt;&lt; <span class="symbol">:cereal</span></span><br><span class="line">    <span class="keyword">self</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 把牛奶倒入碗裡</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">add_milk</span></span></span><br><span class="line">    @bowl &lt;&lt; <span class="symbol">:milk</span></span><br><span class="line">    <span class="keyword">self</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># ... 其他點心</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>現在來盛一碗享用吧！</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my_snack = Snack.new.add_cereal.add_milk</span><br></pre></td></tr></table></figure>
+
+<p>來看看碗裡有什麼：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">my_snack.bowl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出</span></span><br><span class="line">[<span class="symbol">:cereal</span>, <span class="symbol">:milk</span>]</span><br></pre></td></tr></table></figure>
+
+<p>嗯～太棒了！是我喜歡的穀片 + 牛奶～開動！（嚼嚼嚼）</p>
+<hr>
+<p>今天就先到這邊啦～真的嘴饞打算去吃個點心<br>而且關於自己的事也不好講太多（<del>菸</del>）</p>
+<p>如果想了解更多 Ruby 的 <code>self</code> ，網路上有更多大大們分享的精彩文章，都非常值得一看喔！</p>
+<hr>
+<p>參考來源</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10200398">尋找自己: Ruby 的 self 物件與 singleton method</a></li>
+<li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10247843">什麼是 Self ＆ 怎麼使用它</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@anneju/ruby-%E8%A3%A1%E7%9A%84-self-%E6%98%AF%E4%BB%80%E9%BA%BC%E6%84%8F%E6%80%9D-7a1f7007e707">Ruby 裡的 self 是什麼意思</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.itread01.com/p/1184745.html">Ruby self 與作用域</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@icelandcheng/ruby-%E4%B8%AD%E7%9A%84self%E8%AE%8A%E6%95%B8%E4%BB%A5%E5%8F%8A%E6%87%89%E7%94%A8-647664af2b6a">Ruby 中的 self 變數以及應用</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@appletabby/ruby%E5%88%9D%E5%BF%83%E8%80%85%E7%9A%84%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%982-%E9%9B%A3%E4%BB%A5%E6%8D%89%E6%91%B8%E7%9A%84self-957791968226">Ruby 初心者的學習筆記 2：難以捉摸的 self</a></li>
+<li><a target="_blank" rel="noopener" href="https://riverye.com/2019/09/14/Ruby-%E8%A3%A1%E7%9A%84-self-%E6%98%AF%E4%BB%80%E9%BA%BC%E6%84%8F%E6%80%9D/">Ruby 裡的 self 是什麼意思</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day27/" data-id="ckgw1jq5r0015vxv50bfu1y7p" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-day26" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day26/" class="article-date">
+  <time datetime="2020-10-30T05:10:55.451Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/30/day26/">鴨子型別 &lt;&gt; 終於抵達阿拉巴斯坦王國！迎接我們的是 · · · 卡魯鴨？ - 滿滿的紅寶石不拿嗎？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/yiXN2o9.jpg"></p>
+<blockquote>
+<p>[Day26] 卡魯鴨：我跑遍了沙漠，好渴啊！</p>
+</blockquote>
+<p>自從學了 Ruby ，就常聽到別人在說 **鴨子型別(Duck Type)**，可是卻一直沒有弄得很懂，今天決定來了解什麼是鴨子型別！</p>
+<p>開始囉！</p>
+<hr>
+<h2 id="型別"><a href="#型別" class="headerlink" title="型別"></a>型別</h2><p>型別，是一種為了讓資源(位元組)更有效率地被利用而規劃的概念。簡單來說，每筆資料都有自己所屬的型別，譬如：整數、字串、陣列等等．．．</p>
+<p>在<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10235533">鐵人賽第３天</a>裡，我列出了一些 Ruby 常見的資料型別，各自做了簡單的介紹。但型別遠沒有這麼簡單啊！</p>
+<p>Ruby 常被稱作是一種強型別的語言，然而，有強就有弱，判定標準在於語言能否自動轉換型態：像是 JavaScript，經常會偷偷地把變數轉換成可以被執行的資料型態（讓我覺得十分困擾）不過到了 Ruby 這裡，就會被仔細地檢查型別，型別不符的話則會發生錯誤。</p>
+<p>還記得用怎麼類別產生實體物件嗎？產生實體物件也是一種將某個型別實體化的過程。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String.new(<span class="string">&quot;卡魯鴨&quot;</span>)</span><br><span class="line">=&gt; <span class="string">&quot;卡魯鴨&quot;</span></span><br><span class="line"></span><br><span class="line">String.new(<span class="number">123</span>)</span><br><span class="line">TypeError (no implicit conversion of Integer into String)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="動態型別？"><a href="#動態型別？" class="headerlink" title="動態型別？"></a>動態型別？</h2><p>接著，我們可能還要了解「動態型別」是什麼。</p>
+<p>Ruby 被認為一種 <strong>動態型別(Dynamically Typed)</strong> 的語言，「動態、不固定」的意思是 <strong>在命名變數時，不用先宣告是哪種型別</strong></p>
+<p>有了動態型別，我們就能寫出較為簡潔的程式碼。同時，也因為不用先提供型態資訊，因此變數型態是可以改變的。</p>
+<p>舉個例子，比方說先把字串<code>&quot;卡魯鴨&quot;</code> 指定給區域變數 <code>a</code>：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = String.new(<span class="string">&quot;卡魯鴨&quot;</span>)</span><br><span class="line">=&gt; <span class="string">&quot;卡魯鴨&quot;</span></span><br><span class="line"></span><br><span class="line">a = <span class="number">123</span></span><br><span class="line"></span><br><span class="line">a</span><br><span class="line">=&gt; <span class="number">123</span></span><br></pre></td></tr></table></figure>
+
+<p>變數 <code>a</code> 的型別被換成整數(Integer)了！</p>
+<hr>
+<h2 id="鴨子？型別？"><a href="#鴨子？型別？" class="headerlink" title="鴨子？型別？"></a>鴨子？型別？</h2><p>終於要切入今天重點了！</p>
+<p><strong>鴨子型別</strong>是一種程式設計的風格。這種風格認為，一個物件的型別不是由這個物件所屬的類別決定，而是由「它能做什麼」來決定。</p>
+<blockquote>
+<p>如果你看到一隻鳥走起來像鴨子，游泳起來像鴨子；叫起來也像鴨子；那麼這隻鳥就可以被稱為鴨子。</p>
+</blockquote>
+<p>換句話說，想知道一個物件是什麼型別，看它能使用什麼方法就好。</p>
+<p>接下來用程式碼來解釋，現在有 <code>Cat</code> 和 <code>Dog</code> 兩個類別，彼此沒有相互繼承關係。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">hungry</span>  <span class="comment"># 同樣名稱的方法</span></span></span><br><span class="line">    puts <span class="string">&quot;喵～肚子餓了！&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">hungry</span> <span class="comment"># 同樣名稱的方法</span></span></span><br><span class="line">    puts <span class="string">&quot;汪！肚子餓了！&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>再建立一個 <code>Pet</code> 類別，同時定義一個 <code>who_is_hungry</code> 方法可以傳入 <code>name</code>，並讓 <code>name</code> 呼叫 <code>hungry</code> 執行：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pet</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span></span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">who_is_hungry</span><span class="params">(name)</span></span></span><br><span class="line">    name.hungry</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>接著做出幾個實體：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">miru = Cat.new</span><br><span class="line">wolf = Dog.new</span><br><span class="line">pet = Pet.new</span><br></pre></td></tr></table></figure>
+
+<p>現在讓 <code>miru</code> 和 <code>wolf</code> 當作帶入的參數試試：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pet.who_is_hungry(miru)</span><br><span class="line">pet.who_is_hungry(wolf)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出</span></span><br><span class="line">喵～肚子餓了！</span><br><span class="line">汪！肚子餓了！</span><br></pre></td></tr></table></figure>
+
+<p>用其他參數或另外的實體試試：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pet.who_is_hungry(<span class="number">123</span>)</span><br><span class="line">=&gt;NoMethodError (undefined method <span class="string">`hungry&#x27; for 123:Integer)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">fish = Pet.new</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">pet.who_is_hungry(fish)</span></span><br><span class="line"><span class="string">=&gt; NoMethodError (undefined method `</span>hungry<span class="string">&#x27; for #&lt;Pet:0x00007fd74407d0a0&gt;)</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到 <code>pet.who_is_hungry</code> 在傳入 <code>miru</code> 或 <code>wolf</code> 的當下，並沒有要求要檢查它們的型別，但是會確認它們都能執行 <code>hungry</code> 方法才能正常通過！</p>
+<p>真是盡責的小鴨呢！</p>
+<hr>
+<p>關於鴨子型別的的介紹就先到這邊啦！謝謝大家的觀看～</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day26/" data-id="ckgw1jq5p0013vxv5gp28e1pe" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-day25" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day25/" class="article-date">
+  <time datetime="2020-10-30T05:10:50.934Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/30/day25/">例外處理 &lt;&gt; 白鬍子登場！就連海軍大將都無法擊倒的那個男人！- 滿滿的紅寶石不拿嗎？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ithelp.ithome.com.tw/upload/images/20201003/20128363cDiBrBzRjS.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20201003/20128363cDiBrBzRjS.jpg"></p>
+<blockquote>
+<p>[Day25] 就算是海軍本部又怎麼樣，艾斯，老爹來救你了！</p>
+</blockquote>
+<p>這篇要介紹的是 Ruby 裡的<strong>例外處理(Rescue Exception)</strong></p>
+<p>每天都在 coding 的我遇到噴錯已經是家常便飯，而這些錯誤可能是環境、是語法、是邏輯矛盾等等各式各樣的問題所造成。</p>
+<p>然而，工程師除了要解決碰到的每個錯誤，有時候甚至可以「未卜先知」*，如果在撰寫程式碼時，就已經先猜到可能會有錯，並告知程式在特定錯誤發生時該如何處理，就能防範於未然，省下噴錯後還得去找問題的時間。</p>
+<p>*聽說厲害的工程師還會「通靈」！</p>
+<hr>
+<h2 id="什麼是例外處理？"><a href="#什麼是例外處理？" class="headerlink" title="什麼是例外處理？"></a>什麼是例外處理？</h2><p>簡單來說，當程式執行時出現了某個<strong>預料外的結果</strong>，基本上會有兩種情況：</p>
+<ol>
+<li>如果沒有提供 <code>rescue</code> 的話，執行中止</li>
+<li>執行 <code>rescue</code> 裡的程式碼</li>
+</ol>
+<h3 id="預料外的結果？"><a href="#預料外的結果？" class="headerlink" title="預料外的結果？"></a>預料外的結果？</h3><p>「人生不如意事十之八九，程式也會有。」</p>
+<p>我們寫程式時總是可能會寫錯，所以噴錯是非常正常的。<a target="_blank" rel="noopener" href="http://rubylearning.com/satishtalim/ruby_exceptions.html">rubylearning.com</a> 列出了各種可能會產生例外的情況，像是我們很熟悉的<code>SyntaxError</code>、<code>ArgumentError</code>、<code>RuntimeError</code> 等等…</p>
+<p>附上完整版供參：<br><img src="https://i.imgur.com/TSQ95B0.png"></p>
+<p>這時，就是例外處理(Rescue Exception)登場救火的時機了！</p>
+<p>先來看看怎麼寫：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="comment"># 發生了某個錯誤</span></span><br><span class="line"><span class="keyword">rescue</span></span><br><span class="line">  <span class="comment"># 這個錯誤出現時要怎麼處理</span></span><br><span class="line"><span class="keyword">ensure</span> <span class="comment"># (optional)</span></span><br><span class="line">  <span class="comment"># 無論有沒有發生例外，這一段都一定會執行</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>（Ruby 在這裡充分發揮了它的強項：程式碼非常好讀啊！）</p>
+<p>整體運作有點像條件判斷，如果沒有出現例外，就不會進到 <code>rescue</code> 。</p>
+<ul>
+<li>從 <code>begin</code> 到 <code>rescue</code> 是正常執行時的情況</li>
+<li>一旦無法執行，就會將控制權轉移到 <code>rescue</code></li>
+<li>執行 <code>rescue</code> 以下到 <code>end</code> 的區域</li>
+</ul>
+<blockquote>
+<p><code>begin</code> 來自於 <code>Object</code> 類別，基本上和 end 一起使用，主要是用來處理例外產生的機制，常被統稱為 <code>begin block</code> 或是 <code>begin-end block</code> 。</p>
+</blockquote>
+<hr>
+<h2 id="噴錯也是一種例外處理的方式"><a href="#噴錯也是一種例外處理的方式" class="headerlink" title="噴錯也是一種例外處理的方式"></a>噴錯也是一種例外處理的方式</h2><p>平常 Ruby 噴錯所顯示的訊息，實際上也是執行錯誤後產生的一種例外處理。直接看 code 最清楚：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="comment"># 可能出現例外的程式碼</span></span><br><span class="line"><span class="keyword">rescue</span> RuntimeError</span><br><span class="line">  <span class="comment"># 出現RuntimeError時執行</span></span><br><span class="line">  puts <span class="string">&quot;RuntimeErrorr&quot;</span></span><br><span class="line"><span class="keyword">rescue</span> SyntaxError</span><br><span class="line">  <span class="comment"># 出現SyntaxError時執行</span></span><br><span class="line">  puts <span class="string">&quot;SyntaxError&quot;</span></span><br><span class="line"><span class="keyword">rescue</span> ArgumentError</span><br><span class="line">  <span class="comment"># 出現ArgumentError時執行</span></span><br><span class="line">  puts <span class="string">&quot;ArgumentError&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>（這個很重要！沒有的話我就不知道噴錯的原因了！）</p>
+<hr>
+<h2 id="用-raise-自己做出錯誤訊息"><a href="#用-raise-自己做出錯誤訊息" class="headerlink" title="用 raise 自己做出錯誤訊息"></a>用 <code>raise</code> 自己做出錯誤訊息</h2><p>接著再來看個例子：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">  puts <span class="string">&quot;準備執行 raise&quot;</span></span><br><span class="line">  raise <span class="string">&quot;久等啦我就是錯誤訊息！&quot;</span></span><br><span class="line">  puts <span class="string">&quot;結束執行 raise&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> =&gt; <span class="symbol">:raise_exception</span></span><br><span class="line"></span><br><span class="line">raise_exception</span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出</span></span><br><span class="line">準備執行 raise</span><br><span class="line">Traceback (most recent call last)<span class="symbol">:</span></span><br><span class="line">        <span class="number">5</span>: from /Users/jrnalts/.rvm/rubies/ruby-<span class="number">2.6</span>.<span class="number">5</span>/bin/<span class="symbol">irb:</span><span class="number">23</span><span class="symbol">:in</span> <span class="string">`&lt;main&gt;&#x27;</span></span><br><span class="line"><span class="string">        4: from /Users/jrnalts/.rvm/rubies/ruby-2.6.5/bin/irb:23:in `</span>load<span class="string">&#x27;</span></span><br><span class="line"><span class="string">        3: from /Users/jrnalts/.rvm/rubies/ruby-2.6.5/lib/ruby/gems/2.6.0/gems/irb-1.0.0/exe/irb:11:in `&lt;top (required)&gt;&#x27;</span></span><br><span class="line">        <span class="number">2</span>: from (irb)<span class="symbol">:</span><span class="number">17</span></span><br><span class="line">        <span class="number">1</span>: from (irb)<span class="symbol">:</span><span class="number">14</span><span class="symbol">:in</span> <span class="string">`raise_exception&#x27;</span></span><br><span class="line"><span class="string">RuntimeError (久等啦我就是錯誤訊息！)</span></span><br></pre></td></tr></table></figure>
+
+<p>從上面例子裡可以看到， <code>&quot;結束執行 raise&quot;</code> 這行並沒有被印出來，原因是我用 <code>raise</code> 方法觸發了例外處理，使得程式在執行時將控制權交給了 <code>rescue</code></p>
+<blockquote>
+<p><code>raise</code> 是什麼？<br>一個來自於 <code>Kernel</code> 模組的方法，用途是做出一個例外實體，預設是 <code>RuntimeError</code></p>
+</blockquote>
+<p>要做出其他錯誤類型也行！</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">  puts <span class="string">&quot;準備執行 raise&quot;</span></span><br><span class="line">  raise SyntaxError, <span class="string">&quot;你好像寫錯什麼了雖然我不確定&quot;</span></span><br><span class="line">  puts <span class="string">&quot;結束執行 raise&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">raise_exception</span><br><span class="line">準備執行 raise</span><br><span class="line">Traceback (most recent call last)<span class="symbol">:</span></span><br><span class="line">        <span class="number">5</span>: from /Users/jrnalts/.rvm/rubies/ruby-<span class="number">2.6</span>.<span class="number">5</span>/bin/<span class="symbol">irb:</span><span class="number">23</span><span class="symbol">:in</span> <span class="string">`&lt;main&gt;&#x27;</span></span><br><span class="line"><span class="string">        4: from /Users/jrnalts/.rvm/rubies/ruby-2.6.5/bin/irb:23:in `</span>load<span class="string">&#x27;</span></span><br><span class="line"><span class="string">        3: from /Users/jrnalts/.rvm/rubies/ruby-2.6.5/lib/ruby/gems/2.6.0/gems/irb-1.0.0/exe/irb:11:in `&lt;top (required)&gt;&#x27;</span></span><br><span class="line">        <span class="number">2</span>: from (irb)<span class="symbol">:</span><span class="number">29</span></span><br><span class="line">        <span class="number">1</span>: from (irb)<span class="symbol">:</span><span class="number">26</span><span class="symbol">:in</span> <span class="string">`raise_exception&#x27;</span></span><br><span class="line"><span class="string">SyntaxError (你好像寫錯什麼了雖然我不確定)</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="把所有的-rescue-都集中起來吧！"><a href="#把所有的-rescue-都集中起來吧！" class="headerlink" title="把所有的 rescue 都集中起來吧！"></a>把所有的 <code>rescue</code> 都集中起來吧！</h2><p>如果同時有很多地方需要 <code>rescue</code>，我們可以透過 <code>rescue from</code> 把所有例外集中處理，這樣就不用每個地方都寫 <code>rescue</code></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ApplicationController</span> &lt; ActionController::Base</span></span><br><span class="line">  rescue_from User::NotAuthorized, <span class="symbol">:with</span> =&gt; <span class="symbol">:deny_access</span> <span class="comment"># self defined exception</span></span><br><span class="line">  rescue_from ActiveRecord::RecordInvalid, <span class="symbol">:with</span> =&gt; <span class="symbol">:show_errors</span></span><br><span class="line"></span><br><span class="line">  rescue_from <span class="string">&#x27;MyAppError::Base&#x27;</span> <span class="keyword">do</span> <span class="params">|exception|</span></span><br><span class="line">    render <span class="symbol">:xml</span> =&gt; exception, <span class="symbol">:status</span> =&gt; <span class="number">500</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  protected</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">deny_access</span></span></span><br><span class="line">      ...</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">show_errors</span><span class="params">(exception)</span></span></span><br><span class="line">      exception.record.new_record? ? ...</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>感覺方便很多呢！</p>
+<hr>
+<h2 id="例外處理的-begin-和-end-都可以省略"><a href="#例外處理的-begin-和-end-都可以省略" class="headerlink" title="例外處理的 begin 和 end 都可以省略"></a>例外處理的 <code>begin</code> 和 <code>end</code> 都可以省略</h2><p>如果有個例外處理方法：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    puts <span class="string">&#x27;咦...是不是？&#x27;</span></span><br><span class="line">    raise <span class="string">&#x27;有大事發生啦！&#x27;</span></span><br><span class="line">    puts <span class="string">&#x27;哇哇哇！&#x27;</span></span><br><span class="line">  <span class="keyword">rescue</span></span><br><span class="line">    puts <span class="string">&#x27;沒事～哥已經處理好了&#x27;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">raise_exception</span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出</span></span><br><span class="line">咦...是不是？</span><br><span class="line">沒事～哥已經處理好了</span><br><span class="line"> =&gt; nil</span><br></pre></td></tr></table></figure>
+
+<p>在這個凡事都有哥處理好的例子裡，如果我們省略了 <code>begin</code> 和 <code>end</code>：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">  puts <span class="string">&#x27;咦...是不是？&#x27;</span></span><br><span class="line">  raise <span class="string">&#x27;有大事發生啦！&#x27;</span></span><br><span class="line">  puts <span class="string">&#x27;哇哇哇！&#x27;</span></span><br><span class="line"><span class="keyword">rescue</span></span><br><span class="line">  puts <span class="string">&#x27;沒事～哥已經處理好了&#x27;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">raise_exception</span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出</span></span><br><span class="line">咦...是不是？</span><br><span class="line">沒事～哥已經處理好了</span><br><span class="line"> =&gt; nil</span><br></pre></td></tr></table></figure>
+
+<p>程式也是不會壞呢！真的很罩！</p>
+<hr>
+<p>今天就先介紹到這邊啦！期許自己平常在 coding 時也能記得要用上 <code>rescue</code> 的寫法，減少程式噴錯抓錯的情況不停發生！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day25/" data-id="ckgw1jq5o0011vxv54gmg26ur" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-day24" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day24/" class="article-date">
+  <time datetime="2020-10-30T05:10:46.268Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/30/day24/">陣列方法 &lt;&gt; 學不會就無法走出這個錯綜複雜的迷宮！路痴索隆表示：- 滿滿的紅寶石不拿嗎？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/4fPchXW.jpg"></p>
+<blockquote>
+<p>[Day24] 對不起我對陣列方法知道的太少了了！（跪）</p>
+</blockquote>
+<hr>
+<p>今天這篇要向大家介紹一些超級常用的<strong>陣列方法(Array Method)</strong></p>
+<p>先來介紹居家旅行刷題解扣<del>殺人放火</del>的必備：</p>
+<ul>
+<li>select</li>
+<li>map</li>
+<li>reduce</li>
+</ul>
+<h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2><p><code>select</code> 可以在陣列裡挑選出「符合條件」的元素。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">%w&#123; a b c d e f &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 找出是母音的英文字母</span></span><br><span class="line">a.select &#123;<span class="params">|v|</span> v =~ <span class="regexp">/[aeiou]/</span>&#125;   <span class="comment">#=&gt; [&quot;a&quot;, &quot;e&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>%w</code> 是另一種表示陣列的寫法，在這裡例子裡，設定了一個條件陣列<code>[aeiou]</code> 並透過 <code>=~</code> 來篩選出陣列<code>a</code> 與陣列<code>[aeiou]</code> 相符的元素。</p>
+<hr>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p><code>map</code> 是對這個陣列裡的每一個元素做某件事之後，再收集成一個新的陣列，通常會在 <code>map</code> 後面接的 Block 裡寫陣列中每一個元素要做的事。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a = [ <span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>, <span class="string">&quot;d&quot;</span> ]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在每個元素後面加上!</span></span><br><span class="line">a.map &#123;<span class="params">|x|</span> x + <span class="string">&quot;!&quot;</span> &#125;   <span class="comment">#=&gt; [&quot;a!&quot;, &quot;b!&quot;, &quot;c!&quot;, &quot;d!&quot;]</span></span><br><span class="line">a                      <span class="comment">#=&gt; [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">b = [ <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span> ,<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在每個元素後面加上 2 (要是數字)</span></span><br><span class="line">b.map &#123;<span class="params">|n|</span> n + <span class="number">2</span>&#125;      <span class="comment">#=&gt; [ 2, 3, 4 ,6]</span></span><br><span class="line">b                      <span class="comment">#=&gt; [ 0, 1, 2 ,4]</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以使用 <code>collect</code> ！會得到一樣的結果。<br>另外提醒一點，除非是使用 <code>map!</code> 否則原本的陣列是不會改變的！</p>
+<hr>
+<h2 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h2><p><code>reduce</code> 會幫我們把陣列中的每個元素收集起來，拿去運算，最後再告訴我們總計為多少，完全是熱心助人的模範生方法。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 計算一個範圍的數字總和</span></span><br><span class="line">(<span class="number">5</span>..<span class="number">10</span>).reduce(<span class="number">0</span>) &#123; <span class="params">|total, i|</span> total + i &#125;      <span class="comment">#=&gt; 45</span></span><br></pre></td></tr></table></figure>
+
+<p>這邊我解釋一下，這裡假定初始值為 0，然後會依序把 <code>5..10</code> 這個範圍裡的 6 個數字: <code>5</code>, <code>6</code>, <code>7</code>, <code>8</code>, <code>9</code>, <code>10</code> 傳進 Block 和初始值相加（因為在這裡是 <code>+</code>），最後得出結果。</p>
+<p>因此，也就是說 <code>reduce</code> 其實是把陣列裡的每個元素不斷地「互動」，再把每個互動結果全部搜集後，最終再回傳總計的一個方法</p>
+<p>這個例子也可以這樣寫：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">5</span>..<span class="number">10</span>).reduce(<span class="symbol">:+</span>)                             <span class="comment">#=&gt; 45</span></span><br></pre></td></tr></table></figure>
+
+<p>甚至字串也可以</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>].reduce(<span class="symbol">:+</span>)                       <span class="comment">#=&gt; &quot;abc&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>用 <code>inject</code> 也能做到同樣的事！</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Same using a block and inject</span></span><br><span class="line">(<span class="number">5</span>..<span class="number">10</span>).inject &#123; <span class="params">|sum, n|</span> sum + n &#125;            <span class="comment">#=&gt; 45</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># find the longest word</span></span><br><span class="line">longest = <span class="string">%w&#123; cat sheep bear &#125;</span>.inject <span class="keyword">do</span> <span class="params">|memo, word|</span></span><br><span class="line">   memo.length &gt; word.length ? memo : word</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">longest                                        <span class="comment">#=&gt; &quot;sheep&quot;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>接著再來介紹其它也很常用的陣列方法！</p>
+<h2 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h2><p>簡單來說，<code>slice</code> 就是會依照索引值(index) 來取出陣列裡相對應的元素。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a = [ <span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>, <span class="string">&quot;d&quot;</span>, <span class="string">&quot;e&quot;</span> ]</span><br><span class="line">a[<span class="number">2</span>] +  a[<span class="number">0</span>] + a[<span class="number">1</span>]    <span class="comment">#=&gt; &quot;cab&quot;</span></span><br><span class="line">a[<span class="number">6</span>]                   <span class="comment">#=&gt; nil</span></span><br><span class="line">a[<span class="number">1</span>, <span class="number">2</span>]                <span class="comment">#=&gt; [ &quot;b&quot;, &quot;c&quot; ]</span></span><br><span class="line">a[<span class="number">1</span>..<span class="number">3</span>]                <span class="comment">#=&gt; [ &quot;b&quot;, &quot;c&quot;, &quot;d&quot; ]</span></span><br><span class="line">a[<span class="number">4</span>..<span class="number">7</span>]                <span class="comment">#=&gt; [ &quot;e&quot; ]</span></span><br><span class="line">a[<span class="number">6</span>..<span class="number">10</span>]               <span class="comment">#=&gt; nil</span></span><br><span class="line">a[-<span class="number">3</span>, <span class="number">3</span>]               <span class="comment">#=&gt; [ &quot;c&quot;, &quot;d&quot;, &quot;e&quot; ]</span></span><br><span class="line"><span class="comment"># special cases</span></span><br><span class="line">a[<span class="number">5</span>]                   <span class="comment">#=&gt; nil</span></span><br><span class="line">a[<span class="number">5</span>, <span class="number">1</span>]                <span class="comment">#=&gt; []</span></span><br><span class="line">a[<span class="number">5</span>..<span class="number">10</span>]               <span class="comment">#=&gt; []</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="join"><a href="#join" class="headerlink" title="join"></a>join</h2><p><code>join</code> 可以幫我們把陣列裡的元素組合起來，想要的話，中間還可以插入我們指定的東西。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ <span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span> ].join        <span class="comment">#=&gt; &quot;abc&quot;</span></span><br><span class="line">[ <span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span> ].join(<span class="string">&quot;-&quot;</span>)   <span class="comment">#=&gt; &quot;a-b-c&quot;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h2><p><code>concat</code> 可以幫我們把兩個陣列接起來！</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ <span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span> ].concat( [<span class="string">&quot;c&quot;</span>, <span class="string">&quot;d&quot;</span>] ) <span class="comment">#=&gt; [ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot; ]</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>我想身為一個稱職的 Ruby 工程師，為了方便查詢，而把 <a target="_blank" rel="noopener" href="https://ruby-doc.org/core-2.7.1/">Ruby API</a> 放在 Chrome 書籤列最顯眼的地方是非常合理的，畢竟，</p>
+<p>「<code>工欲善其事，必先RTFM</code>」(Read The Fantastic Manual)</p>
+<p>但就算看了文件，到了 <a target="_blank" rel="noopener" href="https://www.codewars.com/">Codewar</a> 和 <a target="_blank" rel="noopener" href="https://leetcode.com/">Leetcode</a> 上面解題時卻還是</p>
+<p><img src="https://i.imgur.com/4FYe2JO.jpg"></p>
+<p>自己對於 Ruby 的方法知道還是太少了！所以今天才想說應該要來複習陣列方法。</p>
+<p>只是，陣列方法百百種，使用時機可說是千變萬化，這幾個只是常用的基礎，記得還是要看手冊喔！</p>
+<p>如果還有其他常用的陣列方法，歡迎補充在下方留言，希望大家都能順利解題～</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day24/" data-id="ckgw1jq5m000zvxv55mgc9g48" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-day23" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day23/" class="article-date">
+  <time datetime="2020-10-30T05:10:40.320Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/30/day23/">empty? nil? blank? &lt;&gt; 聽說今天是滿月？戰鬥力爆表的月亮獅子變身！-   滿滿的紅寶石不拿嗎？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/lcW0wS7.jpg"></p>
+<blockquote>
+<p>[Day23] 加洛特的月亮獅子型態瞬間炸裂全場！</p>
+</blockquote>
+<p>抱歉今天的圖和主題可能關聯性沒這麼強，但選在今天放這張真的再適合不過了！<br>先祝 IT 邦的各位大大中秋節快樂！</p>
+<hr>
+<p>這篇要來繼續弄懂一些自己不是很清楚的東西！<br>接著我們來比較三個很像的概念</p>
+<ul>
+<li><code>empty?</code></li>
+<li><code>nil?</code></li>
+<li><code>blank?</code></li>
+</ul>
+<hr>
+<h2 id="empty"><a href="#empty" class="headerlink" title="empty?"></a><code>empty?</code></h2><p>翻譯：這個是空的嗎？（誰吃完了？）</p>
+<p><code>empty?</code> 是一個用來檢查集合裡是否為空的方法，這裡指的集合包括陣列、雜湊以及字串。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 空的陣列</span></span><br><span class="line">[].empty?</span><br><span class="line">=&gt; true</span><br><span class="line"></span><br><span class="line"><span class="comment"># 空的雜湊</span></span><br><span class="line">&#123;&#125;.empty?</span><br><span class="line">=&gt; true</span><br><span class="line"></span><br><span class="line"><span class="comment"># 空的字串</span></span><br><span class="line"><span class="string">&quot;&quot;</span>.empty?</span><br><span class="line">=&gt; true</span><br><span class="line"></span><br><span class="line"><span class="comment"># 有東西的字串</span></span><br><span class="line"><span class="string">&quot; &quot;</span>.empty?</span><br><span class="line">=&gt; false</span><br></pre></td></tr></table></figure>
+
+<p>最後一個 <code>&quot; &quot;</code> 在 <code>empty?</code> 方法檢查後得到 <code>false</code>，原因是字串內含有「空白」這個值，所以並不是真的為空。</p>
+<hr>
+<h2 id="nil？"><a href="#nil？" class="headerlink" title="nil？"></a><code>nil？</code></h2><p>翻譯：我說你，是不存在嗎？（推眼鏡）</p>
+<p>一開始學的時候，會覺得 <code>false</code> 和 <code>nil</code> 很像，後來才發現意思其實差很多。因為 <code>false</code> 代表的是「錯誤」、「假的」，而 <code>nil</code> 則代表「空的」或「不存在」，在其他語言可能是用 <code>null</code>。</p>
+<p>先把 <code>nil</code> 印出來看看：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">puts <span class="literal">nil</span></span><br><span class="line">=&gt; nil</span><br></pre></td></tr></table></figure>
+
+<p>在 Ruby 裡，所有的物件都不是 <code>nil</code>，而只有 <code>nil</code> 是 <code>nil</code> ，因此在 <code>nil?</code> 方法檢查下：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">nil</span>.<span class="literal">nil</span>?       <span class="comment">#true</span></span><br><span class="line">[].<span class="literal">nil</span>?        <span class="comment">#false</span></span><br><span class="line">&#123;&#125;.<span class="literal">nil</span>?        <span class="comment">#false</span></span><br><span class="line"><span class="string">&quot;&quot;</span>.<span class="literal">nil</span>?        <span class="comment">#false</span></span><br><span class="line"><span class="string">&quot; &quot;</span>.<span class="literal">nil</span>?       <span class="comment">#false</span></span><br><span class="line"><span class="string">&quot;abc&quot;</span>.<span class="literal">nil</span>?     <span class="comment">#false</span></span><br><span class="line"><span class="number">123</span>.<span class="literal">nil</span>?       <span class="comment">#false</span></span><br></pre></td></tr></table></figure>
+
+<p>就 <code>nil</code> 一個跟大家不一樣，也太沒人緣了啊！</p>
+<h3 id="所以我說，nil-它存在嗎？"><a href="#所以我說，nil-它存在嗎？" class="headerlink" title="所以我說，nil 它存在嗎？"></a>所以我說，<code>nil</code> 它存在嗎？</h3><p>這個問法好像在討論哲學議題 :D</p>
+<p><code>nil</code> 在 Ruby 裡其實是真實存在的物件，它只是被用來表示「空的」、「不存在」的概念而已，可以用 <code>nil?</code> 方法來問它是不是 <code>nil</code> （有點詭異）</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">nil</span>.<span class="literal">nil</span>?</span><br><span class="line">=&gt; true</span><br></pre></td></tr></table></figure>
+
+<p><em><code>nil</code> ：我就沒存在感了，還特別問我在不在是怎麼樣？當我塑膠膩！</em></p>
+<p>關於 <code>nil</code> 可以參考龍哥的大作 <a target="_blank" rel="noopener" href="https://railsbook.tw/chapters/05-ruby-basic-1.html">為你自己學 Ruby on Rails</a> ，裡面有更詳細的說明！</p>
+<hr>
+<h2 id="blank"><a href="#blank" class="headerlink" title="blank?"></a><code>blank?</code></h2><p>翻譯：沒有帶奇怪的東西進來就行～（睜一隻眼閉一隻眼）</p>
+<p><code>blank?</code> 則是一個較為寬鬆的檢查方法，不管集合內是「真·空」，還是集合內有「空白」，甚至代表不存在的 <code>nil</code> ，<code>blank?</code> 都可以接受。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">nil</span>.blank?     <span class="comment">#true</span></span><br><span class="line">[].blank?      <span class="comment">#true</span></span><br><span class="line">&#123;&#125;.blank?      <span class="comment">#true</span></span><br><span class="line"><span class="string">&quot;&quot;</span>.blank?      <span class="comment">#true</span></span><br><span class="line"><span class="string">&quot; &quot;</span>.blank?     <span class="comment">#true</span></span><br><span class="line"><span class="string">&quot;abc&quot;</span>.blank?   <span class="comment">#false</span></span><br><span class="line"><span class="number">123</span>.blank?     <span class="comment">#false</span></span><br></pre></td></tr></table></figure>
+
+<p>也就是說，前面 <code>empty?</code> 、 <code>nil?</code> 的所要篩選的概念「空的」以及「不存在」，到了 <code>blank?</code> 這裏一律都會回傳 <code>true</code></p>
+<p><code>blank?</code>：同意啦～哪次不同意～啊等等！有東西的話就真的不行～（追上）</p>
+<hr>
+<p>簡單的比較就到這邊啦！是不是覺得似乎有那麼一點更了解了？（正能量上身）</p>
+<p>在這邊敬祝大家中秋佳節愉快～</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day23/" data-id="ckgw1jq5l000xvxv58ph611vx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-day22" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day22/" class="article-date">
+  <time datetime="2020-10-30T05:10:31.561Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/30/day22/">attr_accessor &lt;&gt; 喲嚯嚯嚯～可以讓我看一下你的 code 嗎？ - 滿滿的紅寶石不拿嗎？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/GzUcwss.jpg"></p>
+<blockquote>
+<p>[Day22] 靈魂之王布魯克為您表演～ 45 度角！</p>
+</blockquote>
+<p>學寫程式也有一陣子了，但直到最近才發現很多時候自己都只是知其然而不知其所以然，而沒有完全了解自己在寫的到底是什麼。</p>
+<p>所以這篇就要來提一些很常被用到，但還不是非常清楚的東西：</p>
+<h2 id="什麼是-getter-？"><a href="#什麼是-getter-？" class="headerlink" title="什麼是 getter ？"></a>什麼是 <code>getter</code> ？</h2><p>顧名思義，就是「取得(某個東西)」的方法，在 Ruby 裡，我們會把取出實體變數這件事稱為 <code>getter</code> ，指的就是取出實體變數的方法。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(name)</span></span></span><br><span class="line">    @name = name</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">miru = Cat.new(<span class="string">&#x27;miru&#x27;</span>)</span><br><span class="line"></span><br><span class="line">miru.name</span><br><span class="line">=&gt; NoMethodError (undefined method <span class="string">`name&#x27; for #&lt;Cat:0x00007ff82783a578 @name=&quot;miru&quot;&gt;)</span></span><br></pre></td></tr></table></figure>
+
+<p>在類別裡，沒有 <code>getter</code> 就無法取出實體變數的值。所以 <code>miru</code> 這個實體拿不到類別裡的實體變數 <code>@name</code>，如果要拿到 <code>@name</code> 的話，就必須給它一個 <code>getter</code>。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(name)</span></span></span><br><span class="line">    @name = name</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">name</span>    <span class="comment">#getter method</span></span></span><br><span class="line">    @name</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">miru = Cat.new(<span class="string">&#x27;miru&#x27;</span>)</span><br><span class="line">miru.name</span><br><span class="line">=&gt; <span class="string">&quot;miru&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>然而，如果每次要取實體變數的值都要重寫一次 <code>getter</code> ，嗯…用想的都覺得麻煩啊！因此超好用的 <code>attr三兄弟</code> 就誕生了！（登愣！）</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>attr_reader</td>
+<td>用來取出實體變數。</td>
+</tr>
+<tr>
+<td>attr_writer</td>
+<td>用來指派實體變數。</td>
+</tr>
+<tr>
+<td>attr_accessor</td>
+<td>結合以上兩者，可取出也可指派實體變數。</td>
+</tr>
+</tbody></table>
+<p>讚嘆工程師們懶惰的美德！</p>
+<hr>
+<h2 id="attr-reader"><a href="#attr-reader" class="headerlink" title="attr_reader"></a><code>attr_reader</code></h2><p><code>attr_reader</code> 可以幫助我們取出實體變數。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="keyword">attr_reader</span> <span class="symbol">:name</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(name)</span></span></span><br><span class="line">    @name = name</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">miru = Cat.new(<span class="string">&#x27;miru&#x27;</span>)</span><br><span class="line">miru.name</span><br><span class="line">=&gt; <span class="string">&quot;miru&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>跟剛剛完全一樣！改成用 <code>attr_reader :name</code> ，所以不用再寫：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">name</span></span></span><br><span class="line">  @name</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>一行抵三行，超級划算！</p>
+<hr>
+<h2 id="什麼是-setter-？"><a href="#什麼是-setter-？" class="headerlink" title="什麼是 setter ？"></a>什麼是 <code>setter</code> ？</h2><p><code>setter</code> 也很好理解，就是「指派」的意思，在 Ruby 裡，我們會定義一個 <code>setter</code> 方法，透過呼叫這個方法，就可以重新指派實體變數。</p>
+<h2 id="attr-writer"><a href="#attr-writer" class="headerlink" title="attr_writer"></a><code>attr_writer</code></h2><p>我們延續剛剛的例子，如果今天有一隻叫做 <code>miru</code> 的貓</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="keyword">attr_reader</span> <span class="symbol">:name</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(name)</span></span></span><br><span class="line">    @name = name</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">miru = Cat.new(<span class="string">&#x27;miru&#x27;</span>)</span><br><span class="line">miru.name</span><br><span class="line">=&gt; <span class="string">&quot;miru&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>而我想替祂換個更響亮的名字，結果不管怎麼寫通通都失敗了！</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">miru.name<span class="string">&quot;neko&quot;</span></span><br><span class="line">=&gt; ArgumentError (wrong number of arguments (given <span class="number">1</span>, expected <span class="number">0</span>))</span><br><span class="line"></span><br><span class="line">miru.name.<span class="string">&quot;neko&quot;</span></span><br><span class="line">=&gt; SyntaxError ((irb)<span class="symbol">:</span><span class="number">14</span>: syntax error, unexpected tSTRING_BEG)</span><br><span class="line"></span><br><span class="line">miru.name = <span class="string">&quot;neko&quot;</span></span><br><span class="line">=&gt; NoMethodError (undefined method <span class="string">`name=&#x27; for #&lt;Cat:0x00007fada005f780 @name=&quot;miru&quot;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>這是因為，在這個類別裡並沒有 <code>setter</code> ，因此產出的實體變數無法重新指派一個新的值。</p>
+<p>那我們試試看加上 <code>setter</code>：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="keyword">attr_reader</span> <span class="symbol">:name</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(name)</span></span></span><br><span class="line">    @name = name</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">name=</span><span class="params">(name)</span></span></span><br><span class="line">    @name = name</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">miru = Cat.new(<span class="string">&#x27;miru&#x27;</span>)</span><br><span class="line">miru.name</span><br><span class="line">=&gt; <span class="string">&quot;miru&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>這時候就可以幫 <code>miru</code> 換個更好聽的名字了！</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">miru.name=(<span class="string">&quot;neko&quot;</span>)</span><br><span class="line">=&gt; <span class="string">&quot;neko&quot;</span></span><br><span class="line">miru.name</span><br><span class="line">=&gt; <span class="string">&quot;neko&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>而由於 Ruby 可以省略小括號的特性，以下這兩種 <code>setter</code> 的寫法可能更常見：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">name=</span> <span class="title">name</span></span></span><br><span class="line">  @name = name</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">name</span> = <span class="title">name</span></span></span><br><span class="line">  @name = name</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>在使用上也可以：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">miru.name = <span class="string">&quot;puma&quot;</span></span><br><span class="line">=&gt; <span class="string">&quot;puma&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>也因為這樣，才會説實體變數也是實體物件的屬性(attribute)，這其中大部分的原因就是 <code>setter</code> 造成的！</p>
+<p>當然，更懶惰的寫法就是用 <code>attr_writer</code> 啦！</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="keyword">attr_reader</span> <span class="symbol">:name</span></span><br><span class="line">  <span class="keyword">attr_writer</span> <span class="symbol">:name</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(name)</span></span></span><br><span class="line">    @name = name</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">miru = Cat.new(<span class="string">&#x27;miru&#x27;</span>)</span><br><span class="line">miru.name</span><br><span class="line">=&gt; <span class="string">&quot;miru&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>同樣也是一行抵三行啦！</p>
+<hr>
+<h2 id="attr-accessor"><a href="#attr-accessor" class="headerlink" title="attr_accessor"></a><code>attr_accessor</code></h2><p>然而，沒有最懶，只有更懶。</p>
+<p><code>attr_accessor</code> 就是整合了前面兩者效果的神奇好夥伴，用了 <code>attr_accessor</code> 以後程式碼都變得超乾淨！等於一次擁有 <code>attr_reader</code> 和 <code>attr_writer</code>：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="keyword">attr_accessor</span> <span class="symbol">:name</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(name)</span></span></span><br><span class="line">    @name = name</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">miru = Cat.new(<span class="string">&#x27;miru&#x27;</span>)</span><br><span class="line">miru.name</span><br><span class="line">=&gt; <span class="string">&quot;miru&quot;</span></span><br><span class="line">miru.name = <span class="string">&quot;wolf&quot;</span></span><br><span class="line">miru.name</span><br><span class="line">=&gt; <span class="string">&quot;wolf&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>是不是很心動！趕快打開 <code>irb</code> 玩玩看吧！</p>
+<p>關於 <code>attr_accessor</code> ，大家可以拜讀龍哥這篇 <a target="_blank" rel="noopener" href="https://kaochenlong.com/2015/03/21/attr_accessor/">Ruby 語法放大鏡之「attr_accessor 是幹嘛的?」</a>，裡面有更多更專業的說明！</p>
+<hr>
+<p>今天就介紹到這邊啦！大家明天見！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day22/" data-id="ckgw1jq5j000tvxv5fa8vaoh4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+  </nav>
 
 </section>
         
@@ -123,9 +983,23 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 10px;">Ruby, 12th鐵人賽</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -145,6 +1019,22 @@
         
           <li>
             <a href="/2020/10/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day30/">Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day29/">Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day28/">Singleton Method &lt;&gt; 是「百獸海賊團」！碰上四皇凱多有勝算嗎？- 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day27/">Self &lt;&gt; 真正的男子漢，連道別都不需要語言！ - 滿滿的紅寶石不拿嗎？</a>
           </li>
         
       </ul>

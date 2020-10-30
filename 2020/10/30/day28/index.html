@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Singleton Method &lt;&gt; 是「百獸海賊團」！碰上四皇凱多有勝算嗎？- 滿滿的紅寶石不拿嗎？ | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[Day28] 今天登場的是媲美侏羅紀公園的百獸海賊團！幹部三災個個雄壯威武，船長凱多更被譽為海賊王世界最強生物！  今日圖已端上，那麼話不多說這篇要介紹的是：單體方法(Singleton Method)  什麼是單體方法第一次聽到 singleton 這個詞是在泰安老師的課上，記得那個時候一邊聽一邊心裡卻在吶喊著：「奇怪明明就是說中文啊···為什麼我有聽沒有懂···」（狀態表示為三觀盡毀）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Singleton Method &lt;&gt; 是「百獸海賊團」！碰上四皇凱多有勝算嗎？- 滿滿的紅寶石不拿嗎？">
+<meta property="og:url" content="http://example.com/2020/10/30/day28/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[Day28] 今天登場的是媲美侏羅紀公園的百獸海賊團！幹部三災個個雄壯威武，船長凱多更被譽為海賊王世界最強生物！  今日圖已端上，那麼話不多說這篇要介紹的是：單體方法(Singleton Method)  什麼是單體方法第一次聽到 singleton 這個詞是在泰安老師的課上，記得那個時候一邊聽一邊心裡卻在吶喊著：「奇怪明明就是說中文啊···為什麼我有聽沒有懂···」（狀態表示為三觀盡毀）">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20201006/20128363CAkf2qfYdC.jpg">
+<meta property="article:published_time" content="2020-10-30T05:11:03.045Z">
+<meta property="article:modified_time" content="2020-10-30T06:36:38.419Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Ruby, 12th鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20201006/20128363CAkf2qfYdC.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-day28" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day28/" class="article-date">
+  <time datetime="2020-10-30T05:11:03.045Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Singleton Method &lt;&gt; 是「百獸海賊團」！碰上四皇凱多有勝算嗎？- 滿滿的紅寶石不拿嗎？
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ithelp.ithome.com.tw/upload/images/20201006/20128363CAkf2qfYdC.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20201006/20128363CAkf2qfYdC.jpg"></p>
+<blockquote>
+<p>[Day28] 今天登場的是媲美侏羅紀公園的百獸海賊團！幹部三災個個雄壯威武，船長凱多更被譽為海賊王世界最強生物！</p>
+</blockquote>
+<p>今日圖已端上，那麼話不多說<br>這篇要介紹的是：單體方法(Singleton Method)</p>
+<hr>
+<h2 id="什麼是單體方法"><a href="#什麼是單體方法" class="headerlink" title="什麼是單體方法"></a>什麼是單體方法</h2><p>第一次聽到 <code>singleton</code> 這個詞是在泰安老師的課上，記得那個時候一邊聽一邊心裡卻在吶喊著：「奇怪明明就是說中文啊···為什麼我有聽沒有懂···」（狀態表示為三觀盡毀）</p>
+<p>直到現在才比較明白了，簡單來說，單體方法是一種專屬於某個物件的方法，</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="comment"># ...</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">meme = Cat.new</span><br><span class="line">didi = Cat.new</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">meme</span>.<span class="title">feet</span>      <span class="comment"># singleton method</span></span></span><br><span class="line">  puts <span class="string">&quot;有穿白襪&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">meme.feet          <span class="comment"># =&gt; 有穿白襪</span></span><br><span class="line">didi.feet          <span class="comment"># =&gt; NoMethodError (undefined method `feet&#x27; for #&lt;Cat:0x00007fd2359aa790&gt;)</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到這邊定義的 <code>feet</code> 方法只能給 <code>meme</code> 這個實體物件使用，而其他的實體物件，就算是同一類別產生的實體，都無法使用 <code>feet</code> 方法，</p>
+<p>由此可知，我們可以在任意物件上定義單體方法，不過前提是要先有那個物件存在，不然就會看到噴錯：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="comment"># ...</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">meme</span>.<span class="title">feet</span>      <span class="comment"># singleton method</span></span></span><br><span class="line">  puts <span class="string">&quot;有穿白襪&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">meme = Cat.new</span><br><span class="line"></span><br><span class="line">meme.feet          <span class="comment"># =&gt; NameError (undefined local variable or method `meme&#x27; for main:Object)</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="看起來好像跟類別方法有點像？"><a href="#看起來好像跟類別方法有點像？" class="headerlink" title="看起來好像跟類別方法有點像？"></a>看起來好像跟類別方法有點像？</h2><p>沒錯！類別方法其實也是一種單體方法，之前介紹到類別方法時，會這樣寫：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Crew</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">all</span></span></span><br><span class="line">    puts <span class="string">&quot;全員到齊&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">Crew.all        <span class="comment"># =&gt; &quot;全員到齊&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>在這裡，我們可以把 <code>self</code> 換成這個類別 <code>Crew</code> (昨天有提到 <code>self</code> 指向目前正在執行的物件），所以這樣寫也是可以的：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Crew</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">Crew</span>.<span class="title">all</span></span></span><br><span class="line">    puts <span class="string">&quot;全員到齊&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">Crew.all        <span class="comment"># =&gt; &quot;全員到齊&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>又或者這樣，在類別裡執行類別方法也是可以的：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Crew</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">Crew</span>.<span class="title">all</span></span></span><br><span class="line">    puts <span class="string">&quot;全員到齊&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  all</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出</span></span><br><span class="line">全員到齊</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="單體方法被定義在哪裡？"><a href="#單體方法被定義在哪裡？" class="headerlink" title="單體方法被定義在哪裡？"></a>單體方法被定義在哪裡？</h2><p>在一開始的例子裡，我看到 <code>meme</code> 可以呼叫我自己定義的 <code>feet</code> 方法，但仍然有些不解，為什麼這個方法被定義在類別的外面，卻又只能給特定的實體取用呢？</p>
+<p>我們先看一般的方法定義：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">eat</span></span></span><br><span class="line">  <span class="string">&quot;肚子餓了就要吃東西&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">meme = Cat.new</span><br><span class="line"></span><br><span class="line">meme.eat        <span class="comment"># =&gt; &quot;肚子餓了就要吃東西&quot;</span></span><br><span class="line">didi.eat        <span class="comment"># =&gt; &quot;肚子餓了就要吃東西&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>嗯···明顯不一樣，揪竟單體方法是被定義在哪裡呢？<br><code>meme.feet</code> 又做了什麼呢？</p>
+<hr>
+<p>今天到這邊先告個段落，要理解艱澀的概念，我們必須得休息一會喝個水<del>然後睡個覺</del>，明天會來繼續討論 <code>singleton class</code> 這個主題！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day28/" data-id="ckgw1jq5v0017vxv53ybg28kz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/30/day29/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/30/day27/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Self &lt;&gt; 真正的男子漢，連道別都不需要語言！ - 滿滿的紅寶石不拿嗎？</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 10px;">Ruby, 12th鐵人賽</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day30/">Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day29/">Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day28/">Singleton Method &lt;&gt; 是「百獸海賊團」！碰上四皇凱多有勝算嗎？- 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day27/">Self &lt;&gt; 真正的男子漢，連道別都不需要語言！ - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

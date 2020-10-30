@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？ | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[Day29] 記錄指針是海賊王世界裡一種外觀像手錶，中央為球形的特殊羅盤。可以偵測並記下偉大航路內各個島嶼放出的磁場，為海上航行的船隻提供正確的路線。  延續昨天的主題，我們已經知道單體方法是怎麼被定義的，但它既不屬於類別方法，也不是實體方法，那它到底被定義在哪裡呢？ 先說結論：單體方法被寫在 Singleton Class 裡。  走過的路 是一陣魔術······都化作這目光 吟唱成一首歌">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？">
+<meta property="og:url" content="http://example.com/2020/10/30/day29/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[Day29] 記錄指針是海賊王世界裡一種外觀像手錶，中央為球形的特殊羅盤。可以偵測並記下偉大航路內各個島嶼放出的磁場，為海上航行的船隻提供正確的路線。  延續昨天的主題，我們已經知道單體方法是怎麼被定義的，但它既不屬於類別方法，也不是實體方法，那它到底被定義在哪裡呢？ 先說結論：單體方法被寫在 Singleton Class 裡。  走過的路 是一陣魔術······都化作這目光 吟唱成一首歌">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/4obaSRL.jpg">
+<meta property="og:image" content="https://i.imgur.com/ZdDx8kk.jpg">
+<meta property="og:image" content="https://i.imgur.com/VC66dMB.jpg">
+<meta property="og:image" content="https://i.imgur.com/546vO19.jpg">
+<meta property="article:published_time" content="2020-10-30T05:11:08.201Z">
+<meta property="article:modified_time" content="2020-10-30T06:37:07.010Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Ruby, 12th鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/4obaSRL.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-day29" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day29/" class="article-date">
+  <time datetime="2020-10-30T05:11:08.201Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/4obaSRL.jpg"></p>
+<blockquote>
+<p>[Day29] 記錄指針是海賊王世界裡一種外觀像手錶，中央為球形的特殊羅盤。可以偵測並記下偉大航路內各個島嶼放出的磁場，為海上航行的船隻提供正確的路線。</p>
+</blockquote>
+<p>延續昨天的主題，我們已經知道單體方法是怎麼被定義的，但它既不屬於類別方法，也不是實體方法，那它到底被定義在哪裡呢？</p>
+<p>先說結論：單體方法被寫在 <code>Singleton Class</code> 裡。</p>
+<blockquote>
+<p><em>走過的路 是一陣魔術···<br>···都化作這目光 吟唱成一首歌</em></p>
+</blockquote>
+<p>抱歉突然想唱個歌，讓我們進入正題～</p>
+<hr>
+<h3 id="Singleton-Class-是什麼？"><a href="#Singleton-Class-是什麼？" class="headerlink" title="Singleton Class 是什麼？"></a><code>Singleton Class</code> 是什麼？</h3><p>如果是初學 Ruby 這門程式語言的朋友，一開始幾乎不太會接觸到 <code>Singleton Class</code> 的概念。在一般的繼承鍊裡，我們只學過 <code>Class</code> &lt; <code>Object</code> &lt; <code>BaseObject</code> 這種一直往上找，層層相疊的繼承關係。</p>
+<p>不過實際上在 Ruby 的物件導向設計裡，還有一個非常神祕的類別，<br>那就是 <code>Singleton Class</code>：</p>
+<ul>
+<li>它是設計給單一物件使用的類別</li>
+<li>又被稱為 <code>metaclass</code> 或 <code>eigenclass</code></li>
+<li>在 <code>Singleton Class</code> 上定義的方法就是單體方法</li>
+</ul>
+<p>回顧昨天的例子：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="comment"># ...</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">meme = Cat.new</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">meme</span>.<span class="title">feet</span></span></span><br><span class="line">  puts <span class="string">&quot;有穿白襪&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">meme.feet          <span class="comment"># =&gt; 有穿白襪</span></span><br></pre></td></tr></table></figure>
+
+<p>雖然單體方法 <code>feet</code> 是寫在類別的外面，但 Ruby 其實有偷偷為 <code>meme</code> 準備了一個 <code>Singleton Class</code> ，而 <code>feet</code> 方法就被定義在裡面：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="comment"># ...</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">meme = Cat.new</span><br><span class="line"></span><br><span class="line"><span class="comment"># singleton class of meme</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">meme</span>.<span class="title">feet</span></span></span><br><span class="line">  puts <span class="string">&quot;有穿白襪&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment"># end</span></span><br><span class="line"></span><br><span class="line">meme.feet          <span class="comment"># =&gt; 有穿白襪</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>有看到 <code>Singleton Class</code> 嗎？</p>
+<p>沒看到？</p>
+<p>嗯··· 代表你非常正常！</p>
+<p>通常在開了天眼後才看得到</p>
+<p>所以泰安老師叫它「跟鬼一樣的類別」！</p>
+</blockquote>
+<hr>
+<h2 id="我要在哪裡找到-Singleton-Class？"><a href="#我要在哪裡找到-Singleton-Class？" class="headerlink" title="我要在哪裡找到 Singleton Class？"></a>我要在哪裡找到 <code>Singleton Class</code>？</h2><p>其實我還不知道如何在 irb 裡顯示物件的 <code>Singleton Class</code>，不過，通過類別物件的繼承或許可以看出一點端倪。</p>
+<p>繼承最核心的概念就是子層類別的物件可以拿父層類別的方法來用，類別方法也同樣遵循著這套繼承的規則</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">all</span></span></span><br><span class="line">    puts <span class="string">&quot;全部的動物&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> &lt; Animal</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">all</span></span></span><br><span class="line">    puts <span class="string">&quot;貓咪王國！&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">Cat.all            <span class="comment"># =&gt; 貓咪王國！</span></span><br></pre></td></tr></table></figure>
+
+<p>如果有同名的類別方法，則會優先呼叫定義在 <code>Singleton Class</code> 的那個。</p>
+<p>昨天有提到，類別方法其實也是單體方法的一種，所以每個類別的類別方法就會定義在自己的 <code>Singleton Class</code> 上，像是這樣：</p>
+<p><img src="https://i.imgur.com/ZdDx8kk.jpg"></p>
+<p>現在我們知道了，當一個 Ruby 物件在呼叫方法時，會先往 <code>Singlton Class</code> 找看看，沒有的話，會再往上從繼承的類別裡尋找。</p>
+<hr>
+<h2 id="Ruby-裡的物件導向："><a href="#Ruby-裡的物件導向：" class="headerlink" title="Ruby 裡的物件導向："></a>Ruby 裡的物件導向：</h2><p>既然都已經講了 <code>Singleton Class</code>，那就不得不來介紹 Ruby 裡的物件導向了！</p>
+<p>「物件導向」這四個字看起來又是個高大上，一開始總覺得如果能說清楚這個概念，好像自己會變很聰明，但事實上，它就只是個語言的設計概念。（另一個事實則是我笨）</p>
+<p>接下來會用到這兩個方法：<br>|方法|說明<br>|—|—|<br>|<code>superclass</code>| 尋找自己繼承的父層類別<br>|<code>class</code>| 尋找自己所屬的類別</p>
+<p><code>superclass</code> 和 <code>class</code> 能有助於更加釐清 <code>Singleton Class</code> 以及 Ruby 裡物件導向的概念。</p>
+<p>繼續沿用剛才的例子，並用這兩個方法來看看吧！</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="comment"># ...</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">meme = Cat.new</span><br><span class="line"></span><br><span class="line">meme.<span class="keyword">class</span>              <span class="comment"># =&gt; Cat</span></span><br><span class="line">meme.superclass         <span class="comment"># =&gt; NoMethodError (undefined method `superclass&#x27; for #&lt;Cat:0x00007fd482123eb0&gt;)</span></span><br></pre></td></tr></table></figure>
+
+<p>咦？ <code>superclass</code> 噴錯了！不過沒關係，因為實體物件本來就沒有繼承的父層類別，繼續來看：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cat.<span class="keyword">class</span>               <span class="comment"># =&gt; Class</span></span><br><span class="line">Cat.superclass          <span class="comment"># =&gt; Object</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Cat</code> 這個類別是屬於一個叫做 <code>Class</code> 的類別，或者說，在 Ruby 裡，所有的類別都屬於 <code>Class</code> 這個類別。</p>
+<p>而 <code>Cat</code> 這個類別是繼承自一個叫做 <code>Object</code> 的類別，”Object”，也就是物件的意思，以一個物件導向的語言來說，出現這個名字很合理，繼續看下去：</p>
+<p>我們來對 <code>Class</code> 試試看吧：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class.<span class="keyword">class</span>             <span class="comment"># =&gt; Class</span></span><br><span class="line">Class.superclass        <span class="comment"># =&gt; Module</span></span><br></pre></td></tr></table></figure>
+
+<p>這次出現了有趣的事情，果然全天下的類別都是屬於 <code>Class</code> 這個類別，因此 <code>Class</code> 所屬的類別也是 <code>Class</code> 自己。</p>
+<p>而 <code>Class</code> 繼承的類別居然是 <code>Module</code> ! 這不是模組嗎？不過仔細一瞧才發現大寫的 <code>Module</code> 是類別，小寫的 <code>module</code> 則是模組，只是，Ruby 設計者沒想過會讓大家困惑嗎 XDDD</p>
+<p>做一個模組出來試試看：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Flyable</span></span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">Flyable.<span class="keyword">class</span>           <span class="comment"># =&gt; Module</span></span><br><span class="line">Flyable.superclass      <span class="comment"># =&gt; NoMethodError (undefined method `superclass&#x27; for Flyable:Module)</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Flyable</code> 這個模組屬於 <code>Module</code> 這個類別，而 <code>Flyable</code> 沒有向上的繼承類別（這是因為 Ruby 裡的模組本來就無法繼承）</p>
+<p>但令人驚訝的是 <code>Class</code> 竟然是繼承自 <code>Module</code> ！當初在學習時，就有發現模組和類別兩個概念很像，但我原本一直以為模組可能是類別的副產品之類的，</p>
+<p>沒想到···竟然是反過來<br>真是世事難料啊!!!</p>
+<p>接著我們來看看這個 <code>Object</code></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object.<span class="keyword">class</span>            <span class="comment"># =&gt; Class</span></span><br><span class="line">Object.superclass       <span class="comment"># =&gt; BasicObject</span></span><br></pre></td></tr></table></figure>
+
+<p>不出所料，<code>Object</code> 的類別是 <code>Class</code>，而繼承自 <code>BasicObject</code> 類別這個又是什麼？名字怎麼都取這麼像啊！</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BasicObject.<span class="keyword">class</span>       <span class="comment"># =&gt; Class</span></span><br><span class="line">BasicObject.superclass  <span class="comment"># =&gt; nil</span></span><br></pre></td></tr></table></figure>
+
+<p><code>BasicObject</code> 的類別也是 <code>Class</code>，而再往上就沒有了！</p>
+<p>目前可以得到像這樣的圖：<br><img src="https://i.imgur.com/VC66dMB.jpg"></p>
+<p>最後來看 <code>Module</code>：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Module.<span class="keyword">class</span>            <span class="comment"># =&gt; Class</span></span><br><span class="line">Module.superclass       <span class="comment"># =&gt; Object</span></span><br></pre></td></tr></table></figure>
+
+<p>嗯···類別是 <code>Class</code>，然後繼承自···咦！<code>Object</code>！那不就</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object.<span class="keyword">class</span>            <span class="comment"># =&gt; Class</span></span><br><span class="line">Class.superclass        <span class="comment"># =&gt; Module</span></span><br><span class="line">Module.superclass       <span class="comment"># =&gt; Object</span></span><br></pre></td></tr></table></figure>
+
+<p>你們這樣繞來繞去，弄得我頭很痛啊！還好網路上已經有大大梳理好它們彼此之間的關係</p>
+<p><img src="https://i.imgur.com/546vO19.jpg"></p>
+<p>看圖是不是清楚多了呢？<br>說實話，韓劇每個角色的關係圖都比這都複雜多了！</p>
+<hr>
+<p>今天的文章就先到這裡了，</p>
+<p>以上就是我對 Ruby 物件導向的理解，自己覺得這篇的脈絡有點亂，就和思緒一樣，可能也有一些理解錯誤的地方，大大們如果看到的話還請不吝指出，日後還會繼續進行釐清和整理的。</p>
+<p>覺得好像感冒了…頭好昏啊！</p>
+<hr>
+<p>參考來源<br><a target="_blank" rel="noopener" href="https://qpzm.github.io/2019/09/09/metaprogramming-ruby.html">Metaprogramming in Ruby 2 - The Object Model</a><br><a target="_blank" rel="noopener" href="https://www.spreered.com/ruby-object-model-1/">speedred - Ruby 的繼承鍊 (1) - 如何實踐物件導向</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day29/" data-id="ckgw1jq5w0019vxv591i30v2k" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/30/day30/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴 - 滿滿的紅寶石不拿嗎？
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/30/day28/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Singleton Method &lt;&gt; 是「百獸海賊團」！碰上四皇凱多有勝算嗎？- 滿滿的紅寶石不拿嗎？</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 10px;">Ruby, 12th鐵人賽</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day30/">Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day29/">Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day28/">Singleton Method &lt;&gt; 是「百獸海賊團」！碰上四皇凱多有勝算嗎？- 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day27/">Self &lt;&gt; 真正的男子漢，連道別都不需要語言！ - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

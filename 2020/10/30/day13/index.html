@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>模組 &lt;&gt; 想得到夢寐以求的惡魔果實能力嗎？先裝一個吧！ - 滿滿的紅寶石不拿嗎？ | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[Day12] 啊你說這個不能吃是嗎？   哈囉！今天要跟大家介紹的是**模組(Module)**。 在 Ruby 的世界裡，模組是一個特殊又好用的東西，它就跟大名鼎鼎「惡魔果實」一樣，只要吃下去就能獲得那顆果實的特殊能力（完全是個不用靠爸就能成為主角的神奇道具啊！） 在理解模組時，可以想成是它加裝了一個東西原本沒有的功能，大概就像這樣：這真是太神奇了傑克！ 有了模組，我們就不需要使用昨天介紹">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模組 &lt;&gt; 想得到夢寐以求的惡魔果實能力嗎？先裝一個吧！ - 滿滿的紅寶石不拿嗎？">
+<meta property="og:url" content="http://example.com/2020/10/30/day13/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[Day12] 啊你說這個不能吃是嗎？   哈囉！今天要跟大家介紹的是**模組(Module)**。 在 Ruby 的世界裡，模組是一個特殊又好用的東西，它就跟大名鼎鼎「惡魔果實」一樣，只要吃下去就能獲得那顆果實的特殊能力（完全是個不用靠爸就能成為主角的神奇道具啊！） 在理解模組時，可以想成是它加裝了一個東西原本沒有的功能，大概就像這樣：這真是太神奇了傑克！ 有了模組，我們就不需要使用昨天介紹">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20200921/20128363w0Jr8PDGKz.jpg">
+<meta property="og:image" content="https://i.imgur.com/O2FNY1H.jpg">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20200921/20128363XrK019kUJO.jpg">
+<meta property="article:published_time" content="2020-10-30T05:09:25.040Z">
+<meta property="article:modified_time" content="2020-10-30T05:15:01.571Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Ruby, 12th鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20200921/20128363w0Jr8PDGKz.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-day13" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day13/" class="article-date">
+  <time datetime="2020-10-30T05:09:25.040Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      模組 &lt;&gt; 想得到夢寐以求的惡魔果實能力嗎？先裝一個吧！ - 滿滿的紅寶石不拿嗎？
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ithelp.ithome.com.tw/upload/images/20200921/20128363w0Jr8PDGKz.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20200921/20128363w0Jr8PDGKz.jpg"></p>
+<blockquote>
+<p>[Day12] 啊你說這個不能吃是嗎？</p>
+</blockquote>
+<hr>
+<p>哈囉！今天要跟大家介紹的是**模組(Module)**。</p>
+<p>在 Ruby 的世界裡，模組是一個特殊又好用的東西，它就跟大名鼎鼎「惡魔果實」一樣，只要吃下去就能獲得那顆果實的特殊能力（完全是個不用靠爸就能成為主角的神奇道具啊！）</p>
+<p>在理解模組時，可以想成是它加裝了一個東西原本沒有的功能，大概就像這樣：<br><img src="https://i.imgur.com/O2FNY1H.jpg"><br><em>這真是太神奇了傑克！</em></p>
+<p>有了模組，我們就不需要使用昨天介紹到的類別繼承，那麼，要如何做到這件事呢？</p>
+<hr>
+<h2 id="include"><a href="#include" class="headerlink" title="include"></a><code>include</code></h2><p>請先詳閱以下使用說明書：</p>
+<p>先定義一個模組 <code>Floatable</code> ：<br>模組的命名規則就和類別一樣，也必須是大字英文字母開頭的常數。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Floatable</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">float</span></span></span><br><span class="line">    puts <span class="string">&quot;浮起來了!&quot;</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>再定義一個 <code>Bicycle</code> 的類別：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bicycle</span></span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>產生一個 <code>your_bike</code> 實體，然後使用 <code>float</code> 方法試試看：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">your_bike = Bicycle.new</span><br><span class="line">your_bike.float</span><br><span class="line"></span><br><span class="line">=&gt; NoMethodError (undefined method <span class="string">`float&#x27; for #&lt;Bicycle:0x00007fd90901ba28&gt;)</span></span><br></pre></td></tr></table></figure>
+
+<p><em>居然失敗了！為什麼？<br>因為沒有在腳踏車上裝上可以浮起來的氣墊啊！怎麼可能會成功！</em></p>
+<h3 id="—-需要在類別裡使用-include-來裝模組！—"><a href="#—-需要在類別裡使用-include-來裝模組！—" class="headerlink" title="— 需要在類別裡使用 include 來裝模組！—"></a>— 需要在類別裡使用 <code>include</code> 來裝模組！—</h3><p>在 <code>Bicycle</code> 類別裝上剛剛做好的 <code>Floatable</code> 模組吧！</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bicycle</span></span></span><br><span class="line">  <span class="keyword">include</span> Floatable <span class="comment"># 引入模組</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>重新產生一個 <code>my_bike</code> 實體，然後使用 <code>float</code> 方法：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">my_bike = Bicycle.new</span><br><span class="line">my_bike.float</span><br><span class="line"></span><br><span class="line"><span class="comment"># 印出</span></span><br><span class="line">浮起來了!</span><br></pre></td></tr></table></figure>
+
+<p>嘿嘿～現在我的腳踏車可以浮在水面上了！</p>
+<hr>
+<h2 id="extend"><a href="#extend" class="headerlink" title="extend"></a><code>extend</code></h2><p>接著，我們再來看看更神奇的 <code>extend</code>：</p>
+<p>假如你今天有一顆引擎的模組，然後把它裝在腳踏車上，腳踏車從此以後就可以用引擎運轉前進了！不過，如果想把腳踏車改造成氮氣噴射的功能，變成<code>阿姆斯特朗旋風噴射阿姆斯特朗砲</code> 的話呢？</p>
+<p>這時候就會用上讓模組擴充模組的 <code>extend</code> 了！<br>廢話說完了，接著來看 code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">module Engine</span><br><span class="line">  def run</span><br><span class="line">    puts &quot;全速啟動！&quot;</span><br><span class="line">  end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">module Acceleration</span><br><span class="line">  def accelerate</span><br><span class="line">    puts &quot;氮氣噴射！！！&quot;</span><br><span class="line">  end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">class Bike</span><br><span class="line">  include Engine</span><br><span class="line">  extend Acceleration</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">max &#x3D; Bike.new</span><br><span class="line"></span><br><span class="line">max.run</span><br><span class="line"></span><br><span class="line"># 印出</span><br><span class="line">全速啟動！</span><br><span class="line"></span><br><span class="line">Bike.accelerate</span><br><span class="line"># 印出</span><br><span class="line">氮氣噴射！！！</span><br></pre></td></tr></table></figure>
+
+<p>看出來了嗎？ 原本的 <code>Engine</code> 模組在被 <code>include</code> 後，只是讓腳踏車可以用引擎運轉，但 <code>Acceleration</code> 模組被 <code>extend</code> 後則徹底改造了腳踏車這個類別，讓它完全升級為一種不同的交通工具了(誤)</p>
+<p>但如果讓 <code>max</code> 呼叫 <code>accelerate</code> 方法或是讓 <code>Bike</code> 呼叫 <code>run</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">max.accelerate</span><br><span class="line"># 印出</span><br><span class="line">NoMethodError (undefined method &#96;accelerate&#39; for #&lt;Bike:0x00007fec3f2aaf70&gt;)</span><br><span class="line"></span><br><span class="line">Bike.run</span><br><span class="line"># 印出</span><br><span class="line">NoMethodError (undefined method &#96;run&#39; for Bike:Class)</span><br></pre></td></tr></table></figure>
+
+<p>就都找不到方法了，所以…</p>
+<p>說人話版本 =&gt;</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Bike.accelerate  <span class="comment"># 類別方法 / 用 extend 引入</span></span><br><span class="line">Bike.new.run     <span class="comment"># 實體方法 / 用 include 引入</span></span><br></pre></td></tr></table></figure>
+
+<p>明天會再介紹什麼是類別方法和實體方法！（挖坑）</p>
+<hr>
+<h2 id="聽說模組和類別很像？"><a href="#聽說模組和類別很像？" class="headerlink" title="聽說模組和類別很像？"></a>聽說模組和類別很像？</h2><p>是的，他們很像。<br>譬如名字都是大寫字母開頭、裡面會放一些方法。在專案裡，如果只看到一個大寫開頭的常數，並沒有辦法確定現在看到的是模組還是類別！不過，它們還是有一些明顯的差異。</p>
+<p>舉個例子，可能很多人<del>在純真的童年時</del>會夢想像鳥類一樣在天上飛，在 20 世紀初，萊特兄弟發明了可以載人的飛機，但直到今天，人們仍然不算是學會了飛行。</p>
+<p>如果真的要讓人類可以飛，該怎麼做？</p>
+<p>首先，鳥類這個類別應該會有一個 <code>fly</code> 的方法，</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bird</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">fly</span></span></span><br><span class="line">    <span class="comment"># 可以飛行的秘密</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>然後繼承它?<br><del>class Human &lt; Bird</del><br><del>end</del><br>等等！我們的祖先又不是鳥類，所以不應該使用類別繼承吧！</p>
+<p>那掛載一個會可以讓人飛行的模組？</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Flyable</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">fly</span></span></span><br><span class="line">    <span class="comment"># 可以飛行的秘密</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Human</span></span></span><br><span class="line">  intend Flayable</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>我們終於成功裝上了 <code>Flyable</code> ！從此以後，人類就可以飛了！</p>
+<hr>
+<h2 id="Class-和-Module-的方法數量"><a href="#Class-和-Module-的方法數量" class="headerlink" title="Class 和 Module 的方法數量"></a><code>Class</code> 和 <code>Module</code> 的方法數量</h2><p>瞎扯了一堆，接著我們直接進程式裡看看：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查詢 Class 和 Module 的方法和數量</span></span><br><span class="line"></span><br><span class="line">p Module.instance_methods.count</span><br><span class="line"><span class="number">109</span></span><br><span class="line"></span><br><span class="line">p Class.instance_methods.count</span><br><span class="line"><span class="number">112</span></span><br></pre></td></tr></table></figure>
+
+<p><code>instance_methods.count</code> 可以幫我們計算一個類別能使用的方法有多少，可以發現雖然兩者的方法都很多，但 <code>Class</code> 比 <code>Module</code> 硬是多出了 3 個方法！</p>
+<p>來看看多出的是哪幾個：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p Class.instance_methods(<span class="literal">false</span>)</span><br><span class="line">[<span class="symbol">:new</span>, <span class="symbol">:allocate</span>, <span class="symbol">:superclass</span>]</span><br></pre></td></tr></table></figure>
+
+<p>由於 <code>Module</code> 少了 <code>:new</code>, <code>:allocate</code>, <code>:superclass</code> 這些方法 ，所以：</p>
+<ol>
+<li>模組沒辦法 <code>new</code> 一個新的實體。</li>
+<li>模組也 <code>無法繼承</code> 別的模組。</li>
+</ol>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m = Module.new</span><br><span class="line"></span><br><span class="line">m</span><br><span class="line">=&gt; #&lt;Module:0x00007f97268b6310&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">m.new</span><br><span class="line"></span><br><span class="line">=&gt; NoMethodError (undefined method <span class="string">`new&#x27; for #&lt;Module:0x00007f97268b6310&gt;)</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Namespace"><a href="#Namespace" class="headerlink" title="Namespace::"></a>Namespace<code>::</code></h2><p><code>namespace</code>？這又是什麼？想像一下，我的車有一顆引擎，你的車也有一顆引擎，但你開的是 BMW 旗艦 V12 雙門跑車，我開的是 Toyota Camry (Camry 錯了嗎?），那這兩輛車會是同樣的車嗎？很明顯不是！（怒）</p>
+<p>那要怎麼解決這種問題呢，簡單來說，<code>namespace</code> 就是為了避免叫到同名類別，導致程式無法判讀的問題。我們在呼叫類別時，可以連名帶姓地呼叫：</p>
+<p>譬如專案裡常常會看到的：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 類別(模組)::類別</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> &lt; ActiveRecord::Base</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span></span><br><span class="line">  <span class="class"><span class="keyword">module</span> <span class="title">B</span></span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>如此一來，我們就能很清楚地知道 <code>User</code> 類別是繼承自 <code>Base</code> 類別，而這個 <code>Base</code> 類別是屬於 <code>ActiveRecord</code> 這個模組(或類別)裡的，其他地方如果有叫 <code>Base</code> 的類別都不是！</p>
+<p>有興趣的朋友可以看看龍哥的這篇大作：<br><a target="_blank" rel="noopener" href="https://kaochenlong.com/2015/04/19/namespace/">Ruby 語法放大鏡之「有時候會看到有兩個冒號寫法是什麼意思?」</a></p>
+<hr>
+<p>說了這麼多，今天就先到這邊囉！<br>相信大家應該都認識模組了！明天見囉！</p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20200921/20128363XrK019kUJO.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20200921/20128363XrK019kUJO.jpg"><br><em>旗木卡卡西：是不是忘了介紹我？寫輪眼才是最強的模組啊！</em></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day13/" data-id="ckgw1jq5b000jvxv58icygljd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/30/day14/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          類別方法 &lt;&gt; 雜魚們！為革命軍獻出你們的心臟吧！ - 滿滿的紅寶石不拿嗎？
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/30/day12/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">繼承 &lt;&gt; D 的意志！鐵拳卡普、革命家龍、草帽魯夫，這一家真的沒開外掛嗎？ - 滿滿的紅寶石不拿嗎？</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 10px;">Ruby, 12th鐵人賽</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day30/">Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day29/">Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day28/">Singleton Method &lt;&gt; 是「百獸海賊團」！碰上四皇凱多有勝算嗎？- 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day27/">Self &lt;&gt; 真正的男子漢，連道別都不需要語言！ - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

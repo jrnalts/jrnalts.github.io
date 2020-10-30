@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴 - 滿滿的紅寶石不拿嗎？ | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[Day30] 還在等什麼！快來成為 Ruby 工程師啊！（誤）  終於來到鐵人賽的最後一天了！以為我要寫個完賽心得帶過嗎？雖然很想這樣做，不過，這裡並不是停下腳步的地方啊！ 這篇要介紹的是 Enumerator！  Enumerator 是什麼？剛開始看到這個詞只覺得陌生 + 困惑 上網查了許久，Enumerator 似乎沒有一個很精準的中文翻譯，但可以找到像是 external, iter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴 - 滿滿的紅寶石不拿嗎？">
+<meta property="og:url" content="http://example.com/2020/10/30/day30/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[Day30] 還在等什麼！快來成為 Ruby 工程師啊！（誤）  終於來到鐵人賽的最後一天了！以為我要寫個完賽心得帶過嗎？雖然很想這樣做，不過，這裡並不是停下腳步的地方啊！ 這篇要介紹的是 Enumerator！  Enumerator 是什麼？剛開始看到這個詞只覺得陌生 + 困惑 上網查了許久，Enumerator 似乎沒有一個很精準的中文翻譯，但可以找到像是 external, iter">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/VXv63Pi.jpg">
+<meta property="article:published_time" content="2020-10-30T05:11:12.024Z">
+<meta property="article:modified_time" content="2020-10-30T06:37:43.152Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Ruby, 12th鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/VXv63Pi.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-day30" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day30/" class="article-date">
+  <time datetime="2020-10-30T05:11:12.024Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴 - 滿滿的紅寶石不拿嗎？
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/VXv63Pi.jpg"></p>
+<blockquote>
+<p>[Day30] 還在等什麼！快來成為 Ruby 工程師啊！（誤）</p>
+</blockquote>
+<p>終於來到鐵人賽的最後一天了！以為我要寫個完賽心得帶過嗎？雖然很想這樣做，不過，這裡並不是停下腳步的地方啊！</p>
+<p>這篇要介紹的是 <code>Enumerator</code>！</p>
+<hr>
+<h2 id="Enumerator-是什麼？"><a href="#Enumerator-是什麼？" class="headerlink" title="Enumerator 是什麼？"></a>Enumerator 是什麼？</h2><p>剛開始看到這個詞只覺得陌生 + 困惑</p>
+<p>上網查了許久，<code>Enumerator</code> 似乎沒有一個很精準的中文翻譯，但可以找到像是 <code>external</code>, <code>iterator</code>, <code>Enumerable Module</code> 這些關鍵字。</p>
+<p>但其實它一直都在我們身邊。</p>
+<p>平時 coding 可能就已經看過它，那就是當使用 <code>each</code> 方法操作陣列相關的物件時，又不小心忘了寫 Block 的話：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].each</span><br><span class="line"> =&gt; #&lt;Enumerator: [1, 2, 3]:each&gt;</span><br></pre></td></tr></table></figure>
+
+<p>就會出現這個 <code>Enumerator</code> ! 可是···這是什麼意思？還是不懂。</p>
+<p>沒關係把 <code>Enumerator</code> 放一邊，先來看看 <code>Enumerable</code> 能不能輔助我理解。</p>
+<hr>
+<h2 id="Enumerable-又是什麼？"><a href="#Enumerable-又是什麼？" class="headerlink" title="Enumerable 又是什麼？"></a>Enumerable 又是什麼？</h2><p>雖然和上一個概念相比，似乎只有單字詞性的變化，不過 <code>Enumerable</code> 的概念明確許多。</p>
+<p>首先，<code>Enumerable</code> 是一種模組(Module)，又可以稱為「列舉」，來瞧瞧 Ruby 官方文件的定義：</p>
+<p>列舉提供陣列和雜湊搜尋、排序或轉換集合內元素的功能。而陣列或雜湊必須各自提供一個方法，該方法可以產生集合的連續成員···(?)</p>
+<p>簡單來說，像是 <code>each</code>, <code>select</code>, <code>map</code>, <code>match</code>, <code>sort</code>, <code>grep</code> 這些常用的方法都屬於 <code>Enumerable</code> 的範疇。</p>
+<p>詳細內容請參考 <a target="_blank" rel="noopener" href="https://ruby-doc.org/core-2.7.2/Enumerable.html">Ruby-Doc Module: Enumerable</a></p>
+<hr>
+<h2 id="External-Iterator"><a href="#External-Iterator" class="headerlink" title="External Iterator"></a>External Iterator</h2><p>接下來介紹外部迭代器(External Iterator)</p>
+<p>大部分時候我們都在做的是 <code>Internal Iterator</code><br>像是平常在丟迴圈，或是上在介紹的陣列方法，都屬於 <code>Internal Iterator</code> ，譬如想從一個陣列中選取一些元素：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">list.select <span class="keyword">do</span> <span class="params">|n|</span></span><br><span class="line">  n &gt; <span class="number">2</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#=&gt; [3, 4]</span></span><br></pre></td></tr></table></figure>
+
+<p>不過，既然有 <code>Internal</code> ，也就有 <code>External</code>，<code>Internal Iterator</code> 是由陣列或雜湊這類的集合物件控制，而 <code>External Iterator</code> 則是由外部來控制，像是：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">icons = <span class="string">%w[up down]</span>.to_enum(<span class="symbol">:cycle</span>)</span><br><span class="line">list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">list.each <span class="keyword">do</span></span><br><span class="line">  puts icons.<span class="keyword">next</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># =&gt;</span></span><br><span class="line">up</span><br><span class="line">down</span><br><span class="line">up</span><br><span class="line">down</span><br><span class="line">up</span><br><span class="line"> =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<p>在這段程式碼裡，<code>icons</code> 被指定使用 <code>cycle</code> 方式在做迭代，所以當 <code>next</code> 到最後一個元素，下一次的 <code>next</code> 就會從頭再來過。</p>
+<hr>
+<h2 id="所以，什麼是-Enumerator？"><a href="#所以，什麼是-Enumerator？" class="headerlink" title="所以，什麼是 Enumerator？"></a>所以，什麼是 Enumerator？</h2><p>我這邊引用五倍紅寶石 DC 助教的原話：</p>
+<blockquote>
+<p><code>Enumerator</code> 最簡單的解釋是 <code>Enumerable</code> 加上 <code>External Iteration</code>，而 <code>Enumerator</code> 與 <code>Enumerable</code> 的合作方式是前者負責產生、儲存資料，『需要時』再以後者的方法運用。</p>
+</blockquote>
+<p>譬如：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].each</span><br><span class="line"><span class="comment">#=&gt; #&lt;Enumerator: [1, 2, 3]:each&gt;</span></span><br><span class="line"></span><br><span class="line">list.select &#123; <span class="params">|x|</span> x.odd? &#125;</span><br><span class="line"><span class="comment">#=&gt; [1, 3]</span></span><br></pre></td></tr></table></figure>
+
+<p>除了這種彈性的用法之外，<code>Enumerator</code> 的另一個特性是能把物件不斷串起來，以最近超紅的電影《天能》為例：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;TENET&#x27;</span>.split(<span class="string">&#x27;&#x27;</span>).reverse_each.with_index(<span class="number">1</span>) <span class="keyword">do</span> <span class="params">|word, index|</span></span><br><span class="line">  puts <span class="string">&quot;<span class="subst">#&#123;word&#125;</span>&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">T</span><br><span class="line">E</span><br><span class="line">N</span><br><span class="line">E</span><br><span class="line">T</span><br><span class="line"> =&gt; [<span class="string">&quot;T&quot;</span>, <span class="string">&quot;E&quot;</span>, <span class="string">&quot;N&quot;</span>, <span class="string">&quot;E&quot;</span>, <span class="string">&quot;T&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>果然是天能！時光回溯！</p>
+<hr>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p><code>Enumerator</code> 的概念不是很好理解，在尋找文獻和研究的過程中不斷撞牆，似乎勉勉強強地看懂了一些，但仍拼湊不出全貌，不過身為工程師，主動接觸一些不熟悉的概念是應該的。</p>
+<p>之後的文章應該會放在 Medium 或是自己架的部落格，期許往後的路上還要學得更多，並時常接觸自己不熟悉的領域以及運用所學，天啊！這種既掙扎又興奮的感覺真是太棒了！</p>
+<p>那，鐵人賽就先到這邊啦！<br>在出發的那一刻，我們就已經得到 ONEPIECE 了！</p>
+<hr>
+<p>參考來源<br><a target="_blank" rel="noopener" href="https://5xruby.tw/posts/ruby-enumerator/">與你每天擦身而過的 Enumerator</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day30/" data-id="ckgw1jq5x001bvxv503ul3uxr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/30/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/30/day29/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 10px;">Ruby, 12th鐵人賽</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day30/">Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day29/">Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day28/">Singleton Method &lt;&gt; 是「百獸海賊團」！碰上四皇凱多有勝算嗎？- 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day27/">Self &lt;&gt; 真正的男子漢，連道別都不需要語言！ - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

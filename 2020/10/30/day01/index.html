@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>開賽宣言與 Ruby 簡介 &lt;&gt; Hello, Ruby!  - 滿滿的紅寶石不拿嗎？ | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[Day01] 出發啦!  開賽宣言這篇系列文是我自己學習 Ruby 語法撰寫和概念的統整，慣例先來個宣言好了(喊聲)，先簡單介紹一下，筆者我目前是五倍紅寶石 AstroCamp 第五屆的學員，由於受到同學們的拼勁影響，也為了紀錄自己轉職路上的學習歷程，於是決定參加 iT 邦鐵人賽!!!(忐忑) 想想人生真是不可思議，說實話，半年前的我真的沒想過，居然會參加技術圈這種一年一度的盛會，對著各位大">
+<meta property="og:type" content="article">
+<meta property="og:title" content="開賽宣言與 Ruby 簡介 &lt;&gt; Hello, Ruby!  - 滿滿的紅寶石不拿嗎？">
+<meta property="og:url" content="http://example.com/2020/10/30/day01/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[Day01] 出發啦!  開賽宣言這篇系列文是我自己學習 Ruby 語法撰寫和概念的統整，慣例先來個宣言好了(喊聲)，先簡單介紹一下，筆者我目前是五倍紅寶石 AstroCamp 第五屆的學員，由於受到同學們的拼勁影響，也為了紀錄自己轉職路上的學習歷程，於是決定參加 iT 邦鐵人賽!!!(忐忑) 想想人生真是不可思議，說實話，半年前的我真的沒想過，居然會參加技術圈這種一年一度的盛會，對著各位大">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20200909/20128363iaHQR6ySsV.jpg">
+<meta property="article:published_time" content="2020-10-30T03:54:12.850Z">
+<meta property="article:modified_time" content="2020-10-30T04:13:48.875Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Ruby, 12th鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20200909/20128363iaHQR6ySsV.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-day01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day01/" class="article-date">
+  <time datetime="2020-10-30T03:54:12.850Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      開賽宣言與 Ruby 簡介 &lt;&gt; Hello, Ruby!  - 滿滿的紅寶石不拿嗎？
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ithelp.ithome.com.tw/upload/images/20200909/20128363iaHQR6ySsV.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20200909/20128363iaHQR6ySsV.jpg"></p>
+<blockquote>
+<p>[Day01] 出發啦!</p>
+</blockquote>
+<h2 id="開賽宣言"><a href="#開賽宣言" class="headerlink" title="開賽宣言"></a>開賽宣言</h2><p>這篇系列文是我自己學習 Ruby 語法撰寫和概念的統整，慣例先來個宣言好了(喊聲)，先簡單介紹一下，筆者我目前是五倍紅寶石 AstroCamp 第五屆的學員，由於受到同學們的拼勁影響，也為了紀錄自己轉職路上的學習歷程，於是決定參加 iT 邦鐵人賽!!!(忐忑)</p>
+<p>想想人生真是不可思議，說實話，半年前的我真的沒想過，居然會參加技術圈這種一年一度的盛會，對著各位大大獻醜，過著每天 coding 的生活，不過到目前為止都還蠻喜歡的(笑)</p>
+<p>30 個日子說長不長，但畢竟唯有整理過的東西才會永遠留下，就把鐵人賽當作每天都要做的 git commit 吧! 想想好像就輕鬆多了(?)</p>
+<hr>
+<h2 id="什麼是-Ruby-它跟其他程式語言有什麼不同？"><a href="#什麼是-Ruby-它跟其他程式語言有什麼不同？" class="headerlink" title="什麼是 Ruby? 它跟其他程式語言有什麼不同？"></a>什麼是 Ruby? 它跟其他程式語言有什麼不同？</h2><p>先說緣起，Yukihiro Matsumoto(松本行弘) 在 1995 年創造了 Ruby，當時的他希望能有一款讓工程師可以開心 coding 的程式語言，因此造就了 Ruby 成為了一款便於撰寫、也容易閱讀的特性，在語法上和其他程式語言也有很大的不同，對於半年前才決定要踏上轉職工程師這條路的我，應該算是個好消息(吧)</p>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Ruby">Ruby</a> 是一種<strong>物件導向</strong>式的腳本語言(<a target="_blank" rel="noopener" href="https://reurl.cc/d52RRk">script language</a>)，在 Ruby 裡幾乎所有東西都是物件，關於物件導向的概念在後面會提一些，同時也是對 Programmer 最友善的程式語言，沒有之一，關於這件事，接下來就會慢慢看到 Ruby 它厲害的地方了! 敬請期待!</p>
+<hr>
+<h2 id="聽說網站開發是-Ruby-的強項？"><a href="#聽說網站開發是-Ruby-的強項？" class="headerlink" title="聽說網站開發是 Ruby 的強項？"></a>聽說網站開發是 Ruby 的強項？</h2><p>在轉職前，我也是聽別人這麼說，但後來了解到 Ruby 其實可以泛用在資料分析、繪圖、3D 建模、系統管理、遊戲開發等不同的領域，這件事就和近幾年最熱門的 Python 被拿來做人工智能或深度學習一樣，每種程式語言都會有自己的生態圈，所謂的強或不強，就只是我們大多把 Ruby 拿來做網站開發而已，最常用的大概就是 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Ruby_on_Rails">Rails</a>了。</p>
+<hr>
+<p>第一天大概就先到這邊了！明天會開始進入 Ruby 的世界！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day01/" data-id="ckgw1jq61001fvxv51eh924q5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/30/day02/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          環境安裝 &lt;&gt; 10個新手有9個會倒下 - 滿滿的紅寶石不拿嗎？
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 10px;">Ruby, 12th鐵人賽</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day30/">Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day29/">Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day28/">Singleton Method &lt;&gt; 是「百獸海賊團」！碰上四皇凱多有勝算嗎？- 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day27/">Self &lt;&gt; 真正的男子漢，連道別都不需要語言！ - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

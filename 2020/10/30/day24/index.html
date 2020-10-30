@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>陣列方法 &lt;&gt; 學不會就無法走出這個錯綜複雜的迷宮！路痴索隆表示：- 滿滿的紅寶石不拿嗎？ | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[Day24] 對不起我對陣列方法知道的太少了了！（跪）   今天這篇要向大家介紹一些超級常用的陣列方法(Array Method) 先來介紹居家旅行刷題解扣殺人放火的必備：  select map reduce  selectselect 可以在陣列裡挑選出「符合條件」的元素。 1234a &#x3D; %w&amp;#123; a b c d e f &amp;#125;# 找出是母音的英文字母a.select &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="陣列方法 &lt;&gt; 學不會就無法走出這個錯綜複雜的迷宮！路痴索隆表示：- 滿滿的紅寶石不拿嗎？">
+<meta property="og:url" content="http://example.com/2020/10/30/day24/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[Day24] 對不起我對陣列方法知道的太少了了！（跪）   今天這篇要向大家介紹一些超級常用的陣列方法(Array Method) 先來介紹居家旅行刷題解扣殺人放火的必備：  select map reduce  selectselect 可以在陣列裡挑選出「符合條件」的元素。 1234a &#x3D; %w&amp;#123; a b c d e f &amp;#125;# 找出是母音的英文字母a.select &amp;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/4fPchXW.jpg">
+<meta property="og:image" content="https://i.imgur.com/4FYe2JO.jpg">
+<meta property="article:published_time" content="2020-10-30T05:10:46.268Z">
+<meta property="article:modified_time" content="2020-10-30T06:34:44.985Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Ruby, 12th鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/4fPchXW.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-day24" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/day24/" class="article-date">
+  <time datetime="2020-10-30T05:10:46.268Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      陣列方法 &lt;&gt; 學不會就無法走出這個錯綜複雜的迷宮！路痴索隆表示：- 滿滿的紅寶石不拿嗎？
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/4fPchXW.jpg"></p>
+<blockquote>
+<p>[Day24] 對不起我對陣列方法知道的太少了了！（跪）</p>
+</blockquote>
+<hr>
+<p>今天這篇要向大家介紹一些超級常用的<strong>陣列方法(Array Method)</strong></p>
+<p>先來介紹居家旅行刷題解扣<del>殺人放火</del>的必備：</p>
+<ul>
+<li>select</li>
+<li>map</li>
+<li>reduce</li>
+</ul>
+<h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2><p><code>select</code> 可以在陣列裡挑選出「符合條件」的元素。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">%w&#123; a b c d e f &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 找出是母音的英文字母</span></span><br><span class="line">a.select &#123;<span class="params">|v|</span> v =~ <span class="regexp">/[aeiou]/</span>&#125;   <span class="comment">#=&gt; [&quot;a&quot;, &quot;e&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>%w</code> 是另一種表示陣列的寫法，在這裡例子裡，設定了一個條件陣列<code>[aeiou]</code> 並透過 <code>=~</code> 來篩選出陣列<code>a</code> 與陣列<code>[aeiou]</code> 相符的元素。</p>
+<hr>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p><code>map</code> 是對這個陣列裡的每一個元素做某件事之後，再收集成一個新的陣列，通常會在 <code>map</code> 後面接的 Block 裡寫陣列中每一個元素要做的事。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a = [ <span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>, <span class="string">&quot;d&quot;</span> ]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在每個元素後面加上!</span></span><br><span class="line">a.map &#123;<span class="params">|x|</span> x + <span class="string">&quot;!&quot;</span> &#125;   <span class="comment">#=&gt; [&quot;a!&quot;, &quot;b!&quot;, &quot;c!&quot;, &quot;d!&quot;]</span></span><br><span class="line">a                      <span class="comment">#=&gt; [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">b = [ <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span> ,<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在每個元素後面加上 2 (要是數字)</span></span><br><span class="line">b.map &#123;<span class="params">|n|</span> n + <span class="number">2</span>&#125;      <span class="comment">#=&gt; [ 2, 3, 4 ,6]</span></span><br><span class="line">b                      <span class="comment">#=&gt; [ 0, 1, 2 ,4]</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以使用 <code>collect</code> ！會得到一樣的結果。<br>另外提醒一點，除非是使用 <code>map!</code> 否則原本的陣列是不會改變的！</p>
+<hr>
+<h2 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h2><p><code>reduce</code> 會幫我們把陣列中的每個元素收集起來，拿去運算，最後再告訴我們總計為多少，完全是熱心助人的模範生方法。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 計算一個範圍的數字總和</span></span><br><span class="line">(<span class="number">5</span>..<span class="number">10</span>).reduce(<span class="number">0</span>) &#123; <span class="params">|total, i|</span> total + i &#125;      <span class="comment">#=&gt; 45</span></span><br></pre></td></tr></table></figure>
+
+<p>這邊我解釋一下，這裡假定初始值為 0，然後會依序把 <code>5..10</code> 這個範圍裡的 6 個數字: <code>5</code>, <code>6</code>, <code>7</code>, <code>8</code>, <code>9</code>, <code>10</code> 傳進 Block 和初始值相加（因為在這裡是 <code>+</code>），最後得出結果。</p>
+<p>因此，也就是說 <code>reduce</code> 其實是把陣列裡的每個元素不斷地「互動」，再把每個互動結果全部搜集後，最終再回傳總計的一個方法</p>
+<p>這個例子也可以這樣寫：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">5</span>..<span class="number">10</span>).reduce(<span class="symbol">:+</span>)                             <span class="comment">#=&gt; 45</span></span><br></pre></td></tr></table></figure>
+
+<p>甚至字串也可以</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>].reduce(<span class="symbol">:+</span>)                       <span class="comment">#=&gt; &quot;abc&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>用 <code>inject</code> 也能做到同樣的事！</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Same using a block and inject</span></span><br><span class="line">(<span class="number">5</span>..<span class="number">10</span>).inject &#123; <span class="params">|sum, n|</span> sum + n &#125;            <span class="comment">#=&gt; 45</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># find the longest word</span></span><br><span class="line">longest = <span class="string">%w&#123; cat sheep bear &#125;</span>.inject <span class="keyword">do</span> <span class="params">|memo, word|</span></span><br><span class="line">   memo.length &gt; word.length ? memo : word</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">longest                                        <span class="comment">#=&gt; &quot;sheep&quot;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>接著再來介紹其它也很常用的陣列方法！</p>
+<h2 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h2><p>簡單來說，<code>slice</code> 就是會依照索引值(index) 來取出陣列裡相對應的元素。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a = [ <span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>, <span class="string">&quot;d&quot;</span>, <span class="string">&quot;e&quot;</span> ]</span><br><span class="line">a[<span class="number">2</span>] +  a[<span class="number">0</span>] + a[<span class="number">1</span>]    <span class="comment">#=&gt; &quot;cab&quot;</span></span><br><span class="line">a[<span class="number">6</span>]                   <span class="comment">#=&gt; nil</span></span><br><span class="line">a[<span class="number">1</span>, <span class="number">2</span>]                <span class="comment">#=&gt; [ &quot;b&quot;, &quot;c&quot; ]</span></span><br><span class="line">a[<span class="number">1</span>..<span class="number">3</span>]                <span class="comment">#=&gt; [ &quot;b&quot;, &quot;c&quot;, &quot;d&quot; ]</span></span><br><span class="line">a[<span class="number">4</span>..<span class="number">7</span>]                <span class="comment">#=&gt; [ &quot;e&quot; ]</span></span><br><span class="line">a[<span class="number">6</span>..<span class="number">10</span>]               <span class="comment">#=&gt; nil</span></span><br><span class="line">a[-<span class="number">3</span>, <span class="number">3</span>]               <span class="comment">#=&gt; [ &quot;c&quot;, &quot;d&quot;, &quot;e&quot; ]</span></span><br><span class="line"><span class="comment"># special cases</span></span><br><span class="line">a[<span class="number">5</span>]                   <span class="comment">#=&gt; nil</span></span><br><span class="line">a[<span class="number">5</span>, <span class="number">1</span>]                <span class="comment">#=&gt; []</span></span><br><span class="line">a[<span class="number">5</span>..<span class="number">10</span>]               <span class="comment">#=&gt; []</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="join"><a href="#join" class="headerlink" title="join"></a>join</h2><p><code>join</code> 可以幫我們把陣列裡的元素組合起來，想要的話，中間還可以插入我們指定的東西。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ <span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span> ].join        <span class="comment">#=&gt; &quot;abc&quot;</span></span><br><span class="line">[ <span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span> ].join(<span class="string">&quot;-&quot;</span>)   <span class="comment">#=&gt; &quot;a-b-c&quot;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h2><p><code>concat</code> 可以幫我們把兩個陣列接起來！</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ <span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span> ].concat( [<span class="string">&quot;c&quot;</span>, <span class="string">&quot;d&quot;</span>] ) <span class="comment">#=&gt; [ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot; ]</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>我想身為一個稱職的 Ruby 工程師，為了方便查詢，而把 <a target="_blank" rel="noopener" href="https://ruby-doc.org/core-2.7.1/">Ruby API</a> 放在 Chrome 書籤列最顯眼的地方是非常合理的，畢竟，</p>
+<p>「<code>工欲善其事，必先RTFM</code>」(Read The Fantastic Manual)</p>
+<p>但就算看了文件，到了 <a target="_blank" rel="noopener" href="https://www.codewars.com/">Codewar</a> 和 <a target="_blank" rel="noopener" href="https://leetcode.com/">Leetcode</a> 上面解題時卻還是</p>
+<p><img src="https://i.imgur.com/4FYe2JO.jpg"></p>
+<p>自己對於 Ruby 的方法知道還是太少了！所以今天才想說應該要來複習陣列方法。</p>
+<p>只是，陣列方法百百種，使用時機可說是千變萬化，這幾個只是常用的基礎，記得還是要看手冊喔！</p>
+<p>如果還有其他常用的陣列方法，歡迎補充在下方留言，希望大家都能順利解題～</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/30/day24/" data-id="ckgw1jq5m000zvxv55mgc9g48" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/30/day25/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          例外處理 &lt;&gt; 白鬍子登場！就連海軍大將都無法擊倒的那個男人！- 滿滿的紅寶石不拿嗎？
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/30/day23/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">empty? nil? blank? &lt;&gt; 聽說今天是滿月？戰鬥力爆表的月亮獅子變身！-   滿滿的紅寶石不拿嗎？</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">Ruby, 12th鐵人賽</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ruby-12th%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 10px;">Ruby, 12th鐵人賽</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day30/">Enumerator &lt;&gt; 一旦上了船，程式就是不會背叛你的夥伴 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day29/">Singleton Class 與物件導向 &lt;&gt; 記錄指針不見了！我們該如何前進到下個島嶼 - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day28/">Singleton Method &lt;&gt; 是「百獸海賊團」！碰上四皇凱多有勝算嗎？- 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/day27/">Self &lt;&gt; 真正的男子漢，連道別都不需要語言！ - 滿滿的紅寶石不拿嗎？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
